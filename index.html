@@ -1,59 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Live Server Test</title>
-</head>
-
-<body style="background-color: whitesmoke;">
-    <h1 style="color: blueviolet; text-align: center;">
-        <u><i>Hello from Live Server!<br></i></u>
-    </h1>
-
-    <style type="text/css"></style>
-
+    <meta charset="UTF-8">
+    <title>Gallery Popup Test</title>
     <link rel="stylesheet" href="style.css">
-    
-    </body>
-    </html>
+</head>
+<body>
 
-   <div class="left-box">
-    <div id ="preview" ></div>
-    <img class="zoom-img" src="image/tiger.jpg", alt="tiger">
-    <img class="zoom-img" src="image/elephant.jpg", alt="elephant">
-   </div>
+    <h1 class="title">Hello from Live Server!</h1>
 
-   <div class="gallery" id="gallery"></div>
-
-<!-- Right-side popup -->
-    <div id="popup">
-    <div class="btns">
-    
-        <button id="minBtn">–</button>
-        <button id="closeBtn">X</button>
+    <!-- Small Zoom Images -->
+    <div class="left-box">
+        <img class="zoom-img" src="image/tiger.jpg" alt="tiger">
+        <img class="zoom-img" src="image/elephant.jpg" alt="elephant">
     </div>
-    <img id="popupImage">
-</div>
 
+    <!-- Gallery -->
+    <div id="gallery" class="gallery"></div>
 
+    <!-- Fullscreen Zoom -->
     <div id="fullscreen">
-    <img id="fullImg" src="">
+        <img id="fullImg" alt="Full Screen">
     </div>
 
-   
-    
+    <!-- Popup -->
+    <div id="popup">
+        <div class="btns">
+            <button id="minBtn">–</button>
+            <button id="closeBtn">X</button>
+        </div>
+        <img id="popupImage" alt="Popup">
+    </div>
 
-    <div class="btn">
-    <a href="login_page.html">
-       <button class="myBtn">Click Me</button>
-    </a>  
-    
-
-    <p>
-    <button class="myBtn" onclick="login()"> Login Me</button>
+     <p>
+        <button class="myBtn" onclick="login()">Login Me</button>
     </p>
 
-    </div>
-          
     <script src="script.js"></script>
 </body>
 </html>
