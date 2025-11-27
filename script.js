@@ -21,8 +21,6 @@ zoomImages.forEach(img => {
   });
 });
 
-
-
 // Click anywhere → close fullscreen
 fullscreen.addEventListener("click", function () {
   fullscreen.style.display = "none";
@@ -37,4 +35,18 @@ linkImages.forEach(img => {
     let page = this.getAttribute("data-link");
     window.location.href = page;
   });
+});
+
+
+document.getElementById("images".addEventListener("change"),function(event){
+  let previewDiv=document.getElementById("preview");
+  previewDiv.innerHTML="";
+
+  for (let file of event.target.files) {
+        let img = document.createElement("img");
+        img.src = URL.createObjectURL(file);
+        img.style.width = "150px";
+        img.style.margin = "10px";
+        previewDiv.appendChild(img);
+    }
 });
