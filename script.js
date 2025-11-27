@@ -65,36 +65,10 @@ document.querySelectorAll(".zoom-img").forEach(img => {
 document.getElementById("closeBtn").onclick = function() {
     document.getElementById("popup").style.display = "none";
 };
+
+document.getElementById("minBtn").onclick = function() {
+    document.getElementById("popup").style.display = "none";
+};
  
-    const galleryDiv = document.getElementById("gallery");
-    const popup = document.getElementById("popup");
-    const popupImg = document.getElementById("popupImg");
-
-    // Show thumbnails
-    images.forEach(img => {
-        let imageTag = document.createElement("img");
-        imageTag.src = "image/" + img;   // folder name = image
-        imageTag.onclick = () => showImage(img);
-        galleryDiv.appendChild(imageTag);
-    });
-
-    function showImage(name) {
-        popup.style.display = "block";
-        popupImg.src = "image/" + name;
-    }
-
-    // Close popup
-    document.getElementById("closeBtn").onclick = () => {
-        popup.style.display = "none";
-    };
-
-    // Minimize popup
-    document.getElementById("minBtn").onclick = () => {
-        popupImg.style.display =
-            popupImg.style.display === "none" ? "block" : "none";
-    };
-
-
-
-
+    
 
