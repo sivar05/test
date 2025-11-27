@@ -43,6 +43,7 @@ const images = [
         "img3.jpg",
         "img4.jpg",
         "img5.jpg",
+        "img6.jpg"
     ];
 
 
