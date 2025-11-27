@@ -1,39 +1,14 @@
-const images = document.querySelectorAll(".zoom-img");
-const popup = document.getElementById("popup");
-const popupImage = document.getElementById("popupImage");
+function showFull(imgSrc) {
+    document.getElementById("fullImg").src = imgSrc;
+    document.getElementById("fullscreen").style.display = "flex";
 
-const fullscreen = document.getElementById("fullscreen");
-const fullImg = document.getElementById("fullImg");
+    // hide buttons & other elements
+    document.querySelector(".btn").style.display = "none";
+}
 
-const minBtn = document.getElementById("minBtn");
-const closeBtn = document.getElementById("closeBtn");
+function closeFull() {
+    document.getElementById("fullscreen").style.display = "none";
 
-// Open popup when clicking image
-images.forEach(img => {
-    img.addEventListener("click", () => {
-        popup.style.display = "block";
-        popup.classList.remove("minimized");
-        popupImage.src = img.src;
-    });
-});
-
-// Minimize button
-minBtn.addEventListener("click", () => {
-    popup.classList.toggle("minimized");
-});
-
-// Close popup
-closeBtn.addEventListener("click", () => {
-    popup.style.display = "none";
-});
-
-// Maximize image (double click)
-popupImage.addEventListener("dblclick", () => {
-    fullImg.src = popupImage.src;
-    fullscreen.style.display = "flex";
-});
-
-// Close fullscreen
-fullscreen.addEventListener("click", () => {
-    fullscreen.style.display = "none";
-});
+    // show buttons again
+    document.querySelector(".btn").style.display = "block";
+}

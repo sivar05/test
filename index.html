@@ -11,8 +11,13 @@
 
     <!-- Images under headline -->
     <div class="left-box">
-        <img class="zoom-img" src="image/tiger.jpg" alt="tiger">
-        <img class="zoom-img" src="image/elephant.jpg" alt="elephant">
+       <img class="zoom-img" src="image/img1.jpg" onclick="showFull(this.src)">
+       <img class="zoom-img" src="image/img2.jpg" onclick="showFull(this.src)">
+    </div>
+
+      <!-- Fullscreen View -->
+    <div id="fullscreen" onclick="closeFull()">
+    <img id="fullImg">
     </div>
 
     <!-- Popup Box -->
@@ -22,11 +27,6 @@
             <button id="closeBtn">X</button>
         </div>
         <img id="popupImage">
-    </div>
-
-    <!-- Fullscreen View -->
-    <div id="fullscreen">
-        <img id="fullImg">
     </div>
 
     <!-- Bottom Buttons -->
