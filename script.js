@@ -37,13 +37,34 @@ linkImages.forEach(img => {
   });
 });
 
- const images = [
-        "img1.jpg",
-        "img2.jpg",
-        "img3.jpg",
-        "img4.jpg"
-    ];
+const images = [
+    "image/img1.jpg",
+    "image/img2.jpg",
+    "image/img3.jpg",
+    "image/img4.jpg"
+];
 
+let gallery = document.getElementById("gallery");
+
+images.forEach(src => {
+    let img = document.createElement("img");
+    img.src = src;
+    img.style.width = "150px";
+    img.style.margin = "10px";
+    img.classList.add("zoom-img");
+    gallery.appendChild(img);
+});
+
+document.querySelectorAll(".zoom-img").forEach(img => {
+    img.addEventListener("click", function() {
+        document.getElementById("popupImg").src = this.src;
+        document.getElementById("popup").style.display = "flex";
+    });
+});
+
+document.getElementById("closeBtn").onclick = function() {
+    document.getElementById("popup").style.display = "none";
+};
  
     const galleryDiv = document.getElementById("gallery");
     const popup = document.getElementById("popup");
