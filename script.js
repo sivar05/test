@@ -40,8 +40,8 @@ linkImages.forEach(img => {
  const images = [
         "img1.jpg",
         "img2.jpg",
-        "img3.png",
-        "img4.jpeg"
+        "img3.jpg",
+        "img4.jpg"
     ];
 
     const gallery = document.getElementById("gallery");
