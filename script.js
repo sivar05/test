@@ -37,16 +37,20 @@ linkImages.forEach(img => {
   });
 });
 
+const images = [
+    "img1.jpg",
+    "img2.jpg",
+    "img3.png",
+    "img4.jpeg"
+];
+const folder = "image/";
 
-document.getElementById("image").addEventListener("change", function () {
-    let output = document.getElementById("output");
-    output.innerHTML = "";
+const gallery = document.getElementById("gallery");
 
-    for (let file of this.files) {
-        let img = document.createElement("img");
-        img.src = URL.createObjectURL(file);
-        img.style.width = "150px";
-        img.style.margin = "10px";
-        output.appendChild(img);
-    }
+images.forEach(file => {
+    let img = document.createElement("img");
+    img.src = folder + file;
+    img.style.width = "150px";
+    img.style.margin = "10px";
+    gallery.appendChild(img);
 });
