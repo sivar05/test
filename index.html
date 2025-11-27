@@ -1,40 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Gallery Popup Test</title>
+    <title>Live Server Test</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <h1 class="title">Hello from Live Server!</h1>
+    <h1><u><i>WELCOME TO WILD</i></u></h1>
 
-    <!-- Small Zoom Images -->
+    <!-- Images under headline -->
     <div class="left-box">
         <img class="zoom-img" src="image/tiger.jpg" alt="tiger">
         <img class="zoom-img" src="image/elephant.jpg" alt="elephant">
     </div>
 
-    <!-- Gallery -->
-    <div id="gallery" class="gallery"></div>
-
-    <!-- Fullscreen Zoom -->
-    <div id="fullscreen">
-        <img id="fullImg" alt="Full Screen">
-    </div>
-
-    <!-- Popup -->
+    <!-- Popup Box -->
     <div id="popup">
         <div class="btns">
             <button id="minBtn">–</button>
             <button id="closeBtn">X</button>
         </div>
-        <img id="popupImage" alt="Popup">
+        <img id="popupImage">
     </div>
 
-     <p>
-        <button class="myBtn" onclick="login()">Login Me</button>
-    </p>
+    <!-- Fullscreen View -->
+    <div id="fullscreen">
+        <img id="fullImg">
+    </div>
+
+    <!-- Bottom Buttons -->
+    <div class="btn">
+        <a href="login_page.html"><button class="myBtn">Click Me</button></a>
+        <p><button class="myBtn" onclick="login()">Login Me</button></p>
+    </div>
 
     <script src="script.js"></script>
 </body>
