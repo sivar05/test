@@ -46,40 +46,43 @@ const images = [
 ``
     ];
 
-    const gallery = document.getElementById("gallery");
 
-    // load images into page
-    images.forEach(img => {
-        let imageTag = document.createElement("img");
-        imageTag.src = "image/" + img;    // <--- IMPORTANT PATH
-        imageTag.onclick = () => showPopup("image/" + img);
-        gallery.appendChild(imageTag);
-    });
+const gallery = document.getElementById("gallery");
 
-    const popup = document.getElementById("popup");
-    const popupImage = document.getElementById("popupImage");
-    const closeBtn = document.getElementById("closeBtn");
-    const minBtn = document.getElementById("minBtn");
-    const maxBtn = document.getElementById("maxBtn");
+images.forEach(img => {
+    let imageTag = document.createElement("img");
+    imageTag.src = "image/" + img;    // correct path
+    imageTag.onclick = () => showPopup("image/" + img);
+    gallery.appendChild(imageTag);
+});
 
-    function showPopup(src) {
-        popup.style.display = "flex";
-        popupImage.src = src;
-        popup.style.width = "350px";
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popupImage");
+const minBtn = document.getElementById("minBtn");
+const closeBtn = document.getElementById("closeBtn");
+
+let isMinimized = false;
+
+// Open popup from gallery or zoom-img
+function showPopup(src) {
+    popupImg.src = src;
+    popup.style.display = "block";
+    popup.classList.remove("minimized");
+    minBtn.textContent = "–";
+    isMinimized = false;
+}
+
+// Close popup
+closeBtn.onclick = () => popup.style.display = "none";
+
+// Minimize / Maximize popup
+minBtn.onclick = () => {
+    if (!isMinimized) {
+        popup.classList.add("minimized");
+        minBtn.textContent = "▢";   // maximize icon
+    } else {
+        popup.classList.remove("minimized");
+        minBtn.textContent = "–";  // minimize icon
     }
-
-    closeBtn.onclick = () => {
-        popup.style.display = "none";
-    };
-
-    minBtn.onclick = () => {
-        popup.style.width = "80px";
-        popupImage.style.display = "none";
-    };
-    maxBtn.onclick = () =>{
-    popup.style.display = "flex";
-        popupImage.src = src;
-        popup.style.width = "350px";
-
-    }
-
+    isMinimized = !isMinimized;
+};
