@@ -60,6 +60,7 @@ const images = [
     const popupImage = document.getElementById("popupImage");
     const closeBtn = document.getElementById("closeBtn");
     const minBtn = document.getElementById("minBtn");
+    const maxBtn = document.getElementById("maxBtn");
 
     function showPopup(src) {
         popup.style.display = "flex";
@@ -75,4 +76,10 @@ const images = [
         popup.style.width = "80px";
         popupImage.style.display = "none";
     };
+    maxBtn.onclick = () =>{
+    popup.style.display = "flex";
+        popupImage.src = src;
+        popup.style.width = "350px";
+
+    }
 
