@@ -121,6 +121,11 @@
             cursor: pointer;
             float: right;
         }
+        #minimumBtn{
+          font-size: 28px;
+            cursor: pointer;
+            float: right;
+        }
     
 
 

@@ -44,30 +44,34 @@ linkImages.forEach(img => {
         "img4.jpg"
     ];
 
-    const gallery = document.getElementById("gallery");
-// Load all images
-    images.forEach(name => {
-        let img = document.createElement("img");
-        img.src = "image/" + name;  // FOLDER = image
-        img.onclick = () => openPopup(img.src);
-        gallery.appendChild(img);
+ 
+    const galleryDiv = document.getElementById("gallery");
+    const popup = document.getElementById("popup");
+    const popupImg = document.getElementById("popupImg");
+
+    // Show thumbnails
+    images.forEach(img => {
+        let imageTag = document.createElement("img");
+        imageTag.src = "image/" + img;   // folder name = image
+        imageTag.onclick = () => showImage(img);
+        galleryDiv.appendChild(imageTag);
     });
 
-    // Open right-side popup
-    function openPopup(src) {
-        document.getElementById("popupImg").src = src;
-        document.getElementById("popup").style.right = "0";
+    function showImage(name) {
+        popup.style.display = "block";
+        popupImg.src = "image/" + name;
     }
 
     // Close popup
-    document.getElementById("closeBtn").onclick = function() {
-        document.getElementById("popup").style.right = "-100%";
+    document.getElementById("closeBtn").onclick = () => {
+        popup.style.display = "none";
     };
 
-    //minimum popup
-    document.getElementById("minimumBtn").onClick=function(){
-      document.getElementById(popup).style.right="-100%";
-    }
+    // Minimize popup
+    document.getElementById("minBtn").onclick = () => {
+        popupImg.style.display =
+            popupImg.style.display === "none" ? "block" : "none";
+    };
 
 
 
