@@ -37,20 +37,34 @@ linkImages.forEach(img => {
   });
 });
 
-const images = [
-    "img1.jpg",
-    "img2.jpg",
-    "img3.jpg",
-    "img4.jpg"
-];
-const folder = "image/";
+ const images = [
+        "img1.jpg",
+        "img2.jpg",
+        "img3.png",
+        "img4.jpeg"
+    ];
 
-const gallery = document.getElementById("gallery");
+    const gallery = document.getElementById("gallery");
+// Load all images
+    images.forEach(name => {
+        let img = document.createElement("img");
+        img.src = "image/" + name;  // FOLDER = image
+        img.onclick = () => openPopup(img.src);
+        gallery.appendChild(img);
+    });
 
-images.forEach(file => {
-    let img = document.createElement("img");
-    img.src = folder + file;
-    img.style.width = "150px";
-    img.style.margin = "10px";
-    gallery.appendChild(img);
-});
+    // Open right-side popup
+    function openPopup(src) {
+        document.getElementById("popupImg").src = src;
+        document.getElementById("popup").style.right = "0";
+    }
+
+    // Close popup
+    document.getElementById("closeBtn").onclick = function() {
+        document.getElementById("popup").style.right = "-100%";
+    };
+
+
+
+
+

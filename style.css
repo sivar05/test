@@ -90,7 +90,38 @@
       border-radius: 10px;
     }
 
+  body { font-family: Arial; }
+        .gallery img {
+            width: 150px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
 
+        /* Right side popup */
+        #popup {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 40%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+            transition: 0.4s;
+        }
+
+        #popup img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        #closeBtn {
+            font-size: 28px;
+            cursor: pointer;
+            float: right;
+        }
+    
 
 
 
