@@ -93,6 +93,36 @@ h1 {
     top: auto;
 }
 
+/* Close Button */
+#closeFull {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 35px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    background: rgba(0,0,0,0.5);
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+/* Normal Images */
+.zoom-img {
+    width: 100%;
+    max-width: 350px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+/* Mobile Fix */
+@media (max-width: 600px) {
+    .zoom-img {
+        width: 90%;
+    }
+}
+
 /* Popup buttons */
 .btns {
     display: flex;
