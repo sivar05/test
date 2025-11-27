@@ -38,7 +38,7 @@ linkImages.forEach(img => {
 });
 
 
-document.getElementById("images".addEventListener("change"),function(event){
+document.getElementById("image".addEventListener("change"),function(event){
   let previewDiv=document.getElementById("preview");
   previewDiv.innerHTML="";
 
