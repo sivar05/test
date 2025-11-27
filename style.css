@@ -1,7 +1,6 @@
 /* ===== COMMON ===== */
 body {
-    background-color: whitesmoke;
-    font-family: Arial;
+   font-family: Arial;
     margin: 0;
 }
 
@@ -141,6 +140,7 @@ h1 {
 .myBtn {
     padding: 10px 20px;
     font-size: 18px;
+    width:auto;
     background-color: green;
     color: white;
     border: none;
