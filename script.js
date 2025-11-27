@@ -38,15 +38,15 @@ linkImages.forEach(img => {
 });
 
 
-document.getElementById("image".addEventListener("change"),function(event){
-  let previewDiv=document.getElementById("preview");
-  previewDiv.innerHTML="";
+document.getElementById('image').addEventListener('change', function(event) {
+    let preview = document.getElementById('preview');
+    preview.innerHTML = "";
 
-  for (let file of event.target.files) {
+    for (let file of event.target.files) {
         let img = document.createElement("img");
         img.src = URL.createObjectURL(file);
         img.style.width = "150px";
         img.style.margin = "10px";
-        previewDiv.appendChild(img);
+        preview.appendChild(img);
     }
 });
