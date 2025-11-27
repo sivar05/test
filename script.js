@@ -64,6 +64,11 @@ linkImages.forEach(img => {
         document.getElementById("popup").style.right = "-100%";
     };
 
+    //minimum popup
+    document.getElementById("minimumBtn").onClick=function(){
+      document.getElementById(popup).style.right="-100%";
+    }
+
 
 
 
