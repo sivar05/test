@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Server Test</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1><u><i>WELCOME TO WILD</i></u></h1>
+    <h1 style="text-align:center;"><u><i>WELCOME TO WILD</i></u></h1>
 
     <!-- Images under headline -->
-    <div class="left-box">
-       <img class="zoom-img" src="image/wild/img4.jpg" onclick="showFull(this.src)">
-       <img class="zoom-img" src="image/wild/img3.jpg" onclick="showFull(this.src)">
-    </div>
-
-     
+   <div class="left-box">
+    <img class="zoom-img" src="image/wild/img1.jpg" onclick="showFull(this.src)">
+   <img class="zoom-img" src="image/wild/img4.jpg" onclick="showFull(this.src)">
+   <img class="zoom-img" src="image/wild/img3.jpg" onclick="showFull(this.src)">
+   </div>
 
     <!-- FULLSCREEN VIEW -->
     <div id="fullscreen">
     <span id="closeFull" onclick="closeFull()">✖</span>
     <img id="fullImg">
     </div>
+
 
     <!-- Popup Box -->
     <div id="popup">
