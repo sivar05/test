@@ -118,12 +118,23 @@ h1 {
     border-radius: 10px;
 }
 
-/* image container */
+/* Container for images */
 .image-box {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
+    flex-wrap: wrap;          /* allows wrapping to next line */
+    justify-content: center;  /* center images horizontally */
+    gap: 15px;                /* space between images */
+    margin: 20px auto;
+}
+
+/* Images */
+.zoom-img {
+    width: 250px;             /* default size for PC */
+    max-width: 90%;           /* ensures image fits in smaller screen */
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    cursor: pointer;
 }
 
 .image-box img {
@@ -132,24 +143,16 @@ h1 {
     border-radius: 10px;
 }
 
-
-/* images */
-.zoom-img {
-    width: 250px;           /* desktop size */
-    height: auto;
-    border-radius: 10px;
-    cursor: pointer;
-    display: block;
-}
+/* Mobile: stack images vertically */
 @media (max-width: 600px) {
-    .zoom-img {
-        width: 95%;         /* full width on mobile */
-        max-width: 350px;
+    .image-box {
+        flex-direction: column; /* stack images */
+        align-items: center;    /* center images */
     }
 
-    .image-box {
-        flex-direction: column;
-        align-items: center;
+    .zoom-img {
+        width: 95%;             /* almost full width */
+        max-width: 300px;       /* optional max width */
     }
 }
 
