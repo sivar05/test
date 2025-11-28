@@ -57,49 +57,67 @@ h1 {
     border-radius: 8px;
     cursor: pointer;
 }
-
-/* GALLERY MAIN CONTAINER */
+/* GALLERY CONTAINER */
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
 }
 
-/* First 5 images → 5 in one horizontal row */
-.gallery img:nth-child(-n+5) {
-    width: calc(20% - 10px);   /* 5 images in a row */
-}
-
-/* Remaining images → 2 columns */
-.gallery img.two {
-    width: calc(50% - 10px);   /* 2 images per row */
-}
-
-/* Common styles */
+/* common image style */
 .gallery img {
-    border-radius: 10px;
-    object-fit: cover;
-    cursor: pointer;
-    transition: transform 0.3s;
+  border-radius: 10px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+  display: block;
+  height: 160px;              /* fixed height so grid looks even (adjust as needed) */
 }
 
-/* Hover zoom effect (optional) */
-.gallery img:hover {
-    transform: scale(1.05);
+/* Desktop: first 5 images in one horizontal row */
+.gallery img:nth-child(-n+5) {
+  width: calc((100% / 5) - 10px); /* 5 across minus gap compensation */
 }
 
-/* Responsive for Mobile */
+/* Desktop: remaining images -> 2 columns */
+.gallery img.two {
+  width: calc((100% / 2) - 10px); /* 50% each minus gap compensation */
+}
+
+/* Hover effect */
+.gallery img:hover { transform: scale(1.03); }
+
+/* ------------ Responsive: Mobile & small tablets ------------ */
+@media (max-width: 900px) {
+
+  /* reduce heights on smaller screens */
+  .gallery img { height: 140px; }
+
+  /* make remaining images 2-per-row on medium screens */
+  .gallery img.two { width: calc((100% / 2) - 10px); }
+
+  /* make first five slightly wider so they wrap nicely */
+  .gallery img:nth-child(-n+5) {
+    width: calc((100% / 3) - 10px); /* change to 3 across on medium screens */
+  }
+}
+
+/* For small phones: stack everything vertically (one per row) */
 @media (max-width: 600px) {
+  .gallery {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
 
-    /* First 5 images still 5 in a row */
-    .gallery img:nth-child(-n+5) {
-        width: calc(20% - 5px);
-    }
-
-    /* Remaining images → 2 columns */
-    .gallery img.two {
-        width: calc(50% - 5px);
-    }
+  .gallery img,
+  .gallery img.two,
+  .gallery img:nth-child(-n+5) {
+    width: 95%;       /* almost full width and centered */
+    height: auto;     /* let image determine height on mobile */
+    max-width: 420px; /* optional max width */
+  }
 }
