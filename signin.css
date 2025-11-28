@@ -1,50 +1,93 @@
 body {
-    margin: 0;
-    padding: 0;
-    background: #eef1f7;
-    font-family: Arial, sans-serif;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-    margin-bottom: 20px;
+  text-align: center;
+  margin-top: 25px;
+  color: rgb(110, 0, 175);
 }
 
 .container {
-    background: #ffffff;
-    width: 90%;
-    max-width: 350px;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    text-align: center;
+  width: 90%;
+  max-width: 350px;
+  background: white;
+  padding: 25px;
+  margin: 30px auto;
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
 }
 
 .input-box {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #999;
 }
 
-.signup-btn {
-    width: 100%;
-    padding: 12px;
-    background: #4a4aff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
+.signin-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: blueviolet;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.signup-btn:hover {
-    background: #0000cc;
+.forgot-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.forgot-row span {
+  cursor: pointer;
+  color: blue;
+}
+
+.forgot-row span:hover {
+  text-decoration: underline;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-box {
+  background: white;
+  padding: 20px;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#popupOk {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: royalblue;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#popupOk:hover {
+  background: dodgerblue;
 }
