@@ -121,11 +121,17 @@ h1 {
 /* image container */
 .image-box {
     display: flex;
-    flex-wrap: wrap;        /* IMPORTANT for mobile */
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
 }
+
+.image-box img {
+    width: 30%;              /* PC → 3 per row */
+    min-width: 200px;        /* Mobile → falls down one-by-one */
+    border-radius: 10px;
+}
+
 
 /* images */
 .zoom-img {
