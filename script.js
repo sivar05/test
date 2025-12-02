@@ -6,21 +6,15 @@ function signup(){
 
 
 function showFull(src, title, desc) {
-    document.getElementById("fullscreen").style.display = "flex";
+    const fs = document.getElementById("fullscreen");
+
+    fs.style.display = "flex";  // VERY IMPORTANT
     document.getElementById("fullImg").src = src;
 
     document.getElementById("imgTitle").innerText = title;
     document.getElementById("imgDesc").innerText = desc;
 }
 
-function closeFull() {
-    document.getElementById("fullscreen").style.display = "none";
-}
-
-
-function closeFull() {
-    document.getElementById("fullscreen").style.display = "none";
-}
 
 
 function closeFull() {
