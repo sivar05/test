@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Email</title>
 
-    <link rel="stylesheet" href="resetEmail.css">
+    <link rel="stylesheet" href="forgotemail.css">
 </head>
 <body>
     <h1 style="text-align:center;">Reset Your Email</h1>
@@ -13,12 +13,15 @@
     <div class="container">
         <h2>Reset Email</h2>
 
-        <input id="mobileNumber" type="number" placeholder="Mobile Number" class="input-box">
+        <input type="number" id="mobileNumber" class="input-box" 
+               placeholder="mobileNumber" maxlength="10"
+               oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10)" />
+        <span class="error-msg" id="mobile-error"></span>    
+        <span class="success-msg" id="mobile-success"></span>   
 
-        <button class="reset-btn" onclick="resetEmailFunction()">Reset Email</button>
-
+        <button class="reset-btn" onclick="resetEmail()">Reset Email</button>
     </div>
 
-    <script src="resetEmailScript.js"></script>
+    <script src="forgotemail.js"></script>
 </body>   
 </html>

@@ -3,17 +3,18 @@ function resetPassword() {
     let confirmPassword = document.getElementById("confirmPassword").value.trim();
 
     if (newPassword === "" || confirmPassword === "") {
-        showPopup("Please enter New Password and Confirm Password!");
+        alert("Please enter New Password and Confirm Password!");
         return;
     }
 
     if (newPassword !== confirmPassword) {
-        showPopup("Passwords do not match!");
+        alert("Passwords do not match!");
         return;
     }
 
     // Success → popup shows → auto redirect
-    showPopup("Password reset successful!", true);
+    alert("Password reset successful!", true);
+    window.location.href = "../signIn/signin.html";
 }
 
 function showPopup(message, redirect = false) {

@@ -39,3 +39,4 @@ function signup() {
         window.location.href = "../signIn/signin.html";
     }, 1000);
 }
+

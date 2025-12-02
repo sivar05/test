@@ -52,5 +52,5 @@ function forgotEmail() {
 
 // FORGOT PASSWORD
 function forgotPassword() {
-    window.location.href = "../resetPassword/resetPassword.html";
+    window.location.href = "../forgotPassword/forgotpassword.html";
 }
