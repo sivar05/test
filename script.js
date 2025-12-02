@@ -1,6 +1,6 @@
 
 function signup(){
-  window.location.href = "signup.html";
+  window.location.href = "../signUp/signup.html";
 }
 
 function showFull(imgSrc) {

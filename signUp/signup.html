@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body style="background-color: whitesmoke;">
+    <h1 style="text-align:center;">Welcome to SignUp Page!</h1>
+    <div class="container">
+        
+        <h2>Sign Up</h2>
+
+<form onsubmit="event.preventDefault(); signup();">
+    <input type="text" id="email" placeholder="Email" class="input-box" />
+    <input type="text" id="username" placeholder="Username" class="input-box" />
+    <input type="number" id="phone" placeholder="Phone Number" class="input-box" />
+    <input type="password" id="password" placeholder="Password" class="input-box" />
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" class="input-box" />
+    <button type="submit" class="submit">Signup</button>
+</form>
+
+<p id="message" style="text-align:center; font-weight:bold;"></p>
+
+    
+    </div>
+<script src="signup.js"></script>
+
+</body>
+</html>

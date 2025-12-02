@@ -26,6 +26,7 @@ function login() {
         popup("Please enter Email and Password!");
         return;
     }
+    const mail = email.replace(/\D/g, '');
     if (email === "") {
         popup("Please enter your Email!");
         return;
@@ -46,10 +47,10 @@ function login() {
 
 // FORGOT EMAIL
 function forgotEmail() {
-    window.location.href = "../forgotEmail.html";
+    window.location.href = "../forgotEmail/forgotEmail.html";
 }
 
 // FORGOT PASSWORD
 function forgotPassword() {
-    window.location.href = "../forgotPassword.html";
+    window.location.href = "../resetPassword/resetPassword.html";
 }
