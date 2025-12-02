@@ -164,3 +164,49 @@ h1 {
     font-size: 18px;
     line-height: 1.6;
 }
+
+#fullscreen {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 30px;
+    z-index: 9999;
+}
+
+#fullscreen img {
+    max-width: 100%;
+    max-height: 50vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+#imgInfo {
+    width: 90%;
+    max-height: 40vh;
+    overflow-y: auto;
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#imgInfo h2 {
+    font-size: 22px;
+}
+
+#imgInfo p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+#closeFull {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
