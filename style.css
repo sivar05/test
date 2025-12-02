@@ -10,203 +10,74 @@ h1 {
     color: blueviolet;
     margin-top: 20px;
 }
-
-/* ========== FULLSCREEN VIEW ========== */
-#fullscreen {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-#fullscreen img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-}
-
-#closeFull {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 35px;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: rgba(0,0,0,0.4);
-}
-/* ========== BOTTOM BUTTONS ========== */
-.btn {
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 20px; 
-}
-
-.myBtn {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-/* GALLERY CONTAINER */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 10px;
-}
-
-/* common image style */
-.gallery img {
-  border-radius: 10px;
-  object-fit: cover;
-  cursor: pointer;
-  transition: transform 0.25s ease;
-  display: block;
-  height: 160px;              /* fixed height so grid looks even (adjust as needed) */
-}
-
-/* Desktop: first 5 images in one horizontal row */
-.gallery img:nth-child(-n+5) {
-  width: calc((100% / 5) - 10px); /* 5 across minus gap compensation */
-}
-
-/* Desktop: remaining images -> 2 columns */
-.gallery img.two {
-  width: calc((100% / 2) - 10px); /* 50% each minus gap compensation */
-}
-
-/* Hover effect */
-.gallery img:hover { transform: scale(1.03); }
-
-/* ------------ Responsive: Mobile & small tablets ------------ */
-@media (max-width: 900px) {
-
-  /* reduce heights on smaller screens */
-  .gallery img { height: 140px; }
-
-  /* make remaining images 2-per-row on medium screens */
-  .gallery img.two { width: calc((100% / 2) - 10px); }
-
-  /* make first five slightly wider so they wrap nicely */
-  .gallery img:nth-child(-n+5) {
-    width: calc((100% / 3) - 10px); /* change to 3 across on medium screens */
-  }
-}
-
-/* For small phones: stack everything vertically (one per row) */
-@media (max-width: 600px) {
-  .gallery {
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .gallery img,
-  .gallery img.two,
-  .gallery img:nth-child(-n+5) {
-    width: 95%;       /* almost full width and centered */
-    height: auto;     /* let image determine height on mobile */
-    max-width: 420px; /* optional max width */
-  }
-}
-#fullscreen {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 9999;
-}
-
-#fullscreen img {
-    max-width: 80%;
-    max-height: 60vh;
-    border-radius: 10px;
-}
-
-#closeFull {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-}
-
-#imgInfo {
-    margin-top: 20px;
-    width: 80%;
-    color: white;
-    text-align: center;
-}
-
-#imgInfo h2 {
-    margin-bottom: 10px;
-    font-size: 28px;
-}
-
-#imgInfo p {
-    font-size: 18px;
-    line-height: 1.6;
-}
+/* ========== FULLSCREEN VIEW (FINAL FIXED VERSION) ========== */
 
 #fullscreen {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0,0,0,0.9);
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 30px;
+    padding-top: 20px;
     z-index: 9999;
 }
 
 #fullscreen img {
     max-width: 100%;
-    max-height: 50vh;
-    object-fit: contain;
+    max-height: 55vh;    /* FIX: fits mobile screens */
+    object-fit: contain; /* FIX: image will never crop or overflow */
     border-radius: 10px;
+}
+
+#closeFull {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 10000;
 }
 
 #imgInfo {
     width: 90%;
-    max-height: 40vh;
-    overflow-y: auto;
     color: white;
-    margin-top: 10px;
     text-align: center;
+    margin-top: 12px;
+    max-height: 35vh;   /* FIX: text will not push image up */
+    overflow-y: auto;   /* FIX: scroll instead of shrinking image */
+    padding-bottom: 20px;
 }
 
 #imgInfo h2 {
     font-size: 22px;
+    margin-bottom: 8px;
 }
 
 #imgInfo p {
     font-size: 16px;
     line-height: 1.5;
 }
-#closeFull {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
+
+@media (max-width: 600px) {
+    #fullscreen img {
+        max-height: 50vh;  /* mobile better fit */
+    }
+
+    #imgInfo {
+        max-height: 38vh;
+    }
 }
+/* ========== GALLERY ========== */
+.gallery {  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px;
+} 
