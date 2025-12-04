@@ -11,6 +11,8 @@ function resetPassword() {
         alert("Passwords do not match!");
         return;
     }
+    document.getElementById("password-error").value = "";
+    document.getElementById("confirm-error").value = "";
 
     // Success → popup shows → auto redirect
     alert("Password reset successful!", true);

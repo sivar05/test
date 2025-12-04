@@ -1,5 +1,3 @@
-
-
 // Correct version
 function resetEmail() {
     let mobile = document.getElementById("mobileNumber").value.trim();
