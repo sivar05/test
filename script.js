@@ -1,6 +1,6 @@
 
 function signup(){
-  window.location.href="../signUp/signup.html"
+  window.location.href="../signUp/signUp.html"
 }
 function signin(){
   window.location.href="../signIn/signIn.html"
