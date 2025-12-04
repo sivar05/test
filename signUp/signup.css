@@ -66,6 +66,10 @@ h1, h2 {
     margin-bottom: 10px;
     text-align: left;
 }
+
+.input-box.error {
+    border: 2px solid red !important;
+}
 .success {
     color: green;
 }   
