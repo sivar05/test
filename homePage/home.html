@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Server Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1 style="text-align:center;"><u><i>WELCOME TO WILD</i></u></h1>
+    
+
+    <!-- Images under headline -->
+    <div class="gallery">
+
+        <img class="zoom-img" src="../image/wild/img4.jpg" alt="Lion"
+        onclick="showFull(
+            this.src,
+            'Lion',
+            'சிங்கம் என்பது பாலூட்டி வகையைச் சேர்ந்த ஒரு காட்டு விலங்கு ஆகும்...'
+        )">
+
+        <img class="zoom-img" src="../image/wild/img1.jpg" alt="Wild Image 1" onclick="showFull(this.src)">
+        <img class="zoom-img" src="../image/wild/img2.jpg" alt="Wild Image 2" onclick="showFull(this.src)">
+        <img class="zoom-img" src="../image/wild/img3.jpg" alt="Wild Image 3" onclick="showFull(this.src)">
+        <img class="zoom-img" src="../image/wild/img5.jpg" alt="Wild Image 5" onclick="showFull(this.src)">
+        <img class="zoom-img" src="../image/wild/img6.jpg" alt="Wild Image 6" onclick="showFull(this.src)">
+        <img class="zoom-img" src="../image/wild/img7.jpg" alt="Wild Image 7" onclick="showFull(this.src)">
+        <img class="zoom-img" src="../image/wild/img8.jpg" alt="Wild Image 8" onclick="showFull(this.src)">
+        <img class="zoom-img" src="../personal/siva.jpg" alt="Personal Siva" onclick="showFull(this.src)">
+
+    </div>
+
+    <!-- REMOVE THIS (you had 2 imgInfo blocks)
+    <div id="imgInfo">
+        <h2 id="imgTitle"></h2>
+        <p id="imgDesc"></p>
+    </div>
+    -->
+
+    <!-- FULLSCREEN VIEWER -->
+    <div id="fullscreen">
+        <span id="closeFull" onclick="closeFull()">✖</span>
+        <img id="fullImg">
+
+        <!-- Correct single imgInfo box -->
+        <div id="imgInfo">
+            <h2 id="imgTitle"></h2>
+            <p id="imgDesc"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

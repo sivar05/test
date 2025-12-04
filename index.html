@@ -1,66 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Server Test</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-    <h1 style="text-align:center;"><u><i>WELCOME TO WILD</i></u></h1>
+    <h1 style="text-align: center;">Welcome to SignIn Page</h1>
 
-    <!-- Images under headline -->
-   <div class="gallery">
-    <img class="zoom-img" src="image/wild/img4.jpg" onclick="showFull(this.src,
-         'Lion',
-         'சிங்கம் என்பது பாலூட்டி வகையைச் சேர்ந்த ஒரு காட்டு விலங்கு ஆகும். இவ்விலங்கு ஊன் உண்ணும் விலங்கு வகையைச் சேர்ந்தது. தமிழில் ஆண் சிங்கத்திற்கு அரிமா என்ற பெயருண்டு. குற்றாலக் குறவஞ்சியில் ஆளி என்ற சொல்லையும் அரிமாக்களைக் குறிக்க ஆசிரியர் பயன்படுத்தியுள்ளார்.[2] ஏறுகளின் கழுத்தில் பிடரி இருப்பது சிறப்பாகும். பிடரியை உளை என்றும் உளை மயிர் என்றும் கூறுவதுண்டு. சிங்கமானது பூனைப் பேரினத்தைச் சேர்ந்தது. பூனைப் பேரினத்திலேயே, புலிக்கு அடுத்தாற்போல இருக்கும் பெரிய விலங்கு. ஆண் சிங்கம் 150-250 கிலோ வரை எடை கொண்டதாக இருக்கும். பெண் சிங்கம் 120-150 கிலோ கிராம் எடை கொண்டதாக இருக்கும். இவ்விலங்கு இன்று ஆப்பிரிக்காவிலும் இந்தியாவிலும் உள்ள காடுகளில் மட்டுமே காணப்படுகின்றது.சிங்கம் என்பது பாலூட்டிவகையைச் சேர்ந்த ஒரு காட்டு விலங்கு...'
-     )">
-    <img class="zoom-img" src="image/wild/img1.jpg" onclick="showFull(this.src)">
-    <img class="zoom-img" src="image/wild/img2.jpg" onclick="showFull(this.src)">
-   <img class="zoom-img" src="image/wild/img3.jpg" onclick="showFull(this.src)">
-   <img class="zoom-img" src="image/wild/img5.jpg" onclick="showFull(this.src)">
-   <img class="zoom-img" src="image/wild/img6.jpg" onclick="showFull(this.src)">
-   <img class="zoom-img" src="image/wild/img7.jpg" onclick="showFull(this.src)">
-   <img class="zoom-img" src="image/wild/img8.jpg" onclick="showFull(this.src)">
-   <img class="zoom-img" src="image/natural/img1.jpg" onclick="showFull(this.src)">
-   <img class="zoom-img" src="personal/siva.jpg" onclick="showFull(this.src)">
-   </div>
-
-   <div id="imgInfo" style="display:none; text-align:center; color:white;">
-    <h1></h1>
-    <p></p>
-</div>
-
-
-    <div id="fullscreen">
-    <span id="closeFull" onclick="closeFull()">✖</span>
-    <img id="fullImg">
-
-    <!-- INFO BOX -->
-    <div id="imgInfo">
-        <h2 id="imgTitle"></h2>
-        <p id="imgDesc"></p>
-    </div>
-</div>
-
-
-    <!-- Popup Box 
-    <div id="popup">
-        <div class="btns">
-            <button id="minBtn">–</button>
-            <button id="closeBtn">X</button>
-        </div>
-        <img id="popupImage">
-    </div>-->
-
-    <!-- Bottom Buttons -->
-    <div class="btn" style="text-align: center;">
-
+    <div class="container">
         
-        <button class="myBtn" onclick="signin()">SignIn</button>
-        <p><button class="myBtn" onclick="signup()">Signup</button></p>
+        <h2>Sign In</h2>
+
+        <form onsubmit="event.preventDefault(); login();">
+            <input type="text" id="email" placeholder="Email" class="input-box" />
+            <input type="password" id="password" placeholder="Password" class="input-box" />
+
+            <div class="forgot-row">
+                <span onclick="forgotEmail()">Forgot Email?</span>
+                <span onclick="forgotPassword()">Forgot Password?</span>
+            </div>
+
+            <button id="submit" class="signin-btn">Login</button>
+            <button type="button" class="signup-btn" onclick="redirectToSignUp()">Sign Up</button>
+        </form>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <div class="popup-box">
+            <p id="popupText"></p>
+            <button id="popupOk" onclick="closePopup()">OK</button>
+        </div>
     </div>
 
     <script src="script.js"></script>

@@ -1,115 +1,92 @@
-/* Gallery grid: 5 columns on desktop */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 per row */
-  gap: 10px;
-  padding: 12px;
-  max-width: 1200px;
-  margin: 0 auto;
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  margin: 0;
+  padding: 0;
 }
 
-/* make each image fill its grid cell and keep aspect ratio */
-.gallery img {
-  width: 100%;
-  height: 160px;           /* set a uniform tile height if you want a consistent grid */
-  object-fit: cover;       /* fills tile while preserving aspect ratio */
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform .2s ease;
-  display: block;
-}
+h2{ text-align:center blueviolet; margin-top: 24px; }
 
-.gallery img:hover {
-  transform: scale(1.03);
-}
-
-/* Tablet: 3 columns */
-@media (max-width: 900px) {
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .gallery img { height: 140px; }
-}
-
-/* Mobile: 1 column full width */
-@media (max-width: 600px) {
-  .gallery {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .gallery img {
-    height: auto;   /* let image determine height */
-    object-fit: contain;
-    max-width: 95%;
-    margin: 0 auto;
-  }
-}
-
-/* ========== FULLSCREEN VIEW (clean, responsive) ========== */
-#fullscreen {
-  display: none; /* toggled to flex via JS */
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  z-index: 9999;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 20px;
-}
-
-#fullscreen img {
-  max-width: 100%;
-  max-height: 55vh;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-#closeFull {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  font-size: 36px;
-  color: #fff;
-  cursor: pointer;
-  z-index: 10000;
-}
-
-#imgInfo {
-  width: 90%;
-  max-height: 35vh;
-  overflow-y: auto;
-  color: #fff;
+.container {
+  width: 360px;
+  max-width: 90%;
+  margin: 60px auto;
+  background: #fff;
+  padding: 22px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   text-align: center;
-  margin-top: 12px;
-  padding-bottom: 16px;
 }
 
-#imgInfo h2 { margin: 6px 0; font-size: 20px; }
-#imgInfo p  { font-size: 15px; line-height: 1.4; color: #ddd; }
-/* Scrollbar for description box */
-#imgInfo::-webkit-scrollbar {
-  width: 8px;
+.input-box {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* ========== BOTTOM BUTTONS ========== */
-.btn {
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 20px; 
-    margin: center;
+.signin-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: blueviolet;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
-.myBtn {
-    margin: center;
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+.forgot-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 14px;
 }
-.myBtn:hover {
-    background-color: darkgreen;
+
+.forgot-row span {
+  cursor: pointer;
+  color: blue;
+}
+
+.forgot-row span:hover {
+  text-decoration: underline;
+}
+
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-box {
+  background: white;
+  padding: 20px;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#popupOk {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: royalblue;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
