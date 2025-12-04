@@ -1,37 +1,53 @@
+
 function signup() {
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const confirmPassword = document.getElementById('confirmPassword').value.trim();
-    const msg = document.getElementById('message');
+    let email = document.getElementById("email").value.trim();
+    let username = document.getElementById("username").value.trim();
+    let phone = document.getElementById("mobilenumber").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let confirm= document.getElementById("confirmPassword").value.trim();
+    let msg = document.getElementById("message");   
 
-    if (!username || !password || !email || !phone || !confirmPassword) {
-        msg.textContent = "All fields are required!";
-        msg.style.color = "red";
-        return;
-    }
-    if (!email.includes("@") || !email.includes(".")) {
-        msg.textContent = "Please enter a valid email address!";
-        msg.style.color = "red";
-        return;
-    }   
-    
-    const phon = phone.replace(/\D/g, '');
-    if(phon.length !== 10 || isNaN(phone)) {
-        msg.textContent = "Please enter a valid 10-digit phone number!";
-        msg.style.color = "red";
+    // INDIVIDUAL FIELD VALIDATION
+    if (!email) {
+       document.getElementById("email-error").innerText = "Please enter your e-mail address";
         return;
     }
 
+    if (!username) {
+        document.getElementById("username-error").innerText = "Please enter your username";
+        return;
+    }
 
-    if (password !== confirmPassword) {
-        msg.textContent = "Passwords do not match!";
+    if (!phone || !/^\d{10}$/.test(phone)) {
+        document.getElementById("mobile-error").innerText = "Please enter a valid 10-digit phone number!";
+        return
+        }
+
+    if (!password) {
+       document.getElementById("password-error").innerText = "Please enter your password";
+        return;
+    }
+
+    if (!confirm) {
+        document.getElementById("confirm-error").innerText = "Please enter your confirm password";
+        return;
+    }
+
+    // EMAIL VALIDATION
+    const emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailpattern.test(email)) {
+        document.getElementById("email-error").innerText = "Please enter valid e-mail address";
         msg.style.color = "red";
         return;
     }
 
-    // SUCCESS (NO POPUP)
+    // PASSWORD MATCH
+    if (password !== confirm) {
+        document.getElementById("check-error").innerText = "Please check password and confirm Password!";
+        return;
+    }
+
+    // SUCCESS
     msg.textContent = "Signup successful! Redirecting...";
     msg.style.color = "green";
 
@@ -39,4 +55,5 @@ function signup() {
         window.location.href = "../signIn/signin.html";
     }, 1000);
 }
+
 
