@@ -52,7 +52,7 @@ function redirectToSignUp() {
 
 function forgotPassword() {
     popup("Redirecting to Password Recovery Page...", () => {
-        window.location.href = "/forgotpassword/forgotpassword.html";
+       window.location.href = "forgotpassword/forgotpassword.html";
     });
 }
 function forgotEmail() {
