@@ -14,7 +14,10 @@ function resetEmail() {
     alert("A reset link has been sent to: " + masked);
    document.getElementById("mobileNumber").value = "";
    document.getElementById("mobile-error").innerText = "";
-    window.location.href = "../index.html";
-
-
+    popup("Redirecting to Home Page...", () => {
+        goTo("index.html");
+    });
 }
+
+
+
