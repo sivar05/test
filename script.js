@@ -52,12 +52,12 @@ function redirectToSignUp() {
 
 function forgotPassword() {
     popup("Redirecting to Password Recovery Page...", () => {
-        window.location.href = "/test/forgotpassword/forgotpassword.html";
+        window.location.href = "../test/forgotpassword/forgotpassword.html";
     });
 }
 function forgotEmail() {
     popup("Redirecting to Email Recovery Page...", () => {
-        window.location.href = "/test/forgotemail/forgotemail.html";
+        window.location.href = "../test/forgotemail/forgotemail.html";
     }); 
 }
 // Event listener for forgot password link
