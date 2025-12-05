@@ -1,5 +1,4 @@
-
-
+// Show image in fullscreen overlay with title/description
 function showFull(src, title = "", desc = "") {
   const fs = document.getElementById("fullscreen");
   const fullImg = document.getElementById("fullImg");
@@ -32,6 +31,3 @@ document.getElementById('fullscreen').addEventListener('click', function(e) {
 });
 
 
-function redirectToSignUp() {
-  window.location.href = "../signUp/signUp.html";
-}

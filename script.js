@@ -45,6 +45,11 @@ function login() {
     }
 }
 
+// REDIRECT TO SIGN UP
+function redirectToSignUp() {
+    window.location.href = "../signUp/signUp.html";
+}
+
 // FORGOT EMAIL
 function forgotEmail() {
     window.location.href = "../forgotEmail/forgotEmail.html";
