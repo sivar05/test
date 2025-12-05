@@ -30,7 +30,7 @@ function showPopup(message, redirect = false) {
         document.getElementById("popup").style.display = "none";
 
         if (redirect) {
-            window.location.href = "../signIn/signin.html";
+            window.location.href = "index.html";
         }
 
     }, 1000);

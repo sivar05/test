@@ -14,7 +14,7 @@ function resetEmail() {
     alert("A reset link has been sent to: " + masked);
    document.getElementById("mobileNumber").value = "";
    document.getElementById("mobile-error").innerText = "";
-    window.location.href = "../signin/signin.html";
+    window.location.href = "index.html";
 
 
 }

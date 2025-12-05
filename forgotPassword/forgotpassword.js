@@ -11,6 +11,6 @@ if (!emailPattern.test(email)) {
 }
     alert("Password reset link has been sent to your email!", "Success");
     // Redirect to login page after successful password reset
-    window.location.href = "../signIn/signIn.html";
+    window.location.href = "index.html";
 }
 

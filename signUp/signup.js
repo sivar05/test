@@ -61,7 +61,7 @@ function signup() {
     msg.style.color = "green";
 
     setTimeout(() => {
-        window.location.href = "../signIn/signin.html";
+        window.location.href = "../homepage/home.html";
     }, 1000);
 }
 

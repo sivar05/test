@@ -38,7 +38,7 @@ function login() {
 
     if (email === "siva@test.in" && password === "12345") {
         popup("Login Successful!", () => {
-           window.location.href = "../home/home.html";
+           window.location.href = "../homepage/home.html";
         });
     } else {
         popup("Invalid Email or Password!");
