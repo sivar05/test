@@ -57,8 +57,9 @@ function forgotPassword() {
 }
 function forgotEmail() {
     popup("Redirecting to Email Recovery Page...", () => {
-        window.location.href = "../test/forgotemail/forgotemail.html";
-    }); 
+        window.location.href = "forgotemail/forgotemail.html";
+    }
+); 
 }
 // Event listener for forgot password link
 document.getElementById("forgotPasswordLink").addEventListener("click", forgotPassword);
