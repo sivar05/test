@@ -11,6 +11,12 @@ if (!emailPattern.test(email)) {
 }
     alert("Password reset link has been sent to your email!", "Success");
     // Redirect to login page after successful password reset
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
 }
+function forgotPassword() {
+    popup("Redirecting to Password Recovery Page...", () => {
+        goTo("forgotpassword/forgotpassword.html");
+    });
+}
+
 

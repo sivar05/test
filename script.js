@@ -37,9 +37,9 @@ function login() {
     }
 
     if (email === "siva@test.in" && password === "12345") {
-        popup("Login Successful!", () => {
-           window.location.href = "../homepage/home.html";
-        });
+       popup("Login Successful!", () => {
+               goTo("homepage/home.html");
+});
     } else {
         popup("Invalid Email or Password!");
     }
@@ -47,7 +47,7 @@ function login() {
 
 // REDIRECT TO SIGN UP
 function redirectToSignUp() {
-    window.location.href = "/signup/signup.html";
+    window.location.href = "signup/signup.html";
 }
 
 function forgotPassword() {
@@ -92,6 +92,21 @@ window.addEventListener("keydown", function(event) {
         }
     }
 });
+
+function goTo(path) {
+    let base = "";
+
+    // Detect GitHub Pages
+    if (location.hostname === "sivar05.github.io") {
+        base = "/test/";
+    } else {
+        base = ""; // Local PC (Live Server)
+    }
+
+    window.location.href = base + path;
+}
+
+
 
 // End of script.js
 
