@@ -57,7 +57,7 @@ function forgotPassword() {
 }
 function forgotEmail() {
     popup("Redirecting to Email Recovery Page...", () => {
-        window.location.href = "/forgotemail/forgotemail.html";
+        window.location.href = "forgotemail/forgotemail.html";
     }
 ); 
 }
