@@ -38,7 +38,7 @@ function login() {
 
     if (email === "siva@test.in" && password === "12345") {
         popup("Login Successful!", () => {
-           window.location.href = "home.html";
+           window.location.href = "../home/home.html";
         });
     } else {
         popup("Invalid Email or Password!");
@@ -47,15 +47,6 @@ function login() {
 
 // REDIRECT TO SIGN UP
 function redirectToSignUp() {
-    window.location.href = "../signUp/signUp.html";
+    window.location.href = "../signup/signup.html";
 }
 
-// FORGOT EMAIL
-function forgotEmail() {
-    window.location.href = "../forgotEmail/forgotEmail.html";
-}
-
-// FORGOT PASSWORD
-function forgotPassword() {
-    window.location.href = "../forgotPassword/forgotpassword.html";
-}
