@@ -9,36 +9,39 @@
 </head>
 
 <body>
+    <div class="top-image">
+        <img src="image/natural/img2.jpg" alt="SignIn Image" class="center-image" />
 
-    <h1 style="text-align: center;">Welcome to SignIn Page</h1>
-    <img src="image/natural/img2.jpg" alt="SignIn Image" class="center-image" />
+        <!-- Text Inside Image -->
+        <h1 class="welcome-text">WELCOME</h1>
 
-    <div class="container">
-        
-        <h2>Sign In</h2>
+        <!-- Signin Container (Floating on image) -->
+        <div class="container">
+            <h2>Sign In</h2>
 
-        <form onsubmit="event.preventDefault(); login();">
-            <input type="text" id="email" placeholder="Email" class="input-box" />
-            <input type="password" id="password" placeholder="Password" class="input-box" />
+            <form onsubmit="event.preventDefault(); login();">
+                <input type="text" id="email" placeholder="Email" class="input-box" />
+                <input type="password" id="password" placeholder="Password" class="input-box" />
 
-            <div class="forgot-row">
-                <span onclick="forgotEmail()">Forgot Email?</span>
-                <span onclick="forgotPassword()">Forgot Password?</span>
+                <div class="forgot-row">
+                    <span onclick="forgotEmail()">Forgot Email?</span>
+                    <span onclick="forgotPassword()">Forgot Password?</span>
+                </div>
+
+                <button id="submit" class="signin-btn">Login</button>
+            </form>
+               <span class="signup-btn" onclick="redirectToSignUp()">Don't have an account?</span>
+           
+        </div>
+
+        <!-- Popup -->
+        <div id="popup" class="popup">
+            <div class="popup-box">
+                <p id="popupText"></p>
+                <button id="popupOk" onclick="closePopup()">OK</button>
             </div>
-
-            <button id="submit" class="signin-btn">Login</button>
-        </form>
-          <button class="signup-btn" onclick="redirectToSignUp()">Sign Up</button>
-    </div>
-
-    <!-- Popup -->
-    <div id="popup" class="popup">
-        <div class="popup-box">
-            <p id="popupText"></p>
-            <button id="popupOk" onclick="closePopup()">OK</button>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
+
 </html>
