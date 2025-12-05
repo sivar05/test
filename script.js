@@ -47,6 +47,6 @@ function login() {
 
 // REDIRECT TO SIGN UP
 function redirectToSignUp() {
-    window.location.href = "./signup/signup.html";
+    window.location.href = "../signup/signup.html";
 }
 
