@@ -47,9 +47,10 @@ function login() {
 
 // REDIRECT TO SIGN UP
 function redirectToSignUp() {
-    window.location.href = "signup/signup.html";
+    goTo("signup/signup.html");
 }
 
+// REDIRECT TO FORGOT PASSWORD
 function forgotPassword() {
     popup("Redirecting to Password Recovery Page...", () => {
        window.location.href = "forgotpassword/forgotpassword.html";

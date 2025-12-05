@@ -61,8 +61,10 @@ function signup() {
     msg.style.color = "green";
 
     setTimeout(() => {
-        window.location.href = "../homepage/home.html";
-    }, 1000);
-}
+    popup("Redirecting to Email Recovery Page...", () => {
+        goTo("homepage/home.html");
+    },1000);
+});
+}   
 
 
