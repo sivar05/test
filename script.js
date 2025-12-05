@@ -50,3 +50,49 @@ function redirectToSignUp() {
     window.location.href = "../signup/signup.html";
 }
 
+function forgotPassword() {
+    popup("Redirecting to Password Recovery Page...", () => {
+        window.location.href = "../forgotpassword/forgotpassword.html";
+    });
+}
+function forgotEmail() {
+    popup("Redirecting to Email Recovery Page...", () => {
+        window.location.href = "../forgotemail/forgotemail.html";
+    }); 
+}
+// Event listener for forgot password link
+document.getElementById("forgotPasswordLink").addEventListener("click", forgotPassword);
+// Event listener for forgot email link
+document.getElementById("forgotEmailLink").addEventListener("click", forgotEmail);
+
+// Event listener for popup close button
+document.getElementById("popupClose").addEventListener("click", closePopup);        
+
+// Event listener for login button
+document.getElementById("loginButton").addEventListener("click", login);
+
+// Event listener for sign up redirect link
+document.getElementById("signUpRedirect").addEventListener("click", redirectToSignUp);
+
+// Optional: Allow closing popup by clicking outside the popup content
+window.addEventListener("click", function(event) {
+    let popupElement = document.getElementById("popup");    
+    if (event.target === popupElement) {
+        closePopup();
+    }
+});
+
+// Optional: Allow closing popup with Escape key
+window.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        let popupElement = document.getElementById("popup");
+        if (popupElement.style.display === "flex") {
+            closePopup();
+        }
+    }
+});
+
+// End of script.js
+
+// Note: Ensure that the HTML elements with IDs used in this script exist in your HTML file.
+
