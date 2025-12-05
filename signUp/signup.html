@@ -8,64 +8,43 @@
     <link rel="stylesheet" href="signup.css">
 </head>
 
-<body style="background-color: whitesmoke;">
+<body>
 
     <!-- Top Image Section -->
     <div class="top-image">
-        <img src="../image/natural/img1.jpg" alt="Signup Image">
-    </div>
-
-    <h1 style="text-align:center;">Welcome to SignUp Page!</h1>
+        <h1>Welcome to SignUp Page</h1>
+        <img src="../image/natural/img3.jpg" alt="Signup Image">
+    
 
     <!-- Signup Container -->
     <div class="container">
 
         <p id="message" style="text-align:center; font-weight:bold;"></p>
 
-        <!-- Email -->
-        <input type="text" id="email" placeholder="Email"
-           class="input-box"
-           oninput="clearError('email', 'email-error')" />
+        <input type="text" id="email" placeholder="Email" class="input-box" oninput="clearError('email', 'email-error')" />
         <span class="error-msg" id="email-error"></span>
 
-        <!-- Username -->
-        <input type="text" id="username" placeholder="Username"
-           class="input-box"
-           oninput="clearError('username', 'username-error')" />
+        <input type="text" id="username" placeholder="Username" class="input-box" oninput="clearError('username', 'username-error')" />
         <span class="error-msg" id="username-error"></span>
 
-        <!-- Mobile Number -->
-        <input type="text" id="mobilenumber"
-           maxlength="10"
-           oninput="
-             this.value = this.value.replace(/[^0-9]/g, '').slice(0,10);
-             clearError('mobilenumber','mobile-error');
-           "
-           placeholder="Mobile Number"
-           class="input-box" />
+        <input type="text" id="mobilenumber" maxlength="10"
+               oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10); clearError('mobilenumber','mobile-error');"
+               placeholder="Mobile Number" class="input-box" />
         <span class="error-msg" id="mobile-error"></span>
 
-        <!-- Password -->
-        <input type="password" id="password" placeholder="Password"
-           class="input-box"
-           oninput="clearError('password', 'password-error')" />
+        <input type="password" id="password" placeholder="Password" class="input-box" oninput="clearError('password', 'password-error')" />
         <span class="error-msg" id="password-error"></span>
 
-        <!-- Confirm Password -->
         <input type="password" id="confirmPassword" placeholder="Confirm Password"
-           class="input-box"
-           oninput="
-                clearError('confirmPassword', 'confirm-error');
-                document.getElementById('check-error').innerText='';
-           " />
+               class="input-box"
+               oninput="clearError('confirmPassword', 'confirm-error'); document.getElementById('check-error').innerText='';" />
         <span class="error-msg" id="confirm-error"></span>
-
         <span class="error-msg" id="check-error"></span>
 
-        <!-- Signup Button -->
         <button class="submit" onclick="signup()">Signup</button>
 
     </div>
+   </div>
 
     <script src="signup.js"></script>
 
