@@ -47,17 +47,17 @@ function login() {
 
 // REDIRECT TO SIGN UP
 function redirectToSignUp() {
-    window.location.href = "../signup/signup.html";
+    window.location.href = "/test/signup/signup.html";
 }
 
 function forgotPassword() {
     popup("Redirecting to Password Recovery Page...", () => {
-        window.location.href = "../forgotpassword/forgotpassword.html";
+        window.location.href = "/test/forgotpassword/forgotpassword.html";
     });
 }
 function forgotEmail() {
     popup("Redirecting to Email Recovery Page...", () => {
-        window.location.href = "../forgotemail/forgotemail.html";
+        window.location.href = "/test/forgotemail/forgotemail.html";
     }); 
 }
 // Event listener for forgot password link
