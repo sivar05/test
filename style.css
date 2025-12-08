@@ -11,7 +11,7 @@ body {
 /* ===== IMAGE CONTAINER ===== */
 .top-image {
   width: 100%;
-  min-height: 100vh;
+  height:100%;
   position: relative;
   overflow: hidden;
 }
@@ -145,3 +145,4 @@ body {
     padding: 20px;
   }
 }
+
