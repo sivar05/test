@@ -42,3 +42,7 @@ function goTo(path) {
     } 
     window.location.href = base + path;
 }
+
+function changePwd(){
+   goTo("resetpassword/resetpassword.html");
+}
