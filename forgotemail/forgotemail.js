@@ -23,5 +23,7 @@ function resetEmail() {
     document.getElementById("mobile-error").innerText = "";
 
     // DIRECT REDIRECT
-    goTo("index.html");
+    setTimeout(() => {          
+           goTo("index.html"); 
+        }, 1000);   
 }
