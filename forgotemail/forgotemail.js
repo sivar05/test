@@ -1,4 +1,3 @@
-// UNIVERSAL PATH HANDLER (LOCAL + GITHUB)
 function goTo(path) {
     if (location.hostname === "sivar05.github.io") {
         window.location.href = "/test/" + path;
@@ -7,11 +6,9 @@ function goTo(path) {
     }
 }
 
-// CLICK EVENT FOR RESET EMAIL BUTTON
 document.getElementById("resetEmailButton").addEventListener("click", resetEmail);
 
 function resetEmail() {
-
     let mobile = document.getElementById("mobileNumber").value.trim();
 
     if (mobile === "" || !/^\d{10}$/.test(mobile)) {
@@ -25,6 +22,6 @@ function resetEmail() {
     document.getElementById("mobileNumber").value = "";
     document.getElementById("mobile-error").innerText = "";
 
-    // direct redirect
+    // DIRECT REDIRECT
     goTo("index.html");
 }
