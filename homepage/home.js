@@ -44,5 +44,9 @@ function goTo(path) {
 }
 
 function changePwd(){
-   goTo("resetpassword/resetpassword.html");
+  setTimeout(()=>{
+    alert("Going to Change password Page");
+    goTo("resetpassword/resetpassword.html");
+  },1000);
+   
 }
