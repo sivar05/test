@@ -48,7 +48,7 @@ h2 {
     border: 1px solid #ccc;
 }
 
-.reset-btn {
+.reset-email-btn {
     width: 100%;
     padding: 10px;
     background-color: #4CAF50;
@@ -58,7 +58,7 @@ h2 {
     cursor: pointer;
 }
 
-.reset-btn:hover {
+.reset-email-btn:hover {
     background-color: #45a049;
 }
 

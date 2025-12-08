@@ -1,23 +1,27 @@
-// Correct version
+// CLICK EVENT FOR RESET EMAIL BUTTON
+document.getElementById("resetEmailButton").addEventListener("click", resetEmail);
+
 function resetEmail() {
     let mobile = document.getElementById("mobileNumber").value.trim();
-     
 
-     if(mobile === "" || !/^\d{10}$/.test(mobile)) {
+    // Validate 10-digit number
+    if (mobile === "" || !/^\d{10}$/.test(mobile)) {
         document.getElementById("mobile-error").innerText = "Enter a 10-digit mobile number";
-        return
+        return;
     }
 
-   // Mask first 6 digits
-    let masked = "******" + mobile.slice(6, 10);
+    // Mask first 6 digits
+    let masked = "******" + mobile.slice(6);
 
     alert("A reset link has been sent to: " + masked);
-   document.getElementById("mobileNumber").value = "";
-   document.getElementById("mobile-error").innerText = "";
+
+    // Clear input and error
+    document.getElementById("mobileNumber").value = "";
+    document.getElementById("mobile-error").innerText = "";
+
+    // Popup → Redirect
     popup("Redirecting to Home Page...", () => {
         goTo("index.html");
     });
 }
-
-
-
+ 
