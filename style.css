@@ -1,4 +1,3 @@
-/* ===== BASIC RESET ===== */
 * {
   box-sizing: border-box;
 }
@@ -9,46 +8,56 @@ body {
   background: #f5f5f5;
 }
 
-/* ===== MAIN LAYOUT ===== */
-.signup-container {
-  display: flex;
+/* ===== IMAGE CONTAINER ===== */
+.top-image {
+  width: 100%;
   min-height: 100vh;
-}
-
-/* ===== LEFT IMAGE ===== */
-.image-box {
-  width: 60%;
-  background: url("your-image.jpg") no-repeat center;
-  background-size: cover;
   position: relative;
+  overflow: hidden;
 }
 
-/* Welcome Text on Image */
+.center-image {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== WELCOME TEXT ===== */
 .welcome-text {
   position: absolute;
-  top: 15%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   color: white;
   font-size: 36px;
   font-weight: bold;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-  text-align: center;
+  text-shadow: 2px 2px 8px black;
+  z-index: 2;
 }
 
-/* ===== RIGHT FORM ===== */
-.form-box {
-  width: 40%;
+/* ===== ✅ LOGIN CARD OVER IMAGE ===== */
+.login-card {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 380px;
   background: white;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.4);
+  z-index: 2;
 }
 
-/* Input Fields */
-.input-box,
-.form-box input {
+.login-card h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* ===== INPUTS ===== */
+.input-box {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
@@ -57,9 +66,8 @@ body {
   font-size: 16px;
 }
 
-/* Buttons */
-.signin-btn,
-.form-box button {
+/* ===== BUTTON ===== */
+.signin-btn {
   width: 100%;
   padding: 12px;
   margin-top: 15px;
@@ -71,32 +79,25 @@ body {
   cursor: pointer;
 }
 
-/* Forgot + Signup Row */
+/* ===== FORGOT ROW ===== */
 .forgot-row {
   display: flex;
   justify-content: space-between;
-  margin-top: 5px;
   font-size: 14px;
 }
 
 .forgot-row span {
-  cursor: pointer;
   color: blue;
+  cursor: pointer;
 }
 
-.forgot-row span:hover {
-  text-decoration: underline;
-}
-
+/* ===== SIGNUP TEXT ===== */
 .signup-btn {
-  text-align: right;
-  margin-top: 15px;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
   color: blueviolet;
   cursor: pointer;
-}
-
-.signup-btn:hover {
-  text-decoration: underline;
 }
 
 /* ===== POPUP ===== */
@@ -110,6 +111,7 @@ body {
   display: none;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .popup-box {
@@ -131,26 +133,15 @@ body {
   cursor: pointer;
 }
 
-/* ===== ✅ MOBILE RESPONSIVE FIX ===== */
+/* ✅ MOBILE PERFECT FIX */
 @media (max-width: 768px) {
-
-  .signup-container {
-    flex-direction: column;
-  }
-
-  .image-box {
-    width: 100%;
-    height: 220px;
-  }
-
   .welcome-text {
-    font-size: 22px;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    font-size: 24px;
+    top: 12%;
   }
 
-  .form-box {
-    width: 100%;
+  .login-card {
+    width: 92%;
     padding: 20px;
   }
 }
