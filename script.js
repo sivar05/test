@@ -1,3 +1,16 @@
+
+// UNIVERSAL PATH HANDLER (LOCAL + GITHUB PAGES)
+function goTo(path) {
+    let base = "";
+
+    // Detect GitHub Pages domain
+    if (location.hostname === "sivar05.github.io") {
+        base = "/test/"; // Your repository name
+    }else {
+        base = "../"; 
+    }
+    window.location.href = base + path;
+}
 let popupCallback = null;
 
 // Show popup
@@ -84,15 +97,3 @@ window.addEventListener("keydown", function(event) {
         }
     }
 });
-
-// UNIVERSAL PATH HANDLER (LOCAL + GITHUB PAGES)
-function goTo(path) {
-    let base = "";
-
-    // Detect GitHub Pages domain
-    if (location.hostname === "sivar05.github.io") {
-        base = "/test/"; // Your repository name
-    }
-
-    window.location.href = base + path;
-}

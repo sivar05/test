@@ -31,3 +31,14 @@ document.getElementById('fullscreen').addEventListener('click', function(e) {
 });
 
 
+// Navigate to different pages, handling GitHub Pages path if needed
+function goTo(path) {
+    let base = "";
+    // Detect GitHub Pages domain
+    if (location.hostname === "sivar05.github.io") {
+        base = "/test/"; // Your repository name
+    }else {
+        base = "../"; 
+    } 
+    window.location.href = base + path;
+}

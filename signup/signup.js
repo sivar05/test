@@ -1,3 +1,15 @@
+//UNIVERSAL FUNCTIONS
+// UNIVERSAL PATH HANDLER (LOCAL + GITHUB PAGES)
+function goTo(path) {
+    let base = "";  
+    // Detect GitHub Pages domain
+    if (location.hostname === "sivar05.github.io") {    
+        base = "/test/"; // Your repository name
+    }else {
+        base = "../"; 
+    }   
+    window.location.href = base + path;
+}
 
 function clearError(id, errorId) {
     document.getElementById(id).classList.remove("error");
@@ -60,11 +72,11 @@ function signup() {
     msg.textContent = "Signup successful! Redirecting...";
     msg.style.color = "green";
 
-    setTimeout(() => {
-    popup("Redirecting to Email Recovery Page...", () => {
-        goTo("homepage/home.html");
-    },1000);
-});
-}   
+       setTimeout(()=>{
+        alert("Redirecting to welcome Page...");
+        goTo("index.html");
+       },1000);        
+}  
+ 
 
 

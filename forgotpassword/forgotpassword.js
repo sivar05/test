@@ -23,7 +23,9 @@ if (!emailPattern.test(email)) {
 }
     alert("A reset link has been sent to: " + email);
 
-    document.getElementById("email").value = "";    
+    document.getElementById("email").value = "";  
+    document.getElementById("email-error").innerText = ""; 
+    document.getElementById("email-success").innerText = ""; 
      
     // DIRECT REDIRECT
     setTimeout(() => {  
