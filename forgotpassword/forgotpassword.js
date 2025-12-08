@@ -26,7 +26,8 @@ if (!emailPattern.test(email)) {
     document.getElementById("email").value = "";    
      
     // DIRECT REDIRECT
-    setTimeout(() => {          
+    setTimeout(() => {  
+        alert("Redirecting to Home Page...");        
            goTo("index.html"); 
         }, 1000);
 }
@@ -36,7 +37,7 @@ function popup(message, callback) {
     alert(message);
     if (callback) callback();
 }       
-    
+
 // CLICK EVENT FOR RESET EMAIL BUTTON
 document.getElementById("resetEmailButton").addEventListener("click", resetEmail);  
 function resetEmail() {
