@@ -16,8 +16,11 @@
         <h1 class="welcome-text">WELCOME</h1>
 
         <!-- Signin Container -->
-        <div class="container">
+        <div class="signup-container">
+            <div class="image-box"></div>
+                <div class="form-box">
             <h2>Sign In</h2>
+            
 
             <form onsubmit="event.preventDefault(); login();">
                 <input type="text" id="email" placeholder="Email" class="input-box" />
@@ -32,7 +35,7 @@
                 <span class="signup-btn" onclick="redirectToSignUp()">Don't have an account?</span>
             </form>
         </div>
-
+            </div>
         <!-- Popup -->
         <div id="popup" class="popup">
             <div class="popup-box">
@@ -46,3 +49,4 @@
 </body>
 
 </html>
+
