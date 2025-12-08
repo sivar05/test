@@ -32,12 +32,13 @@
                placeholder="Mobile Number" class="input-box" />
         <span class="error-msg" id="mobile-error"></span>
 
-        <input type="password" id="password" placeholder="Password" class="input-box" oninput="clearError('password', 'password-error')" />
+        <input type="password" id="password" placeholder="Password" class="input-box" 
+        oninput="clearError('password', 'password-error')" />
         <span class="error-msg" id="password-error"></span>
 
-        <input type="password" id="confirmPassword" placeholder="Confirm Password"
-               class="input-box"
-               oninput="clearError('confirmPassword', 'confirm-error'); document.getElementById('check-error').innerText='';" />
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" class="input-box"
+               oninput="clearError('confirmPassword', 'confirm-error'); 
+               document.getElementById('check-error').innerText='';" />
         <span class="error-msg" id="confirm-error"></span>
         <span class="error-msg" id="check-error"></span>
 

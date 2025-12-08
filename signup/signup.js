@@ -37,7 +37,7 @@ function signup() {
 
     if (!phone || !/^\d{10}$/.test(phone)|| phone.length !== 10) {
         document.getElementById("mobile-error").innerText = "Please enter a valid 10-digit phone number!";
-        return
+        return;
         }
 
     if (!password) {

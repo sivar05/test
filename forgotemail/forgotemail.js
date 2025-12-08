@@ -6,7 +6,7 @@ function goTo(path) {
     }
 }
 
-document.getElementById("resetPasswordBtn").addEventListener("click", resetEmail);
+document.getElementById("resetEmailButton").addEventListener("click", resetEmail);
 
 function resetEmail() {
     let mobile = document.getElementById("mobileNumber").value.trim();

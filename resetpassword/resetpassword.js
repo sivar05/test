@@ -3,9 +3,9 @@ function goTo(path) {
     let base = "";
 
     if (location.hostname === "sivar05.github.io") {
-        base = "/test/";  // GitHub Pages
+        base = "/test/";  
     } else {
-        base = "../";     // Local system
+        base = "../";     
     }
 
     window.location.href = base + path;
@@ -17,23 +17,37 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function resetPassword() {
+    let oldPassword = document.getElementById("oldPassword").value.trim();
     let newPassword = document.getElementById("newPassword").value.trim();
     let confirmPassword = document.getElementById("confirmPassword").value.trim();
 
     // Validation
-    if (newPassword === "" || confirmPassword === "") {
-        alert("Please enter New Password and Confirm Password!");
+    if (oldPassword === "") {
+        document.getElementById("old-error").innerText = "Please enter Old Password!";
+        return;
+    }
+
+    if (newPassword === "") {
+        document.getElementById("password-error").innerText = "Please enter New Password!";
+        return;
+    }
+
+    if (confirmPassword === "") {
+        document.getElementById("confirm-error").innerText = "Please enter Confirm Password!";
         return;
     }
 
     if (newPassword !== confirmPassword) {
-        alert("Passwords do not match!");
+        document.getElementById("check-error").innerText ="Please check password and confirm password!";
+        document.getElementById("confirmPassword").classList.add("error");
         return;
     }
 
     // Clear errors
+    document.getElementById("old-error").innerText = "";
     document.getElementById("password-error").innerText = "";
     document.getElementById("confirm-error").innerText = "";
+    document.getElementById("check-error").innerText = "";
 
     // Success message
     alert("Password reset successful!");
@@ -42,4 +56,9 @@ function resetPassword() {
     setTimeout(() => {
         goTo("index.html");
     }, 1000);
+}
+
+function clearError(inputId, errorId) {
+    //document.getElementById(id).classList.remove("error");
+    document.getElementById(errorId).innerText = "";
 }
