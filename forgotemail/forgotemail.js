@@ -1,3 +1,13 @@
+//UNIVERSAL FUNCTION TO HANDLE PATHS
+function goTo(path) {
+    if (location.hostname === "sivar05.github.io") {
+        window.location.href = "/test/" + path; 
+    } else {
+        window.location.href = "../" + path; 
+    }
+}
+
+
 // CLICK EVENT FOR RESET EMAIL BUTTON
 document.getElementById("resetEmailButton").addEventListener("click", resetEmail);
 

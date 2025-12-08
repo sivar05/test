@@ -1,4 +1,16 @@
 
+// UNIVERSAL PATH HANDLER (LOCAL + GITHUB PAGES)
+function goTo(path) {
+    let base = "";  
+    // Detect GitHub Pages domain
+    if (location.hostname === "sivar05.github.io") {
+        base = "/test/"; // Your repository name
+    }else {
+        base = "./"; 
+    }   
+    window.location.href = base + path;
+}  
+
 //reset Password
 function forgotpassword() {
    
@@ -9,14 +21,29 @@ if (!emailPattern.test(email)) {
     alert("Please enter a valid Email!");
     return;
 }
-    alert("Password reset link has been sent to your email!", "Success");
-    // Redirect to login page after successful password reset
-    window.location.href = "../index.html";
-}
-function forgotPassword() {
-    popup("Redirecting to Password Recovery Page...", () => {
-        goTo("forgotpassword/forgotpassword.html");
+   popup("A reset link has been sent to: " + email, () => {
+        goTo("index.html");
     });
 }
 
+// CLICK EVENT FOR RESET EMAIL BUTTON
+document.getElementById("resetEmailButton").addEventListener("click", resetEmail);  
+function resetEmail() {
+    let mobile = document.getElementById("mobileNumber").value.trim();  
+    // Validate 10-digit number
+    if (mobile === "" || !/^\d{10}$/.test(mobile)) {
+        document.getElementById("mobile-error").innerText = "Enter a 10-digit mobile number";
+        return;
+    }       
+    // Mask first 6 digits
+    let masked = "******" + mobile.slice(6);  
+    alert("A reset link has been sent to: " + masked);  
+    // Clear input and error
+    document.getElementById("mobileNumber").value = "";
+    document.getElementById("mobile-error").innerText = "";  
+    // Popup → Redirect
+    popup("Redirecting to Home Page...", () => {
+        goTo("index.html");
+    });
+}
 
