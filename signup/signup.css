@@ -30,7 +30,7 @@ h1{
     object-fit: cover;
 }
 
-@media (max-width: 768px) {
+@media (max-width: max-height) {
     .top-image {
         aspect-ratio: 16 / 9; /* taller image for mobile */
     }
