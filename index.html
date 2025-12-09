@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign In</title>
+
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
     <div class="top-image">
-
         <img src="image/natural/img2.jpg" alt="SignIn Image" class="center-image" />
 
-        <!-- Text -->
+        <!-- Text Inside Image -->
         <h1 class="welcome-text">WELCOME</h1>
 
-        <!-- White Form Container -->
-        <div class="form-box">
+        <!-- Signin Container -->
+        <div class="container">
             <h2>Sign In</h2>
 
             <form onsubmit="event.preventDefault(); login();">
@@ -28,20 +27,18 @@
                     <span onclick="forgotEmail()">Forgot Email?</span>
                     <span onclick="forgotPassword()">Forgot Password?</span>
                 </div>
-
                 <button type="button" id="loginButton" class="signin-btn" onclick="login()">Login</button>
 
                 <span class="signup-btn" onclick="redirectToSignUp()">Don't have an account?</span>
             </form>
         </div>
 
-    </div>
-
-    <!-- Popup -->
-    <div id="popup" class="popup">
-        <div class="popup-box">
-            <p id="popupText"></p>
-            <button id="popupOk" onclick="closePopup()">OK</button>
+        <!-- Popup -->
+        <div id="popup" class="popup">
+            <div class="popup-box">
+                <p id="popupText"></p>
+                <button id="popupOk" onclick="closePopup()">OK</button>
+            </div>
         </div>
     </div>
 
