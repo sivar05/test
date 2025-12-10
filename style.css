@@ -1,108 +1,157 @@
-body {
+/* General Page */
+body { 
   font-family: Arial, sans-serif;
   background: #f2f2f2;
   margin: 0;
   padding: 0;
 }
 
+/* Top Banner Image */
 .top-image {
     width: 100%;
-    aspect-ratio: 16 / 7; /* wide image */
+    aspect-ratio: 16 / 7;
     position: relative;
     overflow: hidden;
 }
 
 .center-image {
     width: 100%;
-    height: 100%; /* adjust as needed */
+    height: 100%;
     object-fit: cover;
 }
 
-/* Text inside the image */
+/* WELCOME text inside image */
 .welcome-text {
     position: absolute;
-    top: 10%; 
+    top: 12%;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translateX(-50%);
     color: white;
-    font-size: 50px;
+    font-size: 42px;
     font-weight: bold;
     text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
 }
 
-/* Floating Signin container */
+/* Floating Login Box */
 .container {
     position: absolute;
-    top: 30%;
+    top: 55%;            /* LOWERED for perfect alignment */
     left: 50%;
-    transform: translateX(-50%);
-    width: 400px;
-    height: 400px;
+    transform: translate(-50%, -50%);
+    width: 320px;
     background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid darkolivegreen;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
 }
 
-
-@media (max-width: 768px) {
-    .top-image {
-        aspect-ratio: 16 / 9; /* taller image for mobile */
-    }
-}
 .signup-btn {
-  display: block;
-  text-align: right;
-  margin-top: 15px;
-  color: blueviolet;
-  cursor: pointer;
+    display: block;
+    text-align: right;
+    margin-top: 10px;   /* gap below Sign-In button */
+    font-size: 12px;
+    color: blueviolet;
+    cursor: pointer;
 }
+
 .signup-btn:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
+/* Wrapper for input + eye */
+.password-container {
+    position: relative;
+    width: 100%;
+}
+/* General input box */
 .input-box {
-  width: 90%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    width: 100%;
+    height: 42px;         /* FIXED HEIGHT for perfect centering */
+    padding: 0 45px 0 12px; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
 }
 
+.eye-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);   /* CENTERED ALWAYS */
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+/* Gap between username and password */
+.input-box {
+    margin-bottom: 15px;    /* GAP HERE */
+}
+
+.password-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px; /* space after password box */
+}
+
+
+/* Remove gap inside password input so icon stays centered */
+.password-input {
+    margin-bottom: 0 !important;
+}
+
+/* Eye icon — stays perfectly centered */
+.eye-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);   /* ALWAYS CENTER */
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.eye-icon:hover { opacity: 1; }
+
+
+
+/* Sign In Button */
 .signin-btn {
   width: 100%;
   padding: 12px;
-  margin-top: 15px;
+  margin-top: 20px;
   background: blueviolet;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
 
+/* Forgot Row */
 .forgot-row {
   display: flex;
   justify-content: space-between;
-  margin-top: 5px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .forgot-row span {
   cursor: pointer;
   color: blue;
+  margin-top: 15px;
 }
 
 .forgot-row span:hover {
   text-decoration: underline;
 }
 
-
-/* Popup */
+/* Popup Background */
 .popup {
   position: fixed;
   top: 0;
@@ -115,6 +164,7 @@ body {
   align-items: center;
 }
 
+/* Popup Box */
 .popup-box {
   background: white;
   padding: 20px;
@@ -132,4 +182,20 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .top-image {
+        aspect-ratio: 16 / 9;
+    }
+
+    .container {
+        width: 90%;
+        top: 60%;
+    }
+
+    .welcome-text {
+        font-size: 32px;
+    }
 }

@@ -1,17 +1,10 @@
-// UNIVERSAL PATH HANDLER (LOCAL + GITHUB PAGES)
+// UNIVERSAL PATH HANDLER
 function goTo(path) {
-    let base = "";
-
-    if (location.hostname === "sivar05.github.io") {
-        base = "/test/";  
-    } else {
-        base = "../";     
-    }
-
+    let base = (location.hostname === "sivar05.github.io") ? "/test/" : "../";
     window.location.href = base + path;
 }
 
-// Attach event AFTER DOM is loaded
+// Attach event after load
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("resetPasswordBtn").addEventListener("click", resetPassword);
 });
@@ -38,27 +31,41 @@ function resetPassword() {
     }
 
     if (newPassword !== confirmPassword) {
-        document.getElementById("check-error").innerText ="Please check password and confirm password!";
-        document.getElementById("confirmPassword").classList.add("error");
+        document.getElementById("check-error").innerText = "Passwords do not match!";
         return;
     }
 
     // Clear errors
-    document.getElementById("old-error").innerText = "";
-    document.getElementById("password-error").innerText = "";
-    document.getElementById("confirm-error").innerText = "";
-    document.getElementById("check-error").innerText = "";
+    clearError('old-error');
+    clearError('password-error');
+    clearError('confirm-error');
+    clearError('check-error');
 
-    // Success message
     alert("Password reset successful!");
 
-    // Redirect to homepage
-    setTimeout(() => {
-        goTo("index.html");
-    }, 1000);
+    setTimeout(() => { goTo("index.html"); }, 1000);
 }
 
-function clearError(inputId, errorId) {
-    //document.getElementById(id).classList.remove("error");
+// Show & hide eye icon
+function showEye(inputField) {
+    const eye = inputField.parentElement.querySelector(".eye-icon");
+    eye.style.display = inputField.value.length > 0 ? "block" : "none";
+}
+
+function togglePassword(fieldId, eyeIcon) {
+    const field = document.getElementById(fieldId);
+
+    if (field.type === "password") {
+        field.type = "text";
+        eyeIcon.src = "../image/symbol/eye_close.png";   // show crossed eye
+    } else {
+        field.type = "password";
+        eyeIcon.src = "../image/symbol/eye_open.png";     // show open eye
+    }
+}
+
+
+// Clear error text
+function clearError(errorId) {
     document.getElementById(errorId).innerText = "";
 }

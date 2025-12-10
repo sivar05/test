@@ -58,6 +58,20 @@ function login() {
         popup("Invalid Email or Password!");
     }
 }
+//Password show/hide
+function togglePassword(inputId, icon) {
+    const input = document.getElementById(inputId);
+
+    if (input.type === "password") {
+        input.type = "text";
+        icon.src = "../image/symbol/view.png";  // show eye open
+    } else {
+        input.type = "password";
+        icon.src = "../image/symbol/hide.png"; // show eye closed
+    }
+}
+
+
 
 // REDIRECT TO SIGN UP
 function redirectToSignUp() {
