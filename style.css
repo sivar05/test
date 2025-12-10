@@ -1,12 +1,21 @@
+<<<<<<< HEAD
 /* General Page */
 body { 
+=======
+/* GLOBAL */
+body {
+>>>>>>> 24bd634948eb3f1988ba7ef05f5b3b32ecac9edb
   font-family: Arial, sans-serif;
   background: #f2f2f2;
   margin: 0;
   padding: 0;
 }
 
+<<<<<<< HEAD
 /* Top Banner Image */
+=======
+/* TOP IMAGE SECTION */
+>>>>>>> 24bd634948eb3f1988ba7ef05f5b3b32ecac9edb
 .top-image {
     width: 100%;
     aspect-ratio: 16 / 7;
@@ -20,18 +29,27 @@ body {
     object-fit: cover;
 }
 
+<<<<<<< HEAD
 /* WELCOME text inside image */
 .welcome-text {
     position: absolute;
     top: 12%;
     left: 50%;
     transform: translateX(-50%);
+=======
+.welcome-text {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+>>>>>>> 24bd634948eb3f1988ba7ef05f5b3b32ecac9edb
     color: white;
     font-size: 42px;
     font-weight: bold;
     text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
 }
 
+<<<<<<< HEAD
 /* Floating Login Box */
 .container {
     position: absolute;
@@ -57,6 +75,19 @@ body {
 
 .signup-btn:hover {
     text-decoration: underline;
+=======
+/* SIGNIN BOX */
+.container {
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+    margin: -70px auto 30px auto;
+    position: relative;
+    z-index: 5;
+>>>>>>> 24bd634948eb3f1988ba7ef05f5b3b32ecac9edb
 }
 
 /* Wrapper for input + eye */
@@ -67,6 +98,7 @@ body {
 /* General input box */
 .input-box {
     width: 100%;
+<<<<<<< HEAD
     height: 42px;         /* FIXED HEIGHT for perfect centering */
     padding: 0 45px 0 12px; 
     border: 1px solid #ccc;
@@ -75,6 +107,13 @@ body {
     box-sizing: border-box;
     display: flex;
     align-items: center;
+=======
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+>>>>>>> 24bd634948eb3f1988ba7ef05f5b3b32ecac9edb
 }
 
 .eye-icon {
@@ -147,11 +186,19 @@ body {
   margin-top: 15px;
 }
 
-.forgot-row span:hover {
-  text-decoration: underline;
+.signup-btn {
+  display: block;
+  text-align: right;
+  margin-top: 15px;
+  color: blueviolet;
+  cursor: pointer;
 }
 
+<<<<<<< HEAD
 /* Popup Background */
+=======
+/* POPUP */
+>>>>>>> 24bd634948eb3f1988ba7ef05f5b3b32ecac9edb
 .popup {
   position: fixed;
   top: 0;
@@ -184,12 +231,21 @@ body {
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 /* Mobile Responsive */
+=======
+/* ============================= */
+/*         RESPONSIVE FIXES      */
+/* ============================= */
+
+/* MOBILE VIEW */
+>>>>>>> 24bd634948eb3f1988ba7ef05f5b3b32ecac9edb
 @media (max-width: 768px) {
     .top-image {
         aspect-ratio: 16 / 9;
     }
 
+<<<<<<< HEAD
     .container {
         width: 90%;
         top: 60%;
@@ -197,5 +253,34 @@ body {
 
     .welcome-text {
         font-size: 32px;
+=======
+    .welcome-text {
+        font-size: 35px;
+        top: 17%;
+    }
+
+    .container {
+        width: 92%;
+        margin-top: -60px;
+        padding: 20px;
+    }
+}
+
+/* DESKTOP & DESKTOP SITE MODE */
+@media (min-width: 1024px) {
+    .top-image {
+        aspect-ratio: 16 / 5;
+    }
+
+    .welcome-text {
+        font-size: 70px;
+        top: 20%;
+    }
+
+    .container {
+        max-width: 450px;
+        padding: 30px;
+        margin-top: -90px;
+>>>>>>> 24bd634948eb3f1988ba7ef05f5b3b32ecac9edb
     }
 }
