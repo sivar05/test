@@ -66,10 +66,10 @@ function togglePassword(inputId, icon) {
 
     if (input.type === "password") {
         input.type = "text";
-        icon.src = basePath + "show.png";
+        icon.src = "../image/symbol/show.png";
     } else {
         input.type = "password";
-        icon.src = basePath + "hide.png";
+        icon.src = "../image/symbol/hide.png";
     }
 }
 
