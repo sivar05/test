@@ -46,21 +46,16 @@ function resetPassword() {
     setTimeout(() => { goTo("index.html"); }, 1000);
 }
 
-// Show & hide eye icon
-function showEye(inputField) {
-    const eye = inputField.parentElement.querySelector(".eye-icon");
-    eye.style.display = inputField.value.length > 0 ? "block" : "none";
-}
 
 function togglePassword(fieldId, eyeIcon) {
     const field = document.getElementById(fieldId);
 
     if (field.type === "password") {
         field.type = "text";
-        eyeIcon.src = "../image/symbol/eye_close.png";   // show crossed eye
+        eyeIcon.src = "../image/symbol/hide.png";   // show crossed eye
     } else {
         field.type = "password";
-        eyeIcon.src = "../image/symbol/eye_open.png";     // show open eye
+        eyeIcon.src = "../image/symbol/view.png";     // show open eye
     }
 }
 

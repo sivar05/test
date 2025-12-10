@@ -64,7 +64,7 @@ function togglePassword(inputId, icon) {
 
     if (input.type === "password") {
         input.type = "text";
-        icon.src = "../image/symbol/view.png";  // show eye open
+        icon.src = "../image/symbol/show.png";  // show eye open
     } else {
         input.type = "password";
         icon.src = "../image/symbol/hide.png"; // show eye closed
