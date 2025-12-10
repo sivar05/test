@@ -69,7 +69,7 @@ function togglePassword(inputId, icon) {
         icon.src = "../image/symbol/show.png";
     } else {
         input.type = "password";
-        icon.src = "../image/symbol/hide.png";
+        icon.src = "../image/symbol/view.png";
     }
 }
 
