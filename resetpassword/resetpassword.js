@@ -47,15 +47,16 @@ function resetPassword() {
 }
 
 
-function togglePassword(fieldId, eyeIcon) {
-    const field = document.getElementById(fieldId);
+//Password show/hide
+function togglePassword(inputId, icon) {
+    const input = document.getElementById(inputId);
 
-    if (field.type === "password") {
-        field.type = "text";
-        eyeIcon.src = "../image/symbol/hide.png";   // show crossed eye
+    if (input.type === "password") {
+        input.type = "text";
+        icon.src = "image/symbol/view.png";
     } else {
-        field.type = "password";
-        eyeIcon.src = "../image/symbol/view.png";     // show open eye
+        input.type = "password";
+        icon.src = "image/symbol/hide.png";
     }
 }
 
