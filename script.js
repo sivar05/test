@@ -62,16 +62,15 @@ function login() {
 function togglePassword(inputId, icon) {
     const input = document.getElementById(inputId);
 
-    const basePath = "image/symbol/";
-
     if (input.type === "password") {
         input.type = "text";
-        icon.src = "../image/symbol/show.png";
+        icon.src = "image/symbol/view.png";  // eye open
     } else {
         input.type = "password";
-        icon.src = "../image/symbol/view.png";
+        icon.src = "image/symbol/hide.png";  // eye closed
     }
 }
+
 
 // REDIRECT TO SIGN UP
 function redirectToSignUp() {
