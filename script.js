@@ -32,6 +32,10 @@ function closePopup() {
 
 // LOGIN
 function login() {
+
+    clearError('email');
+    clearError('password');
+
     let email = document.getElementById("email").value.trim();
     let password = document.getElementById("password").value.trim();
 
@@ -51,13 +55,25 @@ function login() {
     }
 
     if (email === "siva@test.in" && password === "12345") {
-        popup("Login Successful!", () => {
-            goTo("homepage/home.html");
-        });
+       popup("Login Successful!", () => {
+
+        // ⭐ CLEAR FIELDS ONLY USING JS
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";
+
+        // Redirect
+        goTo("homepage/home.html");
+    });
     } else {
         popup("Invalid Email or Password!");
-    }
+    } 
 }
+
+// Clear error text
+function clearError(errorId) {
+    document.getElementById(errorId).innerText = "";
+}
+
 //Password show/hide
 function togglePassword(inputId, icon) {
     const input = document.getElementById(inputId);
