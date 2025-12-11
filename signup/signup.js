@@ -17,6 +17,7 @@ function clearError(id, errorId) {
 }
 
 function signup() {
+    
     let email = document.getElementById("email").value.trim();
     let username = document.getElementById("username").value.trim();
     let phone = document.getElementById("mobilenumber").value.trim();
@@ -77,6 +78,16 @@ function signup() {
         goTo("index.html");
        },1000);        
 }  
- 
 
+//Password show/hide
+function togglePassword(inputId, icon) {
+    const input = document.getElementById(inputId);
 
+    if (input.type === "password") {
+        input.type = "text";
+        icon.src = "../image/symbol/view.png";
+    } else {
+        input.type = "password";
+        icon.src = "../image/symbol/hide.png";
+    }
+}
