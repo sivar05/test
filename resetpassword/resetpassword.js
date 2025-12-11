@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function resetPassword() {
+
+    // clear all old global errors
+    clearError('check-error');
+    clearError('password-match-error');
+
     let oldPassword = document.getElementById("oldPassword").value.trim();
     let newPassword = document.getElementById("newPassword").value.trim();
     let confirmPassword = document.getElementById("confirmPassword").value.trim();
@@ -31,21 +36,24 @@ function resetPassword() {
     }
 
     if (newPassword !== confirmPassword) {
-        document.getElementById("check-error").innerText = "Passwords do not match!";
+        document.getElementById("check-error").innerText =
+            "New password and Confirm Password not matching";
         return;
     }
 
-    // Clear errors
-    clearError('old-error');
-    clearError('password-error');
-    clearError('confirm-error');
-    clearError('check-error');
+    if (oldPassword === newPassword) {
+        document.getElementById("password-match-error").innerText =
+            "Old password and New password are matching";
+        return;
+    }
 
     alert("Password reset successful!");
-
     setTimeout(() => { goTo("index.html"); }, 1000);
 }
 
+function clearError(errorId) {
+    document.getElementById(errorId).innerText = "";
+}
 
 //Password show/hide
 function togglePassword(inputId, icon) {
