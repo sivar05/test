@@ -51,14 +51,20 @@ function resetPassword() {
 function togglePassword(inputId, icon) {
     const input = document.getElementById(inputId);
 
+    if (!input) {
+        console.error("Input not found: " + inputId);
+        return;
+    }
+
     if (input.type === "password") {
         input.type = "text";
-        icon.src = "image/symbol/view.png";
+        icon.src = "../image/symbol/view.png";
     } else {
         input.type = "password";
-        icon.src = "image/symbol/hide.png";
+        icon.src = "../image/symbol/hide.png";
     }
 }
+
 
 
 // Clear error text
