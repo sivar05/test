@@ -66,14 +66,19 @@ function togglePassword(inputId, icon) {
 
     if (input.type === "password") {
         input.type = "text";
-        icon.src = "../image/symbol/view.png";
+        icon.src = "../image/symbol/open.png";
     } else {
         input.type = "password";
-        icon.src = "../image/symbol/hide.png";
+        icon.src = "../image/symbol/close.png";
     }
 }
 
-
+function goBack(){
+    setTimeout(()=>{
+        alert("Return back to login page");
+        goBack("index.html");
+    },1000)
+}
 
 // Clear error text
 function clearError(errorId) {

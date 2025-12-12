@@ -13,12 +13,10 @@
     <!-- FULLSCREEN BACKGROUND SECTION -->
     <div class="top-image">
        <!-- BACKGROUND IMAGE -->
-        <img src="../image/natural/img3.jpg" alt="Signup Image">
+        <img src="../image/natural/img3.jpg" alt="Signup Image" class="center-image">
         <h1 class="welcome-text">Welcome to SignUp Page</h1>
 
-    </div>
-
-        <!-- RIGHT-CENTER SIGNUP CONTAINER -->
+          <!-- RIGHT-CENTER SIGNUP CONTAINER -->
         <div class="container">
 
             <p id="message" style="text-align:center; font-weight:bold;"></p>
@@ -44,20 +42,19 @@
             </div>
 
             <div class="input-group">
-    <input type="password" id="password" placeholder="Password" class="input-box"
-    oninput="clearError('password','password-error');">
-    <img src="../image/symbol/hide.png" class="eye-icon" onclick="togglePassword('password', this)">
-    <span class="error-msg" id="password-error"></span>
-</div>
+                <input type="password" id="password" placeholder="Password" class="input-box"
+                 oninput="clearError('password','password-error');">
+                <img src="../image/symbol/close.png" class="eye-icon" onclick="togglePassword('password', this)">
+            <span class="error-msg" id="password-error"></span>
+            </div>
 
-<div class="input-group">
-    <input type="password" id="confirmPassword" placeholder="Confirm Password" class="input-box"
-    oninput="clearError('confirmPassword','confirm-error'); clearError('check-error');">
-    <img src="../image/symbol/hide.png" class="eye-icon" onclick="togglePassword('confirmPassword', this)">
-    <span class="error-msg" id="confirm-error"></span>
-    <span class="error-msg" id="check-error"></span>
-</div>
-
+            <div class="input-group">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" class="input-box"
+                oninput="clearError('confirmPassword','confirm-error'); clearError('check-error');">
+                <img src="../image/symbol/close.png" class="eye-icon" onclick="togglePassword('confirmPassword', this)">
+            <span class="error-msg" id="confirm-error"></span>
+            <span class="error-msg" id="check-error"></span>
+            </div>
 
             <button class="submit" onclick="signup()">Signup</button>
 
@@ -65,12 +62,9 @@
                 <span onclick="goBack()"><u>Already have account?</u></span>
             </div> 
         </div>
-
         <!-- END CONTAINER -->
-
-      
+    </div><!-- END -->
 
     <script src="signup.js"></script>
-
 </body>
 </html>
