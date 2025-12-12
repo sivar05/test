@@ -165,14 +165,6 @@ body {
   cursor: pointer;
 }
 
-/* --------------------------------------------------
-   MOBILE RESPONSIVE
--------------------------------------------------- */
-@media (max-width: 768px) {
-  .top-image {
-    aspect-ratio: 16 / 9;
-  }
-}
 /* Input wrapper */
 .input-group {
     position: relative;
@@ -203,4 +195,23 @@ body {
 }
 .eye-icon:hover {
     opacity: 1;
+}
+
+/* --------------------------------------------------
+   MOBILE RESPONSIVE
+-------------------------------------------------- */
+@media (max-width: 768px) {
+    .top-image {
+        justify-content: center;   /* Bring container to center on mobile */
+        padding-right: 0;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .welcome-text {
+        font-size: 28px;
+        top: 5%;
+    }
 }
