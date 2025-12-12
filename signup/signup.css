@@ -1,3 +1,4 @@
+eye icon get missing
 /* REMOVE MARGIN */
 body {
     margin: 0;
@@ -42,7 +43,10 @@ body {
 
 /* RIGHT-CENTER FORM BOX */
 .container {
-    width: 350px;
+    width: 300px;
+    height: auto;
+    margin-right:20px;
+    margin-left: 32%;
     background: white;
     padding: 20px;
     border-radius: 12px;
@@ -50,44 +54,66 @@ body {
 }
 
 /* PASSWORD WRAPPERS */
-.password-wrapper {
-    position: relative;
-    margin-bottom: 22px;
+.input-group {
+    position: relative;            /* full width inside container */
+    width: 100%;
+    margin-top: 18px;
 }
 
+/* Input box */
 .input-box {
-    width: 100%;
-    padding: 10px 40px 10px 10px;
+    width: 100%;            /* stays inside container */
+    height: auto;
+    padding: 10px 40px 10px 10px; /* space for eye icon */
     border-radius: 8px;
     border: 1px solid #ccc;
-    font-size: 14px;
-    box-sizing: border-box;
+    font-size: 12px;
+    box-sizing: border-box; /* important so padding does not expand width */
 }
 
+/* Eye icon stays inside */
 .eye-icon {
-    width: 20px;
-    height: 20px;
     position: absolute;
-    right: 10px;
+    right: 10px;            /* inside the box */
     top: 50%;
     transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
     cursor: pointer;
+    opacity: 0.75;
 }
+.eye-icon:hover {
+    opacity: 1;
+}
+
 
 .submit {
     width: 100%;
     padding: 12px;
-    background-color: blueviolet;
+    margin-top: 20px;
+    background: blueviolet;
     color: white;
+    font-size: 18px;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
     cursor: pointer;
 }
 .submit:hover {
     background-color: darkviolet;
 }
 
+.go-back{
+    text-align: right;
+    width: 100%;
+    font-size: 14px;
+    color: red;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.go-back:hover{
+    text-decoration: underline;
+}
 /* RESPONSIVE FOR MOBILE */
 @media (max-width: 768px) {
     .top-image {

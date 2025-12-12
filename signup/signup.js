@@ -77,7 +77,14 @@ function signup() {
         alert("Redirecting to welcome Page...");
         goTo("index.html");
        },1000);        
-}  
+}
+
+function goBack(){
+    setTimeout(()=>{
+   alert("  Return to SignIn page");
+   goTo("index.html");   
+ },1000);
+}
 
 //Password show/hide
 function togglePassword(inputId, icon) {
