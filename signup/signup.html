@@ -10,53 +10,62 @@
 
 <body>
 
-    <!-- TOP IMAGE SECTION -->
+    <!-- FULLSCREEN BACKGROUND SECTION -->
     <div class="top-image">
-        <img src="../image/natural/img3.jpg" alt="Signup Image">
 
         <h1 class="welcome-text">Welcome to SignUp Page</h1>
-    </div>
-        <!-- SIGNUP CONTAINER -->
+
+        <!-- RIGHT-CENTER SIGNUP CONTAINER -->
         <div class="container">
 
             <p id="message" style="text-align:center; font-weight:bold;"></p>
+
             <div class="password-wrapper">
-            <input type="text" id="email" placeholder="Email" class="input-box"
-                   oninput="clearError('email','email-error')" />
-            <span class="error-msg" id="email-error"></span>
-            </div>
-            
-            <div class="password-wrapper">
-            <input type="text" id="username" placeholder="Username" class="input-box"
-                    oninput="clearError('username','username-error')" />
-            <span class="error-msg" id="username-error"></span>
+                <input type="text" id="email" placeholder="Email" class="input-box"
+                oninput="clearError('email','email-error')" />
+                <span class="error-msg" id="email-error"></span>
             </div>
 
             <div class="password-wrapper">
-                <input type="text" id="mobilenumber" placeholder="Mobile Number" class="input-box" maxlength="10"
-                oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10); 
+                <input type="text" id="username" placeholder="Username" class="input-box"
+                oninput="clearError('username','username-error')" />
+                <span class="error-msg" id="username-error"></span>
+            </div>
+
+            <div class="password-wrapper">
+                <input type="text" id="mobilenumber" placeholder="Mobile Number" class="input-box"
+                maxlength="10"
+                oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10);
                 clearError('mobilenumber','mobile-error');" />
-            <span class="error-msg" id="mobile-error"></span>
+                <span class="error-msg" id="mobile-error"></span>
             </div>
 
-            <!-- PASSWORD -->
-          <div class="password-wrapper">
-                <input type="password" id="password" placeholder="Password" class="input-box" oninput="clearError('password','password-error');">
-               <img src="../image/symbol/hide.png" class="eye-icon" onclick="togglePassword('password', this)">
-          <span class="error-msg" id="password-error"></span>
-          </div>
+            <div class="password-wrapper">
+                <input type="password" id="password" placeholder="Password" class="input-box"
+                oninput="clearError('password','password-error');">
+                <img src="../image/symbol/hide.png" class="eye-icon"
+                onclick="togglePassword('password', this)">
+                <span class="error-msg" id="password-error"></span>
+            </div>
 
-          <div class="password-wrapper">
-             <input type="password" id="confirmPassword" placeholder="Confirm Password" class="input-box" oninput="clearError('confirmPassword','confirm-error'); clearError('check-error');">
-             <img src="../image/symbol/hide.png" class="eye-icon" onclick="togglePassword('confirmPassword', this)">
-          <span class="error-msg" id="confirm-error"></span> 
-          <span class="error-msg" id="check-error"></span>
-         </div>
+            <div class="password-wrapper">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password"
+                class="input-box"
+                oninput="clearError('confirmPassword','confirm-error'); clearError('check-error');">
+                <img src="../image/symbol/hide.png" class="eye-icon"
+                onclick="togglePassword('confirmPassword', this)">
+                <span class="error-msg" id="confirm-error"></span>
+                <span class="error-msg" id="check-error"></span>
+            </div>
+
             <button class="submit" onclick="signup()">Signup</button>
+        </div>
 
-        </div> <!-- container ends -->
+        <!-- END CONTAINER -->
 
-     <!-- top-image ends -->
+        <!-- BACKGROUND IMAGE -->
+        <img src="../image/natural/img3.jpg" alt="Signup Image">
+    </div>
 
     <script src="signup.js"></script>
 
