@@ -14,11 +14,14 @@
         
     <img src="image/natural/img2.jpg" alt="SignIn Image" class="center-image" />
       
-        <h1 class="welcome-text">WELCOME</h1>
-    </div>
-
-        <!-- Signin Container -->
-        <div class="container">
+    <div class="split-page">
+            
+         <div class="left-page">
+            <h1>W<br>E<br>L<br>C<br>O<br>M<br>E</h1>
+        </div>
+        <div class="right-page">
+           <!-- Signin Container -->
+           <div class="container">
             <h2 style="text-align: center;">Sign In</h2>
 
             <form onsubmit="event.preventDefault(); login();">
@@ -36,14 +39,19 @@
             <button type="button" id="loginButton" class="signin-btn" onclick="login()">Login</button>
 
             <span class="signup-btn" onclick="redirectToSignUp()">Don't have an account?</span>
-        </form>
+            </form>
+    
+        </div>
+        </div>
     </div>
+    
 
     <!-- Popup -->
-    <div id="popup" class="popup">
+        <div id="popup" class="popup">
         <div class="popup-box">
             <p id="popupText"></p>
             <button id="popupOk" onclick="closePopup()">OK</button>
+        </div>
         </div>
     </div>
 

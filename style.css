@@ -1,6 +1,15 @@
 /* --------------------------------------------------
    GLOBAL STYLES
 -------------------------------------------------- */
+/* --------------------------------------------------
+   RESET + BASE
+-------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body { 
   font-family: Arial, sans-serif;
   background: #f2f2f2;
@@ -9,47 +18,85 @@ body {
 }
 
 /* --------------------------------------------------
-   TOP IMAGE + WELCOME TEXT
+   FULLSCREEN BACKGROUND
 -------------------------------------------------- */
 .top-image {
-  width: 100%;
-  aspect-ratio: 16 / 7;
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;       /* allow content to grow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;   /* avoid forcing vertical center */
+    overflow: hidden;        /* REMOVE x/y scroll */
 }
+
 
 .center-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        /* fills screen properly */
+    object-position: center;  /* keeps middle part */
+    z-index: -1;
 }
 
-.welcome-text {
-  position: absolute;
-  top: 10%; 
-  left: 50%;
-  transform: translate(-50%, -50%); 
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-  text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
+
+/* --------------------------------------------------
+   WELCOME TEXT
+-------------------------------------------------- */
+
+
+/* FULL PAGE SPLIT */
+.split-page {
+    display: flex;
+    min-height: 100svh; /* new mobile viewport fix */
+    height: 100vh;
+    width: 100%;
+}
+
+/* LEFT SIDE */
+.left-page {
+    flex: 1;
+    background: linear-gradient(135deg, #1e90ff, #00bfff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left-page h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+    text-decoration:dotted;
+    text-align: center;
+}
+
+/* RIGHT SIDE */
+.right-page {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* --------------------------------------------------
    SIGNIN CONTAINER
 -------------------------------------------------- */
 .container {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  height: 300px;
+  position: relative;
+  width: 400px;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: 15px;
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  border-color: darkolivegreen;
+  padding: 25px;
+  border-radius: 12px;
   box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+  margin-top: 140px; /* keeps spacing from welcome text */
+  
 }
 
 /* --------------------------------------------------
@@ -206,12 +253,70 @@ body {
         padding-right: 0;
     }
 
+
+    body {
+        font-size: 90%;
+        overflow-x: auto;
+    }
+/* SPLIT LAYOUT */
+.split-page {
+    width: 100%;
+    height: 100svh;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;          /* BLOCK CROSS FLOW */
+}
+
+/* LEFT PANEL (25%) */
+.left-page {
+    flex: 0 0 25%;
+    min-width: 25%;
+    height: 100svh;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    overflow: hidden;          /* IMPORTANT */
+}
+
+/* LEFT TEXT SAFETY */
+.left-page h1,
+.left-page p {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-size: large;
+}
+
+/* RIGHT PANEL (75%) */
+.right-page {
+    flex: 0 0 75%;
+    min-width: 75%;
+    height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px;
+    overflow-y: auto;          /* ONLY FORM SCROLLS */
+    overflow-x: hidden;
+}
+
+ /* FORM */
     .container {
-        width: 90%;
+        width: 100%;
+        max-width: 300px;
+        margin:auto;
     }
 
+    /* REMOVE ABSOLUTE WELCOME TEXT */
     .welcome-text {
-        font-size: 28px;
-        top: 5%;
+        position: static;
+        transform: none;
+        text-align:center;
+        font-size: 5px;
     }
 }
+
