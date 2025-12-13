@@ -237,6 +237,6 @@ body {
         font-size: 5px;
     }
     .go-back{
-        display: none;
+        display: hidden;
     }
 }
