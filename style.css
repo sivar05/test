@@ -343,7 +343,8 @@ body {
         font-size: 5px;
     }
 
-  .forgot-row,.signup-btn{
+  .forgot-row,
+  .signup-btn{
     display: hidden;
   }
 }
