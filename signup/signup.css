@@ -215,7 +215,7 @@ body {
 .right-page {
     flex: 0 0 75%;
     min-width: 75%;
-    height: 100svh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
