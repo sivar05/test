@@ -86,17 +86,13 @@ body {
    SIGNIN CONTAINER
 -------------------------------------------------- */
 .container {
-  position: relative;
-  width: 400px;
-  margin-top: 5%;
-  margin-left: auto;
-  margin-right: 15px;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
-  margin-top: 140px; /* keeps spacing from welcome text */
-  
+    position: relative;
+    width: 400px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+    margin: 0;              /* IMPORTANT */
 }
 
 /* --------------------------------------------------
@@ -292,26 +288,27 @@ body {
 }
 
 /* RIGHT PANEL (75%) */
-.right-page {
-    flex: 0 0 75%;
-    min-width: 75%;
-    height: 100svh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 5px;
-    overflow-y: auto;          /* ONLY FORM SCROLLS */
-    overflow-x: hidden;
-}
+    .right-page {
+        flex: 0 0 75%;
+        min-width: 75%;
+        height: 100svh;
 
- /* FORM */
+        display: flex;
+        justify-content: center;   /* horizontal center */
+        align-items: center;       /* vertical center */
+
+        padding: 5px;
+        overflow-y: auto;
+    }
+
     .container {
         width: 100%;
         max-width: 300px;
-        margin:auto;
+        margin: 0;                 /* NO auto margins */
     }
 
-    /* REMOVE ABSOLUTE WELCOME TEXT */
+
+/* REMOVE ABSOLUTE WELCOME TEXT */
     .welcome-text {
         position: static;
         transform: none;
