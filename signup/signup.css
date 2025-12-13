@@ -181,7 +181,7 @@ body {
 /* SPLIT LAYOUT */
 .split-page {
     width: 100%;
-    height: 100svh;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     overflow: hidden;          /* BLOCK CROSS FLOW */
