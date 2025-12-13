@@ -181,8 +181,10 @@ body {
   -webkit-tap-highlight-color: transparent;  /*remove tap highlight*/
 }
 
-.signup-btn:hover {
+.signup-btn:hover
+.signin-btn:active {
   text-decoration: underline;
+  color: #ff5722;
 }
 
 /* Forgot row (Forgot email / Forgot password) */

@@ -159,14 +159,17 @@ body {
     font-size: 14px; 
     color: red; 
     cursor: pointer; 
-    margin-top: 10px; 
+    margin-top: 10px;
+    transition:color.0.3 ease; 
     user-select: none;
    -webkit-user-select: none;   /*prevent user lens*/
    -webkit-tap-highlight-color: transparent;  /*remove tap highlight*/
 }
 
-.go-back:hover {
+.go-back:hover,
+.go-back:active {
     text-decoration: underline;
+    color: #ff5722;
 }
 
 
@@ -235,7 +238,5 @@ body {
         text-align:center;
         font-size: 5px;
     }
-    .go-back{
-        display: hidden;
-    }
+    
 }
