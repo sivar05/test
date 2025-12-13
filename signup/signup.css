@@ -191,7 +191,7 @@ body {
 .left-page {
     flex: 0 0 25%;
     min-width: 25%;
-    height: 100svh;
+    height: 100vh;
     padding: 20px;
 
     display: flex;
