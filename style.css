@@ -176,6 +176,9 @@ body {
   font-size: 12px;
   color: blueviolet;
   cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;   /*prevent user lens*/
+  -webkit-tap-highlight-color: transparent;  /*remove tap highlight*/
 }
 
 .signup-btn:hover {
