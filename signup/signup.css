@@ -163,6 +163,7 @@ body {
     color: red; 
     cursor: pointer; 
     margin-top: 10px; 
+    display: none;
 }
 
 .go-back:hover {
@@ -234,5 +235,8 @@ body {
         transform: none;
         text-align:center;
         font-size: 5px;
+    }
+    .go-back{
+        display: none;
     }
 }
