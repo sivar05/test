@@ -160,6 +160,9 @@ body {
     color: red; 
     cursor: pointer; 
     margin-top: 10px; 
+    user-select: none;
+   -webkit-user-select: none;   /*prevent user lens*/
+   -webkit-tap-highlight-color: transparent;  /*remove tap highlight*/
 }
 
 .go-back:hover {
