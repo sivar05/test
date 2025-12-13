@@ -186,7 +186,6 @@ body {
     flex-direction: row;
     overflow: hidden;          /* BLOCK CROSS FLOW */
 }
-
 /* LEFT PANEL (25%) */
 .left-page {
     flex: 0 0 25%;
@@ -208,8 +207,9 @@ body {
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    font-size:large;
+    font-size: large;
 }
+
 
 /* RIGHT PANEL (75%) */
 .right-page {
