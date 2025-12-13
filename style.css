@@ -65,13 +65,39 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .left-page h1 {
     font-size: 42px;
     margin-bottom: 10px;
-    text-decoration:dotted;
     text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+
+    font-size: 42px;
+    animation: rotateUp 3s linear infinite;
+
+
+}
+  @keyframes rotateUp {
+    0% {
+        transform: translate(-50%, 120%);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -120%);
+        opacity: 0;
+    }
 }
 
 /* RIGHT SIDE */
@@ -250,10 +276,10 @@ body {
     }
 
 
-    body {
-        font-size: 90%;
-        overflow-x: auto;
-    }
+body {
+    font-size: 90%;
+    overflow-x: auto;
+}
 /* SPLIT LAYOUT */
 .split-page {
     width: 100%;
@@ -269,12 +295,10 @@ body {
     min-width: 25%;
     height: 100vh;
     padding: 20px;
-
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-
     overflow: hidden;          /* IMPORTANT */
 }
 
@@ -283,20 +307,23 @@ body {
 .left-page p {
     max-width: 100%;
     word-wrap: break-word;
+    overflow: hidden;
+    will-change: transform;
     overflow-wrap: break-word;
     font-size: large;
+    text-decoration-color: brown;
+    text-shadow: 0cqmin;
+    text-decoration-thickness: inherit;
 }
 
 /* RIGHT PANEL (75%) */
     .right-page {
         flex: 0 0 75%;
         min-width: 75%;
-        height: 100%;
-
+        height: 100vh;
         display: flex;
         justify-content: center;   /* horizontal center */
         align-items: center;       /* vertical center */
-
         padding: 5px;
         overflow-y: auto;
     }
