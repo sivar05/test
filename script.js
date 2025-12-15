@@ -100,15 +100,31 @@ function clearError(errorId) {
 
 //Exit-back
 
-(function(){
-    history.pushState(null,null,location.href);
-    window.addEventListener("popstate",function(){
-        if (confirm("Do you want to exit?")){
-            window.close();
-        }else{
-            this.history.pushState(null,null,this.location.href);
-        }
-    });
+(function () {
+
+  // Push dummy state so back button is trapped
+  history.pushState(null, null, location.href);
+
+  window.addEventListener("popstate", function () {
+
+    let exitConfirm = confirm("Do you want to exit?");
+
+    if (exitConfirm) {
+      // ANDROID / MOBILE
+      if (navigator.userAgent.toLowerCase().includes("android")) {
+        window.close(); // works in WebView / PWA
+      }
+
+      // DESKTOP BROWSER
+      // Cannot close tab, so redirect nowhere
+      history.go(1);
+    } else {
+      // Stay on same page
+      history.pushState(null, null, location.href);
+    }
+
+  });
+
 })();
 
 //Password show/hide
