@@ -69,6 +69,29 @@ function login() {
     } 
 }
 
+// ...........Recent password type-------------//
+function showPassword() {
+  document.getElementById("password").type = "text";
+}
+
+function hidePassword() {
+  document.getElementById("password").type = "password";
+}
+
+function toggleEye() {
+  const password = document.getElementById("password");
+  const eyeIcon = document.getElementById("eyeIcon");
+
+  if (password.value.length > 0) {
+    eyeIcon.style.display = "block"; // show icon only when typing
+  } else {
+    eyeIcon.style.display = "none";  // hide if empty
+    password.type = "password";      // safety
+  }
+}
+
+
+
 // Clear error text
 function clearError(errorId) {
     document.getElementById(errorId).innerText = "";
@@ -126,3 +149,18 @@ window.addEventListener("keydown", function(event) {
         }
     }
 });
+
+
+function handlePasswordInput() {
+    const password = document.getElementById("password");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    if (password.value.length > 0) {
+        eyeIcon.style.display = "block";
+    } else {
+        eyeIcon.style.display = "none";
+        password.type = "password"; // force hide
+        eyeIcon.src = "image/symbol/close.png";
+    }
+}
+

@@ -246,30 +246,49 @@ body {
     margin-top: 18px;
 }
 
+
+
+
+
 /* Input box */
 .input-box {
-    width: 100%;            /* stays inside container */
+  width:100%;
+    position: relative;
     padding: 10px 40px 10px 10px; /* space for eye icon */
     border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 12px;
     box-sizing: border-box; /* important so padding does not expand width */
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
 }
 
-/* Eye icon stays inside */
+.password-wrapper input {
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  font-size: 12px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
 .eye-icon {
-    position: absolute;
-    right: 10px;            /* inside the box */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    opacity: 0.75;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  cursor: pointer;
+  display: none; /* hidden by default */
 }
-.eye-icon:hover {
-    opacity: 1;
-}
+
+
+
 
 /* --------------------------------------------------
    MOBILE RESPONSIVE

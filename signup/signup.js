@@ -98,3 +98,32 @@ function togglePassword(inputId, icon) {
         icon.src = "../image/symbol/close.png";
     }
 }
+
+/* ---------------- SEND DATA TO BACKEND ---------------- */
+
+    fetch("http://localhost:27017", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: email,
+            username: username,
+            phone: phone,
+            password: password
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        msg.textContent = data.message;
+        msg.style.color = "green";
+
+        setTimeout(() => {
+            goTo("index.html");
+        }, 1000);
+    })
+    .catch(err => {
+        msg.textContent = "Server error. Try again.";
+        msg.style.color = "red";
+        console.error(err);
+    });
