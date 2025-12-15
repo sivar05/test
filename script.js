@@ -97,6 +97,20 @@ function clearError(errorId) {
     document.getElementById(errorId).innerText = "";
 }
 
+
+//Exit-back
+
+(function(){
+    history.pushState(null,null,location.href);
+    window.addEventListener("popstate",function(){
+        if (confirm("Do you want to exit?")){
+            window.close();
+        }else{
+            this.history.pushState(null,null,this.location.href);
+        }
+    });
+})();
+
 //Password show/hide
 function togglePassword(inputId, icon) {
     const input = document.getElementById(inputId);
