@@ -101,31 +101,23 @@ function clearError(errorId) {
 //Exit-back
 
 (function () {
+    // Add a fake history state
+    history.pushState(null, null, location.href);
 
-  // Push dummy state so back button is trapped
-  history.pushState(null, null, location.href);
+    window.addEventListener("popstate", function () {
+        let exitConfirm = confirm("Do you want to exit?");
 
-  window.addEventListener("popstate", function () {
-
-    let exitConfirm = confirm("Do you want to exit?");
-
-    if (exitConfirm) {
-      // ANDROID / MOBILE
-      if (navigator.userAgent.toLowerCase().includes("android")) {
-        window.close(); // works in WebView / PWA
-      }
-
-      // DESKTOP BROWSER
-      // Cannot close tab, so redirect nowhere
-      history.go(1);
-    } else {
-      // Stay on same page
-      history.pushState(null, null, location.href);
-    }
-
-  });
-
+        if (exitConfirm) {
+            // Allow back navigation (browser will close tab / exit app)
+            history.back();
+        } else {
+            // Stay on the same page
+            history.pushState(null, null, location.href);
+        }
+    });
 })();
+
+
 
 //Password show/hide
 function togglePassword(inputId, icon) {
