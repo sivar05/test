@@ -1,86 +1,101 @@
 // UNIVERSAL PATH HANDLER
 function goTo(path) {
-    let base = (location.hostname === "sivar05.github.io") ? "/test/" : "../";
-    window.location.href = base + path;
+  let base = (location.hostname === "sivar05.github.io") ? "/test/" : "../";
+  window.location.href = base + path;
 }
 
-// Attach event after load
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("resetPasswordBtn").addEventListener("click", resetPassword);
+  document.getElementById("resetPasswordBtn")
+    .addEventListener("click", resetPassword);
 });
 
 function resetPassword() {
 
-    // clear all old global errors
-    clearError('check-error');
-    clearError('password-match-error');
+  const msg = document.getElementById("message");
 
-    let oldPassword = document.getElementById("oldPassword").value.trim();
-    let newPassword = document.getElementById("newPassword").value.trim();
-    let confirmPassword = document.getElementById("confirmPassword").value.trim();
+  // clear errors
+  clearError("email-error");
+  clearError("old-error");
+  clearError("password-error");
+  clearError("confirm-error");
+  clearError("check-error");
+  clearError("password-match-error");
 
-    // Validation
-    if (oldPassword === "") {
-        document.getElementById("old-error").innerText = "Please enter Old Password!";
+  let email = document.getElementById("email").value.trim();
+  //const email = document.getElementById("email").value.trim();
+  const oldPassword = document.getElementById("oldPassword").value.trim();
+  const newPassword = document.getElementById("newPassword").value.trim();
+  const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+  const emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailpattern.test(email)) {
+        document.getElementById("email-error").innerText = "Please enter valid e-mail address";
+        msg.style.color = "red";
         return;
     }
 
-    if (newPassword === "") {
-        document.getElementById("password-error").innerText = "Please enter New Password!";
-        return;
-    }
+ /* if (!email) {
+    msg.innerText = "Email required";
+    msg.style.color = "red";
+    return;
+  }*/
 
-    if (confirmPassword === "") {
-        document.getElementById("confirm-error").innerText = "Please enter Confirm Password!";
-        return;
-    }
+  if (!oldPassword) {
+    document.getElementById("old-error").innerText = "Enter old password";
+    return;
+  }
 
-    if (newPassword !== confirmPassword) {
-        document.getElementById("check-error").innerText =
-            "New password and Confirm Password not matching";
-        return;
-    }
+  if (!newPassword) {
+    document.getElementById("password-error").innerText = "Enter new password";
+    return;
+  }
 
-    if (oldPassword === newPassword) {
-        document.getElementById("password-match-error").innerText =
-            "Old password and New password are matching";
-        return;
-    }
+  if (!confirmPassword) {
+    document.getElementById("confirm-error").innerText = "Confirm password";
+    return;
+  }
 
-    alert("Password reset successful!");
-    setTimeout(() => { goTo("index.html"); }, 1000);
+  if (newPassword !== confirmPassword) {
+    document.getElementById("check-error").innerText =
+      "New & confirm password not matching";
+    return;
+  }
+
+  if (oldPassword === newPassword) {
+    document.getElementById("password-match-error").innerText =
+      "Old & new password cannot be same";
+    return;
+  }
+
+  fetch("http://localhost:3000/api/change-password", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email,
+      oldPassword,
+      newPassword
+    })
+  })
+  .then(async res => {
+    const data = await res.json();
+    if (!res.ok) throw data;
+    return data;
+  })
+  .then(data => {
+    msg.style.color = "green";
+    msg.innerText = data.message;
+
+    alert("Password updated successfully");
+    setTimeout(() => goTo("index.html"), 1000);
+  })
+  .catch(err => {
+    msg.style.color = "red";
+    msg.innerText = err.message || "Password update failed";
+  });
 }
 
-function clearError(errorId) {
-    document.getElementById(errorId).innerText = "";
-}
-
-//Password show/hide
-function togglePassword(inputId, icon) {
-    const input = document.getElementById(inputId);
-
-    if (!input) {
-        console.error("Input not found: " + inputId);
-        return;
-    }
-
-    if (input.type === "password") {
-        input.type = "text";
-        icon.src = "../image/symbol/open.png";
-    } else {
-        input.type = "password";
-        icon.src = "../image/symbol/close.png";
-    }
-}
-
-function goBack(){
-    setTimeout(()=>{
-        alert("Return back to login page");
-        goBack("index.html");
-    },1000)
-}
-
-// Clear error text
-function clearError(errorId) {
-    document.getElementById(errorId).innerText = "";
+// clear error
+function clearError(id) {
+  const el = document.getElementById(id);
+  if (el) el.innerText = "";
 }

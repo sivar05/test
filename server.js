@@ -3,36 +3,19 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
-/* CONNECT LOCAL MONGODB */
-mongoose.connect("mongodb://127.0.0.1:27017/signupDB")
-.then(() => console.log("MongoDB Connected"))
-.catch(err => console.log(err));
+// CONNECT DB
+mongoose.connect("mongodb://127.0.0.1:27017/signup_test_db")
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.error("Mongo error:", err));
 
-/* USER SCHEMA */
-const UserSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  password: String,
-  confirm:String,
-  mobile:String
+// ROUTES
+app.use("/api", require("./routes/auth_routes"));
+app.use("/api", require("./routes/password_routes"));
+
+// SERVER
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
 });
-
-const User = mongoose.model("User", UserSchema);
-
-/* SIGNUP API */
-app.post("/signup", async (req, res) => {
-  try {
-    const user = new User(req.body);
-    await user.save();
-    res.json({ message: "Saved in MongoDB" });
-  } catch (err) {
-    res.status(500).json({ message: "Error" });
-  }
-});
-
-app.listen(3000, () =>
-  console.log("Server running on http://localhost:3000")
-);

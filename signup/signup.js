@@ -1,129 +1,40 @@
-//UNIVERSAL FUNCTIONS
-// UNIVERSAL PATH HANDLER (LOCAL + GITHUB PAGES)
+// PATH HANDLER
 function goTo(path) {
-    let base = "";  
-    // Detect GitHub Pages domain
-    if (location.hostname === "sivar05.github.io") {    
-        base = "/test/"; // Your repository name
-    }else {
-        base = "../"; 
-    }   
-    window.location.href = base + path;
+  let base = location.hostname === "sivar05.github.io" ? "/test/" : "../";
+  window.location.href = base + path;
 }
 
-function clearError(id, errorId) {
-    document.getElementById(id).classList.remove("error");
-    document.getElementById(errorId).innerText = "";
-}
-
+// SIGNUP
 function signup() {
-    
-    let email = document.getElementById("email").value.trim();
-    let username = document.getElementById("username").value.trim();
-    let phone = document.getElementById("mobilenumber").value.trim();
-    let password = document.getElementById("password").value.trim();
-    let confirm= document.getElementById("confirmPassword").value.trim();
-    let msg = document.getElementById("message");   
+  const msg = document.getElementById("message");
 
-    // INDIVIDUAL FIELD VALIDATION
-    if (!email) {
-       document.getElementById("email-error").innerText = "Please enter your e-mail address";
-        return;
-    }
-
-    if (!username) {
-        document.getElementById("username-error").innerText = "Please enter your username";
-        return;
-    }
-
-    if (!phone || !/^\d{10}$/.test(phone)|| phone.length !== 10) {
-        document.getElementById("mobile-error").innerText = "Please enter a valid 10-digit phone number!";
-        return;
-        }
-
-    if (!password) {
-       document.getElementById("password-error").innerText = "Please enter your password";
-        return;
-    }
-
-    if (!confirm) {
-        document.getElementById("confirm-error").innerText = "Please enter your confirm password";
-        return;
-    }
-
-    // EMAIL VALIDATION
-    const emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailpattern.test(email)) {
-        document.getElementById("email-error").innerText = "Please enter valid e-mail address";
-        msg.style.color = "red";
-        return;
-    }
-
-    // PASSWORD MATCH
-  if (password !== confirm) {
-    document.getElementById("check-error").innerText = "Please check password and confirm Password!";
-    document.getElementById("confirmPassword").classList.add("error");
-    return;
-} else {
-    // Clear error when passwords match
-    document.getElementById("check-error").innerText = "";
-}
-
-    // SUCCESS
-    msg.textContent = "Signup successful! Redirecting...";
+  fetch("http://127.0.0.1:3000/signup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: username.value,
+      email: email.value,
+      mobilenumber: mobilenumber.value,
+      password: password.value,
+      confirmPassword: confirmPassword.value
+    })
+  })
+  .then(async res => {
+    const data = await res.json();
+    if (!res.ok) throw data;
+    return data;
+  })
+  .then(data => {
     msg.style.color = "green";
+    msg.innerText = data.message;
 
-       setTimeout(()=>{
-        alert("Redirecting to welcome Page...");
-        goTo("index.html");
-       },1000);        
+    alert("Signup successful! Redirecting to login...");
+    setTimeout(() => {
+      goTo("index.html");
+    }, 1000);
+  })
+  .catch(err => {
+    msg.style.color = "red";
+    msg.innerText = err.message || "Signup failed";
+  });
 }
-
-function goBack(){
-    setTimeout(()=>{
-   alert("  Return to SignIn page");
-   goTo("index.html");   
- },1000);
-}
-
-//Password show/hide
-function togglePassword(inputId, icon) {
-    const input = document.getElementById(inputId);
-
-    if (input.type === "password") {
-        input.type = "text";
-        icon.src = "../image/symbol/open.png";
-    } else {
-        input.type = "password";
-        icon.src = "../image/symbol/close.png";
-    }
-}
-
-/* ---------------- SEND DATA TO BACKEND ---------------- */
-
-    fetch("http://localhost:27017", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            email: email,
-            username: username,
-            phone: phone,
-            password: password
-        })
-    })
-    .then(res => res.json())
-    .then(data => {
-        msg.textContent = data.message;
-        msg.style.color = "green";
-
-        setTimeout(() => {
-            goTo("index.html");
-        }, 1000);
-    })
-    .catch(err => {
-        msg.textContent = "Server error. Try again.";
-        msg.style.color = "red";
-        console.error(err);
-    });

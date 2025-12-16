@@ -101,17 +101,22 @@ function clearError(errorId) {
 //Exit-back
 
 (function () {
-    // Add a fake history state
+    // Push fake history state
     history.pushState(null, null, location.href);
 
     window.addEventListener("popstate", function () {
         let exitConfirm = confirm("Do you want to exit?");
 
         if (exitConfirm) {
-            // Allow back navigation (browser will close tab / exit app)
-            history.back();
+            // Android WebView support
+            if (navigator.userAgent.includes("Android")) {
+                window.location.href = "about:blank";
+            } else {
+                window.open('', '_self');
+                window.close();
+            }
         } else {
-            // Stay on the same page
+            // Stay on same page
             history.pushState(null, null, location.href);
         }
     });
