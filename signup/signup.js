@@ -8,7 +8,7 @@ function goTo(path) {
 function signup() {
   const msg = document.getElementById("message");
 
-  fetch("http://127.0.0.1:3000/signup", {
+  fetch("http://127.0.0.1:3000/api/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -37,4 +37,9 @@ function signup() {
     msg.style.color = "red";
     msg.innerText = err.message || "Signup failed";
   });
+}
+
+function clearError(id) {
+  const el = document.getElementById(id);
+  if (el) el.innerText = "";
 }

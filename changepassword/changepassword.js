@@ -5,15 +5,20 @@ function goTo(path) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("resetPasswordBtn")
-    .addEventListener("click", resetPassword);
+  const btn = document.getElementById("changepassword");
+  if (btn) btn.addEventListener("click", resetPassword);
 });
 
 function resetPassword() {
 
   const msg = document.getElementById("message");
 
-  // clear errors
+  // safety check
+  if (!msg) {
+    console.error("message element missing in HTML");
+    return;
+  }
+
   clearError("email-error");
   clearError("old-error");
   clearError("password-error");
@@ -21,24 +26,18 @@ function resetPassword() {
   clearError("check-error");
   clearError("password-match-error");
 
-  let email = document.getElementById("email").value.trim();
-  //const email = document.getElementById("email").value.trim();
+  const email = document.getElementById("email").value.trim();
   const oldPassword = document.getElementById("oldPassword").value.trim();
   const newPassword = document.getElementById("newPassword").value.trim();
   const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
   const emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailpattern.test(email)) {
-        document.getElementById("email-error").innerText = "Please enter valid e-mail address";
-        msg.style.color = "red";
-        return;
-    }
 
- /* if (!email) {
-    msg.innerText = "Email required";
+  if (!emailpattern.test(email)) {
+    document.getElementById("email-error").innerText = "Please enter valid email";
     msg.style.color = "red";
     return;
-  }*/
+  }
 
   if (!oldPassword) {
     document.getElementById("old-error").innerText = "Enter old password";
@@ -56,8 +55,7 @@ function resetPassword() {
   }
 
   if (newPassword !== confirmPassword) {
-    document.getElementById("check-error").innerText =
-      "New & confirm password not matching";
+    document.getElementById("check-error").innerText = "Passwords not matching";
     return;
   }
 
@@ -70,11 +68,7 @@ function resetPassword() {
   fetch("http://localhost:3000/api/change-password", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      email,
-      oldPassword,
-      newPassword
-    })
+    body: JSON.stringify({ email, oldPassword, newPassword })
   })
   .then(async res => {
     const data = await res.json();
@@ -84,7 +78,6 @@ function resetPassword() {
   .then(data => {
     msg.style.color = "green";
     msg.innerText = data.message;
-
     alert("Password updated successfully");
     setTimeout(() => goTo("index.html"), 1000);
   })
@@ -94,7 +87,6 @@ function resetPassword() {
   });
 }
 
-// clear error
 function clearError(id) {
   const el = document.getElementById(id);
   if (el) el.innerText = "";

@@ -3,6 +3,10 @@ const User = require("../models/User");
 exports.changePassword = async (req, res) => {
   const { email, oldPassword, newPassword } = req.body;
 
+   if (!email || !oldPassword || !newPassword) {
+      return res.status(400).json({ message: "All fields required" });
+    }
+
   const user = await User.findOne({ email });
   if (!user) {
     return res.status(404).json({ message: "User not found" });
