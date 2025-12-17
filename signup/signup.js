@@ -10,7 +10,7 @@ function signup() {
 
   const API_BASE =
     location.hostname === "sivar05.github.io"
-      ? "https://YOUR_BACKEND_DOMAIN"
+      ? "https://signup-api.up.railway.app"
       : "http://127.0.0.1:3000";
 
   fetch(`${API_BASE}/api/auth/signup`, {
