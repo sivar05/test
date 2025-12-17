@@ -8,7 +8,12 @@ function goTo(path) {
 function signup() {
   const msg = document.getElementById("message");
 
-  fetch("http://127.0.0.1:3000/api/signup", {
+  const API_BASE =
+    location.hostname === "sivar05.github.io"
+      ? "https://YOUR_BACKEND_DOMAIN"
+      : "http://127.0.0.1:3000";
+
+  fetch(`${API_BASE}/api/auth/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -19,24 +24,23 @@ function signup() {
       confirmPassword: confirmPassword.value
     })
   })
-  .then(async res => {
-    const data = await res.json();
-    if (!res.ok) throw data;
-    return data;
-  })
-  .then(data => {
-    msg.style.color = "green";
-    msg.innerText = data.message;
+    .then(async res => {
+      const data = await res.json();
+      if (!res.ok) throw data;
+      return data;
+    })
+    .then(data => {
+      msg.style.color = "green";
+      msg.innerText = data.message;
 
-    alert("Signup successful! Redirecting to login...");
-    setTimeout(() => {
-      goTo("index.html");
-    }, 1000);
-  })
-  .catch(err => {
-    msg.style.color = "red";
-    msg.innerText = err.message || "Signup failed";
-  });
+      setTimeout(() => {
+        goTo("login/login.html");
+      }, 1000);
+    })
+    .catch(err => {
+      msg.style.color = "red";
+      msg.innerText = err.message || "Signup failed";
+    });
 }
 
 function clearError(id) {
