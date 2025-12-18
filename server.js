@@ -5,28 +5,30 @@ require("dotenv").config();
 
 const app = express();
 
+/* ---------- CORS (MUST BE FIRST) ---------- */
 app.use(cors({
-  origin: ["http://127.0.0.1:5500",  "http://localhost:5500",  //Localpage
-          "https://sivar05.github.io"  //Github page
+  origin: [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "https://sivar05.github.io"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true,
-  allowedHeaders: ["Content-Type","Authorization"]
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
-
-// handle preflight explicitly
-app.options("*", cors());
 
 /* ---------- BODY PARSER ---------- */
 app.use(express.json());
 
+/* ---------- DB ---------- */
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch(err => console.error("❌ Mongo error:", err));
 
+/* ---------- ROUTES ---------- */
 app.use("/api/auth", require("./routes/auth_routes"));
 app.use("/api/password", require("./routes/password_routes"));
 
+/* ---------- SERVER ---------- */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
