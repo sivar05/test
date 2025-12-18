@@ -6,6 +6,6 @@ const forgotemailController = require("../controllers/forgotemail_controller");
 router.post("/", forgotemailController.forgotPassword);
 
 // CHANGE PASSWORD
-router.post("/changepassword", forgotemaController.changePassword);
+router.post("/changepassword", forgotemailController.changePassword);
 
 module.exports = router;
