@@ -30,7 +30,7 @@ if (!emailPattern.test(email)) {
     // DIRECT REDIRECT
     setTimeout(() => {  
         alert("Redirecting to Home Page...");        
-           goTo("index.html"); 
+           goTo("signin/signin.html"); 
         }, 1000);
 }
 
