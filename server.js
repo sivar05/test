@@ -30,6 +30,7 @@ mongoose.connect(process.env.MONGO_URI)
 app.use("/api/auth", require("./routes/auth_routes"));
 app.use("/api/password", require("./routes/password_routes"));
 
+
 /* ---------- SERVER ---------- */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

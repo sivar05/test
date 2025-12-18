@@ -71,7 +71,7 @@ function resetPassword() {
     ? "https://signup-api.up.railway.app"
     : "http://localhost:3000";
 
-fetch(`${API_BASE}/api/password/change-password`, {
+fetch(`${API_BASE}/api/password/changepassword`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, oldPassword, newPassword })
