@@ -13,13 +13,20 @@
     <div class="container">
         <h2>Reset Email</h2>
 
-        <input type="text" id="mobileNumber" class="input-box" 
-               placeholder="MobileNumber" maxlength="10"
-               oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10)" />
-        <span class="error-msg" id="mobile-error"></span>    
-          
-       
-        <button id="resetEmailButton" class= "recover-email-btn" onclick="recoverEmail()">Recover Email</button>
+        <input id="mobileNumber" placeholder="Mobile Number" />
+
+<div id="otpBox" style="display:none">
+  <input id="otp" placeholder="Enter OTP" />
+  <button onclick="verifyOTP()">Verify OTP</button>
+</div>
+
+<button id="resetEmailButton">Send OTP</button>
+<button onclick="recoverEmail()">Recover Email</button>
+
+
+<p id="message"></p>
+
+        
         <div id="message" style="margin-top:10px;"></div>
         
 
