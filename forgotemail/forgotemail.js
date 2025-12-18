@@ -24,6 +24,6 @@ function resetEmail() {
 
     // DIRECT REDIRECT
     setTimeout(() => {          
-           goTo("index.html"); 
+           goTo("signin/signin.html"); 
         }, 1000);   
 }

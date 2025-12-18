@@ -57,7 +57,7 @@ function resetEmail() {
     document.getElementById("mobile-error").innerText = "";  
     // Popup → Redirect
     popup("Redirecting to Home Page...", () => {
-        goTo("index.html");
+        goTo("signin/signin.html");
     });
 }
 
