@@ -64,8 +64,14 @@ function resetPassword() {
       "Old & new password cannot be same";
     return;
   }
+   
+  
+  const API_BASE =
+  location.hostname === "sivar05.github.io"
+    ? "https://signup-api.up.railway.app"
+    : "http://localhost:3000";
 
-  fetch("http://localhost:3000/api/change-password", {
+fetch(`${API_BASE}/api/password/change-password`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, oldPassword, newPassword })
