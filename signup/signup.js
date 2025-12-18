@@ -1,6 +1,6 @@
 // PATH HANDLER
 function goTo(path) {
-  let base = location.hostname === "sivar05.github.io" ? "/test/" : "../";
+  let base = (location.hostname === "sivar05.github.io") ? "/test/" : "../";
   window.location.href = base + path;
 }
 
@@ -34,7 +34,7 @@ function signup() {
       msg.innerText = data.message;
 
       setTimeout(() => {
-        goTo("login/login.html");
+        goTo("signin/signin.html");
       }, 1000);
     })
     .catch(err => {

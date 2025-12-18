@@ -6,14 +6,18 @@ require("dotenv").config();
 const app = express();
 
 app.use(cors({
-  origin: ["http://127.0.0.1:5500", 
-          "http://localhost:5500",
-          "https://sivar05.github.io"
+  origin: ["http://127.0.0.1:5500",  "http://localhost:5500",  //Localpage
+          "https://sivar05.github.io"  //Github page
   ],
-  methods: ["GET", "POST", "PUT"],
-  allowedHeaders: ["Content-Type"]
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
+  allowedHeaders: ["Content-Type","Authorization"]
 }));
 
+// handle preflight explicitly
+app.options("*", cors());
+
+/* ---------- BODY PARSER ---------- */
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
