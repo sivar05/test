@@ -7,7 +7,7 @@ console.log("🔥 CORS ENABLED VERSION 2 🔥");
 
 const app = express();
 
-/* ---------- CORS (MUST BE FIRST) ---------- */
+/* ---------- CORS ---------- */
 app.use(cors({
   origin: [
     "http://127.0.0.1:5500",
@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGO_URI)
 /* ---------- ROUTES ---------- */
 app.use("/api/auth", require("./routes/auth_routes"));
 app.use("/api/password", require("./routes/password_routes"));
-app.use("/api/forgotemail",require("../routes/forgotemail_routes"));
+app.use("/api/forgotemail", require("./routes/forgotemail_routes"));
 
 console.log(
   "password_routes =",
