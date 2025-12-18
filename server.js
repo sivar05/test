@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGO_URI)
 /* ---------- ROUTES ---------- */
 app.use("/api/auth", require("./routes/auth_routes"));
 app.use("/api/password", require("./routes/password_routes"));
-
+app.use("/api/forgotemail"),require(("../routes/forgotemail_routes"));
 
 /* ---------- SERVER ---------- */
 const PORT = process.env.PORT || 3000;
