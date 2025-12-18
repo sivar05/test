@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
+console.log("🔥 CORS ENABLED VERSION 2 🔥");
+
 const app = express();
 
 /* ---------- CORS (MUST BE FIRST) ---------- */
