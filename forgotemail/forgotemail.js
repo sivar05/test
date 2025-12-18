@@ -25,7 +25,7 @@ document
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ mobilenumber: mobile })
 })
-
+    
     .then(res => res.json())
     .then(data => {
       if (!data.success) throw data;

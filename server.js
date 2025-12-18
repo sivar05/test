@@ -29,7 +29,6 @@ mongoose.connect(process.env.MONGO_URI)
 /* ---------- ROUTES ---------- */
 app.use("/api/auth", require("./routes/auth_routes"));
 app.use("/api/password", require("./routes/password_routes"));
-console.log("forgotemail routes loaded");
 app.use("/api/forgotemail", require("./routes/forgotemail_routes"));
 
 

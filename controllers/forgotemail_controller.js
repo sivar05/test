@@ -22,11 +22,15 @@ exports.recoverEmail = async (req, res) => {
 
     const email = user.email;
     const atIndex = email.indexOf("@");
-    const maskedEmail =
-      email[0] +
-      "*".repeat(atIndex - 2) +
-      email.slice(atIndex - 1);
+    const localPart = email.slice(0, atIndex); // before @
+    const domain = email.slice(atIndex);       // @exp.in
 
+    const firstPart = localPart.slice(0, 3);   // first 3 chars
+    const lastPart = localPart.slice(-2);      // last 2 chars
+
+    const maskLength = localPart.length - (3 + 2);
+    const maskedEmail = firstPart +  "*".repeat(maskLength) +  lastPart +  domain;
+ 
     res.json({ success: true, maskedEmail });
 
   } catch (err) {
