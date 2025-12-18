@@ -3,22 +3,20 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-console.log("🔥 CORS ENABLED VERSION 3 🔥");
+console.log("🔥 CORS ENABLED VERSION 2 🔥");
 
 const app = express();
 
-/* ✅ TRUST PROXY (REQUIRED FOR RAILWAY) */
-app.set("trust proxy", 1);
-
-/* ✅ GLOBAL CORS */
+/* ---------- CORS (MUST BE FIRST) ---------- */
 app.use(cors({
-  origin: "https://sivar05.github.io",
+  origin: [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "https://sivar05.github.io"
+  ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
-
-/* ✅ EXPLICIT OPTIONS HANDLER (CRITICAL) */
-app.options(/.*/, cors());
 
 /* ---------- BODY PARSER ---------- */
 app.use(express.json());
