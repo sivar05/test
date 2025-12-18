@@ -35,7 +35,7 @@ function resetEmail() {
     })
     .then(data => {
       alert(data.message);
-      goTo("resetpassword/resetpassword.html");
+      goTo("changepassword/changepassword.html");
     })
     .catch(err => {
       error.innerText = err.message || "Mobile number not found";
