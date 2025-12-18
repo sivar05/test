@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const forgotemailController = require("../controllers/forgotemail_controller");
+const controller = require("../controllers/forgotemail_controller");
 
-// VERIFY MOBILE NUMBER
-router.post("/", forgotemailController.forgotPassword);
-
-// CHANGE PASSWORD
-router.post("/changepassword", forgotemailController.changePassword);
+// recover email
+router.post("/recover-email", controller.recoverEmail);
 
 module.exports = router;

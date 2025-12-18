@@ -1,43 +1,43 @@
-function goTo(path) {
-  let base = location.hostname === "sivar05.github.io" ? "/test/" : "../";
-  window.location.href = base + path;
-}
+console.log("forgotemail.js loaded");
+function recoverEmail() {
+  const mobile = document.getElementById("mobileNumber").value.trim();
+  const msg = document.getElementById("message");
+
+
 
 document
   .getElementById("resetEmailButton")
-  .addEventListener("click", resetEmail);
+  .addEventListener("click", recoverEmail);
 
-function resetEmail() {
-  const mobile = document.getElementById("mobileNumber").value.trim();
-  const error = document.getElementById("mobile-error");
 
   if (!/^\d{10}$/.test(mobile)) {
-    error.innerText = "Enter a valid 10-digit mobile number";
+    msg.innerText = "Enter a valid 10-digit mobile number";
     return;
   }
-
-  error.innerText = "";
 
   const API_BASE =
     location.hostname === "sivar05.github.io"
       ? "https://signup-api.up.railway.app"
       : "http://localhost:3000";
 
-  fetch(`${API_BASE}/api/forgotemail`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ mobilenumber: mobile })
-  })
-    .then(async res => {
-      const data = await res.json();
-      if (!res.ok) throw data;
-      return data;
-    })
+ fetch(`${API_BASE}/api/forgotemail/recover-email`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ mobilenumber: mobile })
+})
+
+    .then(res => res.json())
     .then(data => {
-      alert(data.message);
-      goTo("changepassword/changepassword.html");
+      if (!data.success) throw data;
+      msg.style.color = "green";
+      msg.innerText = `Your registered email: ${data.maskedEmail}`;
     })
     .catch(err => {
-      error.innerText = err.message || "Mobile number not found";
+      msg.style.color = "red";
+      msg.innerText = err.message || "Mobile number not found";
     });
+
+   console.log("Recover email clicked");
+
+
 }
