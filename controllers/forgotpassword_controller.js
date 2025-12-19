@@ -28,8 +28,9 @@ exports.sendResetLink = async (req, res) => {
     await user.save();
 
     // 👇 HTML is opened from LIVE SERVER (5500)
+    
     const resetLink =
-      `http://localhost:5500/resetpassword/resetpassword.html?token=${token}`;
+      `http://sivar05.github.io/test/resetpassword/resetpassword.html?token=${token}`;
 
     await transporter.sendMail({
       to: email,
