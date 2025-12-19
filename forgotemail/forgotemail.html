@@ -8,31 +8,32 @@
     <link rel="stylesheet" href="forgotemail.css">
 </head>
 <body>
-    <h1 style="text-align:center;">Reset Your Email</h1>
+    <h1 style="text-align:center;">Recover Your Email</h1>
 
-    <div class="container">
-        <h2>Reset Email</h2>
-
-        <input id="mobileNumber" placeholder="Mobile Number" />
-
-<div id="otpBox" style="display:none">
-  <input id="otp" placeholder="Enter OTP" />
-  <button onclick="verifyOTP()">Verify OTP</button>
-</div>
-
-<button id="resetEmailButton">Send OTP</button>
-<button onclick="recoverEmail()">Recover Email</button>
-
-
-<p id="message"></p>
-
+        <div class="container">
+        <input id="mobileNumber"  placeholder="Mobile Number" class="input-box"
+         maxlength="10"  oninput="handleMobileInput()"/>
+         
+         <div id="recoverBox" style="display:none; margin-top:10px;">
         
-        <div id="message" style="margin-top:10px;"></div>
-        
+        <button class="recoverBox" onclick="recoverEmail()">
+                Recover Email
+        </button>
+        </div>
 
+        <span id="errorMsg" class="error-msg"></span>
+        <p id="message"></p>
+         
+
+ <!--       <div id="otpBox" style="display:none">
+           <input id="otp" placeholder="Enter OTP" />
+           <button onclick="verifyOTP()">Verify OTP</button>      
+           </div>        
+           <button onclick="recoverEmail()">Recover Email</button>
+           <button id="resetEmailButton">Send OTP</button> -->
+    
     </div>
     
-
     <script src="./forgotemail.js"></script>
 </body>   
 </html>

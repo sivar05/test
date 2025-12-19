@@ -76,6 +76,20 @@ function verifyOTP() {
     });
 }
 
+function handleMobileInput() {
+  const mobileInput = document.getElementById("mobileNumber");
+  const recoverBox = document.getElementById("recoverBox");
+
+  // Allow digits only
+  mobileInput.value = mobileInput.value.replace(/\D/g, "");
+
+  // Show button only if exactly 10 digits
+  if (mobileInput.value.length === 10) {
+    recoverBox.style.display = "block";
+  } else {
+    recoverBox.style.display = "none";
+  }
+}
 
 function recoverEmail() {
   const mobile = document.getElementById("mobileNumber").value.trim();
