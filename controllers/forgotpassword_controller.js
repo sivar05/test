@@ -28,9 +28,12 @@ exports.sendResetLink = async (req, res) => {
     await user.save();
 
     // 👇 HTML is opened from LIVE SERVER (5500)
-    
+    const FRONTEND_URL = process.env.NODE_ENV === "production"
+                 ? "https://sivar05.github.io/test"
+                 : "http://localhost:5500";
+
     const resetLink =
-      `http://sivar05.github.io/test/resetpassword/resetpassword.html?token=${token}`;
+          `${FRONTEND_URL}/resetpassword/resetpassword.html?token=${token}`;
 
     await transporter.sendMail({
       to: email,
