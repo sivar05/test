@@ -11,15 +11,17 @@ function resetPassword() {
 }
 
 const API_BASE =
-    location.hostname === "sivar05.github.io"
+  location.hostname === "localhost"
     ? "http://localhost:3000"
     : "https://signup-api.up.railway.app";
 
-  fetch(`${API_BASE}/api/reset-password`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token, newPassword })
-  })
+
+fetch(`${API_BASE}/api/reset-password`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ token, newPassword })
+})
+
     .then(res => res.json())
     .then(data => {
       msg.style.color = data.success ? "green" : "red";

@@ -10,10 +10,11 @@ function sendResetLink() {
   const email = document.getElementById("email").value.trim();
   const msg = document.getElementById("message");
  
-  const API_BASE =
-    location.hostname === "sivar05.github.io"
+ const API_BASE =
+  location.hostname === "localhost"
     ? "http://localhost:3000"
     : "https://signup-api.up.railway.app";
+
 
   fetch(`${API_BASE}/api/send-reset-link`, {
     method: "POST",

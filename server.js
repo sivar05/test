@@ -33,10 +33,6 @@ app.use("/api", require("./routes/forgotpassword_routes"));
 
 console.log("MONGO_URI =", process.env.MONGO_URI);
 
-
-
-
-
 /* ---------- SERVER ---------- */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

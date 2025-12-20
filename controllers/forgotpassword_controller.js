@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 
 /* ---------- MAIL ---------- */
 const transporter = nodemailer.createTransport({
-  service: "gmail", // OR outlook smtp
+  service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
@@ -27,13 +27,9 @@ exports.sendResetLink = async (req, res) => {
     user.resetTokenExpiry = Date.now() + 15 * 60 * 1000;
     await user.save();
 
-    // 👇 HTML is opened from LIVE SERVER (5500)
-    const FRONTEND_URL = process.env.NODE_ENV === "production"
-                 ? "https://sivar05.github.io/test"
-                 : "http://localhost:5500";
-
+    // 👇 ONLY link generation here
     const resetLink =
-          `${FRONTEND_URL}/resetpassword/resetpassword.html?token=${token}`;
+      `https://sivar05.github.io/test/resetpassword/resetpassword.html?token=${token}`;
 
     await transporter.sendMail({
       to: email,
@@ -41,7 +37,6 @@ exports.sendResetLink = async (req, res) => {
       html: `
         <p>Click below to reset your password</p>
         <a href="${resetLink}">${resetLink}</a>
-        <p>Expires in 15 minutes</p>
       `
     });
 
