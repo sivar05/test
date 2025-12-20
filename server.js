@@ -32,9 +32,16 @@ app.use("/api/forgotemail", require("./routes/forgotemail_routes"));
 app.use("/api", require("./routes/forgotpassword_routes"));
 
 console.log("MONGO_URI =", process.env.MONGO_URI);
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "LOADED" : "MISSING");
+
 
 /* ---------- SERVER ---------- */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
+});
+
+mongoose.connection.once("open", () => {
+  console.log("📦 Connected DB name:", mongoose.connection.name);
 });

@@ -4,12 +4,16 @@ const transporter = require("../utils/transporter");
 
 /* ---------- SEND RESET LINK ---------- */
 exports.sendResetLink = async (req, res) => {
-  console.log("📩 sendResetLink called", req.body);
-
   try {
-    const { email } = req.body;
+  const email = req.body.email;
+console.log("📩 Input email:", JSON.stringify(email));
 
-    const user = await User.findOne({ email });
+const users = await User.find({});
+console.log("👥 Total users:", users.length);
+console.log("📂 DB emails:", users.map(u => JSON.stringify(u.email)));
+const user = await User.findOne({ email });
+
+
     if (!user) {
       return res.json({ success: false, message: "Email not registered" });
     }
@@ -21,32 +25,27 @@ exports.sendResetLink = async (req, res) => {
     await user.save();
 
     const resetLink =
-      `https://sivar05.github.io/test/resetpassword/resetpassword.html?token=${token}`;
+  `${process.env.FRONTEND_URL}/test/resetpassword/resetpassword.html?token=${token}`;
 
-    console.log("📤 About to send email");
 
-    try {
-      await transporter.sendMail({
-        to: email,
-        subject: "Password Reset",
-        html: `
-          <p>Click below to reset your password</p>
-          <a href="${resetLink}">${resetLink}</a>
-        `
-      });
-      console.log("✅ Email sent");
-    } catch (mailErr) {
-      console.error("❌ EMAIL ERROR:", mailErr);
-      return res.json({ success: false, message: "Email service failed" });
-    }
+    await transporter.sendMail({
+      to: email,
+      subject: "Password Reset",
+      html: `
+        <p>Click below to reset your password</p>
+        <a href="${resetLink}">${resetLink}</a>
+      `
+    });
 
     res.json({ success: true, message: "Reset link sent" });
 
   } catch (err) {
-    console.error("❌ CONTROLLER ERROR:", err);
+    console.error(err);
     res.json({ success: false, message: "Failed to send reset link" });
   }
 };
+
+
 
 /* ---------- RESET PASSWORD ---------- */
 exports.resetPassword = async (req, res) => {
