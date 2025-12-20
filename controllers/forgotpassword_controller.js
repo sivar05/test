@@ -13,6 +13,8 @@ const transporter = nodemailer.createTransport({
 
 /* ---------- SEND RESET LINK ---------- */
 exports.sendResetLink = async (req, res) => {
+  console.log("📩 sendResetLink controller called");
+  console.log("BODY:", req.body);
   try {
     const { email } = req.body;
 
