@@ -1,19 +1,22 @@
 const User = require("../models/User");
 const crypto = require("crypto");
-const transporter = require("../utils/transporter");
+const nodemailer = require("nodemailer");
+
+/* ---------- MAIL ---------- */
+const transporter = nodemailer.createTransport({
+  service: "gmail", // OR outlook smtp
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
 
 /* ---------- SEND RESET LINK ---------- */
 exports.sendResetLink = async (req, res) => {
   try {
-  const email = req.body.email;
-console.log("📩 Input email:", JSON.stringify(email));
+    const { email } = req.body;
 
-const users = await User.find({});
-console.log("👥 Total users:", users.length);
-console.log("📂 DB emails:", users.map(u => JSON.stringify(u.email)));
-const user = await User.findOne({ email });
-
-
+    const user = await User.findOne({ email });
     if (!user) {
       return res.json({ success: false, message: "Email not registered" });
     }
@@ -24,9 +27,9 @@ const user = await User.findOne({ email });
     user.resetTokenExpiry = Date.now() + 15 * 60 * 1000;
     await user.save();
 
+    // 👇 HTML is opened from LIVE SERVER (5500)
     const resetLink =
-  `${process.env.FRONTEND_URL}/test/resetpassword/resetpassword.html?token=${token}`;
-
+      `http://localhost:5500/resetpassword/resetpassword.html?token=${token}`;
 
     await transporter.sendMail({
       to: email,
@@ -34,6 +37,7 @@ const user = await User.findOne({ email });
       html: `
         <p>Click below to reset your password</p>
         <a href="${resetLink}">${resetLink}</a>
+        <p>Expires in 15 minutes</p>
       `
     });
 
@@ -44,8 +48,6 @@ const user = await User.findOne({ email });
     res.json({ success: false, message: "Failed to send reset link" });
   }
 };
-
-
 
 /* ---------- RESET PASSWORD ---------- */
 exports.resetPassword = async (req, res) => {
@@ -60,7 +62,7 @@ exports.resetPassword = async (req, res) => {
     return res.json({ success: false, message: "Invalid or expired link" });
   }
 
-  user.password = newPassword; // (bcrypt already handled elsewhere)
+  user.password = newPassword; // ⚠️ hash later
   user.resetToken = null;
   user.resetTokenExpiry = null;
   await user.save();
