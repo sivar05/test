@@ -40,7 +40,7 @@ function sendResetLink() {
 
       // ⏳ redirect after 2 seconds
       setTimeout(() => {
-        goTo("resetpassword/resetpassword.html");
+        goTo("signin/signin.html");
       }, 2000);
     })
     .catch(() => {

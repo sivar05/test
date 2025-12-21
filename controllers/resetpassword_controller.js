@@ -3,6 +3,12 @@ const bcrypt = require("bcrypt");
 exports.resetPassword = async (req, res) => {
   const { token, newPassword } = req.body;
 
+  console.log("TOKEN RECEIVED:", token);
+console.log("TOKEN IN DB:", user?.resetToken);
+console.log("EXPIRY:", user?.resetTokenExpiry);
+console.log("NOW:", Date.now());
+
+
   const user = await User.findOne({
     resetToken: token,
     resetTokenExpiry: { $gt: Date.now() }

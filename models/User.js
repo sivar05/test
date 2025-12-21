@@ -10,9 +10,18 @@ const userSchema = new mongoose.Schema({
   },
   mobilenumber: String,
   password: String,
-  resetToken: String,
-  resetTokenExpiry: Date,
+ 
 });
+const user = await User.findOne({
+  resetToken: token,
+  resetTokenExpiry: { $gt: Date.now() }
+});
+
+if (!user) {
+  return res.status(400).json({
+    message: "Invalid or expired token"
+  });
+}
 
 
 module.exports = mongoose.model("User", userSchema);
