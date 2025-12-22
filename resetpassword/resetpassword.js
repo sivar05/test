@@ -32,13 +32,17 @@ function resetPassword() {
       if (!res.ok) throw new Error("Invalid or expired token");
       return res.json();
     })
-    .then(data => {
-      msg.style.color = "green";
-      msg.innerText = data.message || "Password updated successfully";
-
-      setTimeout(() => {
-        goTo("signin/signin.html");
-      }, 1000);
+   .then(data => {
+     msg.style.color = "green";
+     msg.innerText = data.message || "Password updated successfully";
+  
+     // Show confirmation alert
+     alert("Password updated successfully! This window will now close.");
+  
+    // Close the current tab/window after 1 second
+     setTimeout(() => {
+     window.close();
+     }, 1000);
     })
     .catch(err => {
       msg.style.color = "red";

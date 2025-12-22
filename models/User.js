@@ -1,27 +1,28 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  username: String,
+  username: {
+    type: String,
+    required: [true, 'Username is required']
+  },
   email: {
     type: String,
     unique: true,
     lowercase: true,
-    trim: true
+    trim: true,
+    required: [true, 'Email is required']
   },
-  mobilenumber: String,
-  password: String,
- 
+  mobilenumber: {
+    type: String,
+    required: [true, 'Mobile number is required']
+  },
+  password: {
+    type: String,
+    required: [true, 'Password is required']
+  },
+  resetToken: String,  // For password reset tokens
+  resetTokenExpiry: Date  // ✅ CORRECT: Just store the expiry date as a Date type
 });
-const user = await User.findOne({
-  resetToken: token,
-  resetTokenExpiry: { $gt: Date.now() }
-});
 
-if (!user) {
-  return res.status(400).json({
-    message: "Invalid or expired token"
-  });
-}
-
-
-module.exports = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
+module.exports = User;
