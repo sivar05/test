@@ -26,15 +26,17 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error("❌ Mongo error:", err));
 
 /* ---------- ROUTES ---------- */
+
 app.use("/api/auth", require("./routes/auth_routes"));
 app.use("/api/password", require("./routes/password_routes"));
 app.use("/api/forgotemail", require("./routes/forgotemail_routes"));
 
-app.use("/api", require("./routes/forgotpassword_routes"));
+// Add this line (remove the duplicate one if exists)
+app.use('/api/forgotpassword', require('./routes/forgotpassword_routes'));
+app.post("/api/forgotpassword", require("./controllers/forgotpassword_controller").sendResetLink);
+app.post("/api/forgotpassword/resetpassword", require("./controllers/forgotpassword_controller").resetPassword);
 
-console.log("MONGO_URI =", process.env.MONGO_URI);
-console.log("EMAIL_USER:", process.env.EMAIL_USER);
-console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "LOADED" : "MISSING");
+
 
 
 /* ---------- SERVER ---------- */

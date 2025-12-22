@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Test API Endpoints</h2>
+    
+    <div>
+        <h3>Test 1: /api/test (GET)</h3>
+        <button onclick="test1()">Test</button>
+        <div id="result1"></div>
+    </div>
+    
+    <div>
+        <h3>Test 2: /api/forgotpassword/send-reset-link (POST)</h3>
+        <input type="email" id="testEmail" placeholder="test@example.com">
+        <button onclick="test2()">Test</button>
+        <div id="result2"></div>
+    </div>
+    
+    <div>
+        <h3>Test 3: /api/forgotpassword/resetpassword (POST)</h3>
+        <button onclick="test3()">Test</button>
+        <div id="result3"></div>
+    </div>
+    
+    <script>
+        const API_BASE = 'http://localhost:3000';
+        
+        async function test1() {
+            try {
+                const response = await fetch(`${API_BASE}/api/test`);
+                const data = await response.json();
+                document.getElementById('result1').innerHTML = 
+                    `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('result1').innerHTML = 
+                    `Error: ${error.message}`;
+            }
+        }
+        
+        async function test2() {
+            const email = document.getElementById('testEmail').value || 'test@example.com';
+            try {
+                const response = await fetch(`${API_BASE}/api/forgotpassword/send-reset-link`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const data = await response.json();
+                document.getElementById('result2').innerHTML = 
+                    `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('result2').innerHTML = 
+                    `Error: ${error.message}`;
+            }
+        }
+        
+        async function test3() {
+            try {
+                const response = await fetch(`${API_BASE}/api/forgotpassword/resetpassword`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        email: 'test@example.com',
+                        newPassword: 'Test123456',
+                        token: 'test-token-123'
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('result3').innerHTML = 
+                    `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('result3').innerHTML = 
+                    `Error: ${error.message}`;
+            }
+        }
+        
+        // Auto-run test 1
+        test1();
+    </script>
+</body>
+</html>

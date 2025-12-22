@@ -6,7 +6,8 @@ const {
   resetPassword
 } = require("../controllers/forgotpassword_controller");
 
-router.post("/send-reset-link", sendResetLink);
-router.post("/resetpassword", resetPassword);
+// Make sure these match what your frontend is calling
+router.post("/", sendResetLink);  // This handles POST /api/forgotpassword
+router.post("/resetpassword", resetPassword);  // This handles POST /api/forgotpassword/resetpassword
 
 module.exports = router;
