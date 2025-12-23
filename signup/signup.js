@@ -141,6 +141,20 @@ function validateSignupForm() {
   return true;
 }
 
+//Go-Back function
+function goBack() { 
+  goTo("signin/signin.html");
+}
+
+function showPassword(fieldId) {
+  document.getElementById(fieldId).type = "text";
+}
+
+function hidePassword(fieldId) {
+  document.getElementById(fieldId).type = "password";
+}
+
+
 // PATH HANDLER
 function goTo(path) {
   let base = (location.hostname === "sivar05.github.io") ? "/test/" : "../";
