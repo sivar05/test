@@ -1,4 +1,12 @@
 // PATH HANDLER
+/*--function redirectTo(path) {
+    // Remove any leading/trailing slashes and combine
+    const base = window.location.origin;
+    const cleanPath = path.replace(/^\/+/, '');  // Remove leading slashes
+    window.location.href = `${base}/${cleanPath}`;
+}*/
+
+// PATH HANDLER
 function goTo(path) {
   let base = (location.hostname === "sivar05.github.io") ? "/test/" : "../";
   window.location.href = base + path;
@@ -109,7 +117,9 @@ function sendResetLink() {
             
             // Switch to step 2 after 2 seconds
             setTimeout(() => {
-                showPasswordResetStep();
+               // showPasswordResetStep();
+               alert("If the email exists, a reset link has been sent. Please check your inbox.");
+               window.close();
             }, 2000);
         } else {
             showMessage(messageElement, data.message || "Failed to send reset link", "red");
@@ -283,7 +293,7 @@ function resetPassword() {
             // Show success alert and redirect
             setTimeout(() => {
                 alert("Password updated successfully! Redirecting to login page...");
-                goTo("/signin/signin.html");
+                goTo("signin/signin.html");
             }, 1500);
         } else {
             showMessage(messageElement, data.message || "Failed to update password", "red");

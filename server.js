@@ -13,6 +13,7 @@ app.use(cors({
     "http://localhost:5500",
     "https://sivar05.github.io"
   ],
+  credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
@@ -28,6 +29,7 @@ mongoose.connect(process.env.MONGO_URI)
 /* ---------- ROUTES ---------- */
 
 app.use("/api/auth", require("./routes/auth_routes"));
+
 app.use("/api/password", require("./routes/password_routes"));
 app.use("/api/forgotemail", require("./routes/forgotemail_routes"));
 

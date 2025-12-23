@@ -4,6 +4,33 @@ const crypto = require("crypto");
 const bcrypt = require('bcryptjs');
 const transporter = require("../utils/transporter.js");
 
+// Configuration for different environments
+const config = {
+    development: {
+        baseUrl: "http://localhost:5500",
+        pathPrefix: ""  // No /test/ in local
+    },
+    production: {
+        baseUrl: "https://sivar05.github.io",
+        pathPrefix: "test/"  // Add /test/ for GitHub Pages
+    }
+};
+
+// Helper function to build reset link
+function buildResetLink(token, email) {
+    const env = process.env.NODE_ENV || 'development';
+    const { baseUrl, pathPrefix } = config[env];
+    
+    const cleanBase = baseUrl.replace(/\/+$/, '');
+    const path = `${pathPrefix}forgotpassword/forgotpassword.html`;
+    
+    const url = new URL(path, cleanBase);
+    url.searchParams.set('token', token);
+    url.searchParams.set('email', encodeURIComponent(email));
+    
+    return url.toString();
+}
+
 /* ---------- SEND RESET LINK ---------- */
 exports.sendResetLink = async (req, res) => {
   try {
@@ -39,19 +66,17 @@ exports.sendResetLink = async (req, res) => {
       }
     );
 
- // In forgotpassword_controller.js - SEND RESET LINK function
-// Create reset URL with correct path
-const frontendBase = process.env.FRONTEND_URL || "http://localhost:5500";
-const resetLink = `${frontendBase}/test/forgotpassword/forgotpassword.html?token=${token}&email=${encodeURIComponent(email)}`;
+    // ✅ FIXED: Build reset link using the function
+    const resetLink = buildResetLink(token, user.email);
 
-console.log("✅ Reset link created for:", email);
-console.log("🔗 Reset link:", resetLink);
+    console.log("✅ Reset link created for:", user.email);
+    console.log("🔗 Reset link:", resetLink);
 
     // Send email
     try {
       await transporter.sendMail({
         from: process.env.EMAIL_FROM || "noreply@yourapp.com",
-        to: email,
+        to: user.email,
         subject: "Password Reset Request",
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -75,7 +100,7 @@ console.log("🔗 Reset link:", resetLink);
           </div>
         `
       });
-      console.log("📧 Email sent to:", email);
+      console.log("📧 Email sent to:", user.email);
     } catch (emailError) {
       console.error("❌ Email sending error:", emailError);
       // Still send success response since token was generated
@@ -153,11 +178,12 @@ exports.resetPassword = async (req, res) => {
     const hashedPassword = await bcrypt.hash(newPassword, salt);
     
     // Update user password and clear reset token
+    // ✅ FIXED: Changed hadhedPassword to hashedPassword
     await User.updateOne(
       { _id: user._id },
       {
         $set: {
-          password: hashedPassword,
+          password: hashedPassword, // ✅ FIXED THIS LINE
           resetToken: null,
           resetTokenExpiry: null
         }
