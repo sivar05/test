@@ -110,6 +110,29 @@ function clearError(errorId) {
     document.getElementById(errorId).innerText = "";
 }
 
+//for console test
+async function testAPI() {
+  const testURLs = [
+    'https://signup-api.up.railway.app/api/auth/signin',
+    'https://signup-api.up.railway.app/',
+    'https://your-backend.onrender.com/api/auth/signin', // if using render
+    'http://localhost:3000/api/auth/signin' // local test
+  ];
+  
+  for (const url of testURLs) {
+    try {
+      console.log('Testing:', url);
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({email: 'test', password: 'test'})
+      });
+      console.log(`${url}: ${response.status}`);
+    } catch (error) {
+      console.log(`${url}: ERROR -`, error.message);
+    }
+  }
+}
 
 //Exit-back
 
