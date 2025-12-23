@@ -22,10 +22,12 @@ app.use(cors({
 app.use(express.json());
 
 /* ---------- DB ---------- */
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch(err => console.error("❌ Mongo error:", err));
-
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/testdb')
+  .then(() => console.log('✅ MongoDB connected successfully'))
+  .catch(err => {
+    console.error('❌ MongoDB connection error:', err.message);
+    console.log('💡 Make sure MongoDB is running locally or check your connection string');
+  });
 /* ---------- ROUTES ---------- */
 
 app.use("/api/auth", require("./routes/auth_routes"));

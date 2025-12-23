@@ -43,3 +43,38 @@ exports.updateUser = async (req, res) => {
 
   res.json({ message: "User updated successfully" });
 };
+
+// SIGNIN - FIXED VERSION
+exports.signin = async (req, res) => {
+  try {
+    const { email, password } = req.body; 
+    
+    // Find user by email
+    const user = await User.findOne({ email });
+    
+    if (!user) {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+    
+    // Check password - Assuming you have password hashing
+    // If you're storing plain passwords (not recommended):
+    if (user.password !== password) {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+    
+    // Return user without password
+    const userWithoutPassword = { ...user._doc };
+    delete userWithoutPassword.password;
+    delete userWithoutPassword.__v;
+    
+    res.json({ 
+      success: true, 
+      message: "Login successful",
+      user: userWithoutPassword
+    });
+    
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+}; // ✅ End of function - no extra code after this!

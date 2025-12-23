@@ -31,42 +31,55 @@ function closePopup() {
 }
 
 // LOGIN
+// In signin.js - Add more debugging
 function login() {
-
-    clearError('email');
-    clearError('password');
-
-    let email = document.getElementById("email").value.trim();
-    let password = document.getElementById("password").value.trim();
-
-    if (email === "" && password === "") {
-        popup("Please enter Email and Password!");
-        return;
+  let email = document.getElementById("email").value.trim();
+  let password = document.getElementById("password").value.trim();
+  
+  console.log('🔍 Login attempt:', { email, password });
+  
+  const API_BASE =
+    location.hostname === "sivar05.github.io"
+      ? "https://signup-api.up.railway.app"
+      : "http://localhost:3000";
+      
+  fetch(`${API_BASE}/api/auth/signin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password
+    })
+  })
+  .then(async response => {
+    console.log("📥 Response status:", response.status);
+    console.log("📥 Response headers:", response.headers);
+    
+    const text = await response.text();
+    console.log("📥 Response text:", text);
+    
+    try {
+      return JSON.parse(text);
+    } catch (e) {
+      console.error("❌ JSON parse error:", e);
+      throw new Error(`Invalid JSON response: ${text.substring(0, 100)}`);
     }
-
-    if (email === "") {
-        popup("Please enter your Email!");
-        return;
-    }
-
-    if (password === "") {
-        popup("Please enter your Password!");
-        return;
-    }
-
-    if (email === "siva@test.in" && password === "12345") {
-       popup("Login Successful!", () => {
-
-        // ⭐ CLEAR FIELDS ONLY USING JS
-        document.getElementById("email").value = "";
-        document.getElementById("password").value = "";
-
-        // Redirect
-        goTo("homepage/home.html");
+  })
+  .then(data => {
+    console.log("✅ Login successful data:", data);
+    popup("Login Successful!", () => {
+      document.getElementById("email").value = "";
+      document.getElementById("password").value = "";
+      goTo("homepage/home.html");
     });
-    } else {
-        popup("Invalid Email or Password!");
-    } 
+  })
+  .catch(err => {
+    console.error("❌ Full login error:", err);
+    popup(err.message || "Login failed. Please try again.");
+  });     
 }
 
 // ...........Recent password type-------------//
