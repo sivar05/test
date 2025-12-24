@@ -29,8 +29,8 @@
 
              <div class="password-wrapper">
              <input id="password" type="password" class="input-box"
-             placeholder="Password" onclick="clearError('password-error')"
-             oninput="clearError('password-error')">           
+             placeholder="Password" onclick="clearError('password-error')" 
+             oninput="handlePasswordInput();clearError('password-error')">           
              <img id="eyeIcon" class="eye-icon" src="../image/symbol/eye_close.png"     
              alt="Toggle password" onclick="togglePassword()" />
             </div>

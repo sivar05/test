@@ -93,6 +93,49 @@ fetch(`${API_BASE}/api/password/changepassword`, {
   });
 }
 
+/* =========================
+   PASSWORD TOGGLE
+========================= */
+function handlePasswordInput(input) {
+    const icon = input.nextElementSibling;
+    if (!icon) return;
+
+    if (input.value.length > 0) {
+        icon.style.display = "block";
+    } else {
+        icon.style.display = "none";
+        input.type = "password";
+        icon.src = getEyeIcon("close");
+    }
+}
+
+function togglePassword(icon) {
+    if (!icon) return;
+
+    const input = icon.previousElementSibling;
+    if (!input) return;
+
+    if (input.type === "password") {
+        input.type = "text";
+        icon.src = getEyeIcon("open");
+    } else {
+        input.type = "password";
+        icon.src = getEyeIcon("close");
+    }
+}
+
+function getEyeIcon(type) {
+    const base =
+        location.hostname === "sivar05.github.io"
+            ? "/test/image/symbol/"
+            : "../image/symbol/";
+
+    return base + (type === "open" ? "eye_open.png" : "eye_close.png");
+}
+
+
+
+
 function clearError(id) {
   const el = document.getElementById(id);
   if (el) el.innerText = "";
