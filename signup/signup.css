@@ -115,6 +115,7 @@ body {
 
 .eye-icon {
     position: absolute;
+    display:none;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);

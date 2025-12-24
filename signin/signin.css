@@ -283,6 +283,7 @@ body {
 /* Eye icon */
 .eye-icon {
     position: absolute;
+    display: none;
     right: 16px;              /* GAP from right */
     top: 50%;
     transform: translateY(-50%);

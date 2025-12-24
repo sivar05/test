@@ -50,21 +50,17 @@
 
             <div class="input-group">
                 <input type="password" id="password" placeholder="Password" class="input-box"
-                 oninput="clearError('password','password-error');">
-                <img src="../image/symbol/hidden.png" id="eyeIcon" class="eye-icon" 
-                     onmousedown="showPassword('password')"
-                     onmouseup="hidePassword('password')"
-                     onmouseleave="hidePassword('password')">
+                 oninput="handlePasswordInput(this); clearError('password','password-error');">
+                <img src="../image/symbol/eye_close.png" id="eyeIcon" class="eye-icon" 
+                     alt="Toggle password" onclick="togglePassword(this)"/>
             <span class="error-msg" id="password-error"></span>
             </div>
 
             <div class="input-group">
                 <input type="password" id="confirmPassword" placeholder="Confirm Password" class="input-box"
-                oninput="clearError('confirmPassword','confirm-error'); clearError('check-error');">
-                 <img src="../image/symbol/hidden.png" id="eyeIcon" class="eye-icon" 
-                     onmousedown="showPassword('confirmPassword')"
-                     onmouseup="hidePassword('confirmPassword')"
-                     onmouseleave="hidePassword('confirmPassword')">
+                oninput="handlePasswordInput(this); clearError('confirmPassword','confirm-error'); clearError('check-error');">
+                 <img src="../image/symbol/eye_close.png" id="eyeIcon" class="eye-icon" 
+                    alt="Toggle password" onclick="togglePassword(this)" />
             <span class="error-msg" id="confirm-error"></span>
             <span class="error-msg" id="check-error"></span>
             </div>
