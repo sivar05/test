@@ -263,32 +263,73 @@ body {
     margin-top: 10px;
   }
 
+
 .password-wrapper {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
+    margin-top: 15px;
 }
 
-.password-wrapper input {
-  width: 100%;
-  padding: 10px 40px 10px 10px;
-  font-size: 12px;
-  box-sizing: border-box;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+/* Password input */
+.password-input {
+    width: 100%;
+    padding: 10px 44px 10px 12px; /* space for eye icon */
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Eye icon */
+.eye-icon {
+    position: absolute;
+    right: 16px;              /* GAP from right */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.eye-icon:hover {
+    opacity: 1;
+}
+
+/* Error message */
+.error-msg {
+    color: red;
+    font-size: 12px;
+    margin-top: 6px;
+    display: block;
+}
+
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-input {
+    width: 100%;
+    padding-right: 40px;
 }
 
 .eye-icon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-  cursor: pointer;
-  display: none; /* hidden by default */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    cursor: pointer;
+    display: none;
 }
 
-
-
+.error-msg {
+    color: red;
+    font-size: 13px;
+    margin-top: 4px;
+    display: block;
+}
 
 /* --------------------------------------------------
    MOBILE RESPONSIVE

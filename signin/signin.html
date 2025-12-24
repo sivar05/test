@@ -23,17 +23,21 @@
            <!-- Signin Container -->
            <div class="container">
             <h2 style="text-align: center;">Sign In</h2>
+            <input id="email" type="text" class="input-box"
+             placeholder="Email" oninput="clearError('email-error')">
+            <span class="error-msg" id="email-error"></span>
 
-            <form onsubmit="event.preventDefault(); login();">
-                    <input type="text" id="email" placeholder="Email" class="input-box" />
-                    <div class="password-wrapper">
-                     <input type="password" id="password" placeholder="Password" oninput="toggleEye()">
-
-                     <img src="../image/symbol/hidden.png" id="eyeIcon" class="eye-icon" 
-                     onmousedown="showPassword()"
-                     onmouseup="hidePassword()"
-                     onmouseleave="hidePassword()">
-                </div>
+             <div class="password-wrapper">
+             <input id="password" type="password" class="input-box"
+             placeholder="Password" onclick="clearError('password-error')"
+             oninput="clearError('password-error')">           
+             <img id="eyeIcon" class="eye-icon" src="../image/symbol/eye_close.png"     
+             alt="Toggle password" onclick="togglePassword()" />
+            </div>
+              <span class="error-msg" id="password-error"></span>
+              <p id="message" style="text-align:center; font-weight:bold;"></p>
+    
+            
             <div class="forgot-row">
                 <span onclick="forgotEmail()">Forgot Email?</span>
                 <span onclick="forgotPassword()">Forgot Password?</span>
@@ -42,8 +46,9 @@
             <button type="button" id="loginButton" class="signin-btn" onclick="login()">Login</button>
 
             <span class="signup-btn" onclick="redirectToSignUp()">Don't have an account?</span>
-            </form>
+            
     
+        </div>
         </div>
         </div>
     </div>
