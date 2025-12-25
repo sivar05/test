@@ -1,243 +1,215 @@
 /* --------------------------------------------------
-   RESET + BASE
+   RESET
 -------------------------------------------------- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
+/* --------------------------------------------------
+   PAGE BACKGROUND
+-------------------------------------------------- */
 body {
-  font-family: Arial, sans-serif;
-  background: #f2f2f2;
+  min-height: 100vh;
+  background: #000;
   overflow-x: hidden;
 }
 
-
 /* --------------------------------------------------
-   FULLSCREEN BACKGROUND
+   BACKGROUND IMAGE
 -------------------------------------------------- */
 .top-image {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;       /* allow content to grow */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;   /* avoid forcing vertical center */
-    overflow: hidden;        /* REMOVE x/y scroll */
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
 }
-
 
 .center-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;        /* fills screen properly */
-    object-position: center;  /* keeps middle part */
-    z-index: -1;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
-
-
 
 /* --------------------------------------------------
-   WELCOME TEXT
+   SPLIT LAYOUT
 -------------------------------------------------- */
-
-
-/* FULL PAGE SPLIT */
 .split-page {
-    display: flex;
-    min-height: 100svh; /* new mobile viewport fix */
-    height: 100vh;
-    width: 100%;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
 }
 
-/* LEFT SIDE */
+/* LEFT */
 .left-page {
-    flex: 1;
-    background: linear-gradient(135deg, #1e90ff, #00bfff);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  flex: 1;
+  background: linear-gradient(135deg, #1e90ff, #00bfff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .left-page h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
-    text-decoration:dotted;
-    text-align: center;
+  font-size: 42px;
+  color: white;
+  line-height: 1;
+  text-align: center;
 }
 
-/* RIGHT SIDE */
+/* RIGHT */
 .right-page {
-    flex: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-
 
 /* --------------------------------------------------
-   MAIN FORM CONTAINER
+   FORM CONTAINER
 -------------------------------------------------- */
-.container {
-    position: relative;
-    width: 400px;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
-    margin: 0;              /* IMPORTANT */
-  
+.card {
+  width: 400px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
-
+.card h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
 
 /* --------------------------------------------------
-   INPUT FIELDS
+   FLOATING INPUT BOX
 -------------------------------------------------- */
-.input-group {
-    position: relative;
-    margin-bottom: 15px;
-}
-
 .input-box {
-    width: 100%;
-    padding: 12px 40px 12px 12px; 
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+  position: relative;
+  margin-bottom: 22px;
 }
 
-.eye-icon {
-    position: absolute;
-    display:none;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    opacity: 0.8;
+.input-box input {
+  width: 100%;
+  height: 54px;
+  padding: 20px 44px 10px 14px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1.5px solid #ccd0d5;
+  outline: none;
+  background: #fff;
+  transition: border-color 0.2s ease;
 }
 
-.eye-icon:hover {
-    opacity: 1;
+/* BORDER ACTIVE */
+.input-box input:focus,
+.input-box input:not(:placeholder-shown) {
+  border-color: blueviolet;
 }
 
-
-/* ERROR MESSAGE */
-.error-msg {
-    color: red;
-    font-size: smaller;
+/* LABEL */
+.input-box label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #555;
+  pointer-events: none;
+  transition: 0.2s ease;
+  background: white;
+  padding: 0 4px;
 }
 
+/* ✅ FLOAT LABEL UP */
+.input-box input:focus ~ label,
+.input-box input:not(:placeholder-shown) ~ label {
+  top: -8px;
+  font-size: 12px;
+  color: blueviolet;
+}
 
 /* --------------------------------------------------
-   BUTTONS
+   EYE ICON
+-------------------------------------------------- */
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  cursor: pointer;
+  display: none;
+}
+
+/* --------------------------------------------------
+   ERROR MESSAGE
+-------------------------------------------------- */
+.error-msg {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* --------------------------------------------------
+   SUBMIT BUTTON
 -------------------------------------------------- */
 .submit {
-    width: 100%;
-    padding: 12px;
-    background: blueviolet;
-    color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+  width: 100%;
+  height: 48px;
+  background: blueviolet;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .submit:hover {
-    background-color: darkviolet;
+  opacity: 0.9;
 }
 
-.go-back { 
-    text-align: right;
-    font-size: 14px; 
-    color: red; 
-    cursor: pointer; 
-    margin-top: 10px;
-    transition:color.0.3 ease; 
-    user-select: none;
-   -webkit-user-select: none;   /*prevent user lens*/
-   -webkit-tap-highlight-color: transparent;  /*remove tap highlight*/
+/* --------------------------------------------------
+   GO BACK
+-------------------------------------------------- */
+.go-back {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+.go-back .link {
+  color: blueviolet;
+  text-decoration: none;
+  margin-left: 6px;
+  cursor: pointer;
+}
+.go-back .link:hover {
+  text-decoration: underline;
 }
 
-.go-back:hover,
-.go-back:active {
-    text-decoration: underline;
-    color: #ff5722;
-}
-
-
-/*..........Mobile...........*/
-
+/* --------------------------------------------------
+   MOBILE
+-------------------------------------------------- */
 @media (max-width: 768px) {
+  .split-page {
+    flex-direction: column;
+  }
 
-    body {
-        font-size: 90%;
-        overflow-x: auto;
-    }
-/* SPLIT LAYOUT */
-.split-page {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;          /* BLOCK CROSS FLOW */
-}
-/* LEFT PANEL (25%) */
-.left-page {
-    flex: 0 0 25%;
-    min-width: 25%;
-    height: 100vh;
+  .left-page {
+    display: none;
+  }
+
+  .right-page {
     padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;          /* IMPORTANT */
-}
+  }
 
-/* LEFT TEXT SAFETY */
-.left-page h1,
-.left-page p {
-    max-width: 100%;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    font-size: large;
-}
-
-
-/* RIGHT PANEL (75%) */
-.right-page {
-    flex: 0 0 75%;
-    min-width: 75%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    overflow-y: auto;          /* ONLY FORM SCROLLS */
-}
-
- /* FORM */
-    .container {
-        width: 100%;
-        max-width: 300px;
-        margin:auto;
-    }
-
-    /* REMOVE ABSOLUTE WELCOME TEXT */
-    .welcome-text {
-        position: static;
-        transform: none;
-        text-align:center;
-        font-size: 5px;
-    }
-    
+  .container {
+    width: 100%;
+    max-width: 320px;
+  }
 }
