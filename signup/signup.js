@@ -93,9 +93,9 @@ function validateSignupForm() {
     return false;
   }
 
-  if (password.length < 8) {
+  if (password === "" || password.length < 5) {
     msg.style.color = "red";
-    msg.innerText = "Password must be at least 8 characters";
+    msg.innerText = "Password must be at least 5 characters";
     return false;
   }
 

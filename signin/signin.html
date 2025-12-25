@@ -21,39 +21,48 @@
         </div>
         <div class="right-page">
            <!-- Signin Container -->
-           <div class="container">
-            <h2 style="text-align: center;">Sign In</h2>
-            <input id="email" type="text" class="input-box"
-             placeholder="Email" oninput="clearError('email-error')">
-            <span class="error-msg" id="email-error"></span>
+    <div class="card">
+        <h1>SIGN IN</h1>
+        <p class="subtitle">Please enter your details</p>
+        
 
-             <div class="password-wrapper">
-             <input id="password" type="password" class="input-box"
-             placeholder="Password" onclick="clearError('password-error')" 
+    <form>
+      <!-- Email with floating label -->
+      <div class="input-box">
+        <input type="email" id="email" required placeholder=" "
+        oninput="clearError('email-error')">
+        <label for="email">Email address</label>
+      </div>
+       <span class="error-msg" id="email-error"></span>
+
+      <!-- Password with floating label -->
+      <div class="input-box">
+        <input type="password" id="password" required placeholder=" " 
+             onclick="clearError('password-error')" 
              oninput="handlePasswordInput();clearError('password-error')">           
              <img id="eyeIcon" class="eye-icon" src="../image/symbol/eye_close.png"     
              alt="Toggle password" onclick="togglePassword()" />
-            </div>
-              <span class="error-msg" id="password-error"></span>
-              <p id="message" style="text-align:center; font-weight:bold;"></p>
-    
-            
-            <div class="forgot-row">
+        <label for="password">Password</label>              
+      </div>
+      <span class="error-msg" id="password-error"></span>
+      </form>
+      <p id="message" style="text-align:center; font-weight:bold;"></p> 
+          
+        <div class="forgot-row">
                 <span onclick="forgotEmail()">Forgot Email?</span>
                 <span onclick="forgotPassword()">Forgot Password?</span>
-            </div>
+        </div>  
+        <button type="button" id="loginButton" class="signin-btn" onclick="login()">Login</button>
+        <p class="footer-text">
+            Don't have an account?
+            <a href="#" class="link" onclick="redirectToSignUp()">Sign up</a>
+        </p>
 
-            <button type="button" id="loginButton" class="signin-btn" onclick="login()">Login</button>
-
-            <span class="signup-btn" onclick="redirectToSignUp()">Don't have an account?</span>
-            
-    
         </div>
-        </div>
-        </div>
+       </div>
+      </div>
+     </div>
     </div>
-    
-
     <!-- Popup -->
         <div id="popup" class="popup">
         <div class="popup-box">
