@@ -49,9 +49,7 @@ function signup() {
     .then(data => {
       msg.style.color = "green";
       msg.innerText = data.message || "Account created successfully";
-
       if (form) form.reset();
-
       setTimeout(() => {
         goTo("signin/signin.html");
       }, 1500);

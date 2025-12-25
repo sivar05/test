@@ -20,6 +20,8 @@ app.use(cors({
 
 /* ---------- BODY PARSER ---------- */
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 /* ---------- DB ---------- */
 mongoose.connect(process.env.MONGO_URI)

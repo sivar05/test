@@ -1,6 +1,9 @@
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 
-// SIGNUP
+/* ======================
+   SIGNUP
+====================== */
 exports.signup = async (req, res) => {
   try {
     const { username, email, mobilenumber, password, confirmPassword } = req.body;
@@ -27,54 +30,50 @@ exports.signup = async (req, res) => {
     res.json({ success: true, message: "Signup successful" });
 
   } catch (err) {
-    console.error(err);
+    console.error("Signup error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
 
-// UPDATE USER
-exports.updateUser = async (req, res) => {
-  const { email, mobilenumber, password } = req.body;
-
-  await User.updateOne(
-    { email },
-    { $set: { mobilenumber, password } }
-  );
-
-  res.json({ message: "User updated successfully" });
-};
-
-// SIGNIN - FIXED VERSION
+/* ======================
+   SIGNIN (FIXED)
+====================== */
 exports.signin = async (req, res) => {
   try {
-    const { email, password } = req.body; 
-    
-    // Find user by email
+    console.log("BODY:", req.body); // ✅ correct place
+
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password required" });
+    }
+
     const user = await User.findOne({ email });
-    
+    console.log("USER FOUND:", !!user);
+
     if (!user) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
-    
-    // Check password - Assuming you have password hashing
-    // If you're storing plain passwords (not recommended):
-    if (user.password !== password) {
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log("PASSWORD MATCH:", isMatch);
+
+    if (!isMatch) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
-    
-    // Return user without password
+
     const userWithoutPassword = { ...user._doc };
     delete userWithoutPassword.password;
     delete userWithoutPassword.__v;
-    
-    res.json({ 
-      success: true, 
+
+    res.json({
+      success: true,
       message: "Login successful",
       user: userWithoutPassword
     });
-    
+
   } catch (err) {
-    console.error(err);
+    console.error("Signin error:", err);
     res.status(500).json({ message: "Server error" });
   }
-}; // ✅ End of function - no extra code after this!
+};
