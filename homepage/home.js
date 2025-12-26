@@ -1,3 +1,31 @@
+const settingsBtn = document.getElementById("settingsBtn");
+const settingsMenu = document.getElementById("settingsMenu");
+
+settingsBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  settingsMenu.style.display =
+    settingsMenu.style.display === "block" ? "none" : "block";
+});
+
+// Close menu when clicking outside
+document.addEventListener("click", () => {
+  settingsMenu.style.display = "none";
+});
+function logout() {
+  const confirmLogout = confirm("Are you sure you want to exit?");
+
+  if (confirmLogout) {
+    
+
+    // clear login data if any
+    localStorage.clear();
+    sessionStorage.clear();
+    window.close(); // close the window
+  }
+}
+
+
+
 // Show image in fullscreen overlay with title/description
 function showFull(src, title = "", desc = "") {
   const fs = document.getElementById("fullscreen");
@@ -59,8 +87,6 @@ function goTo(path) {
       window.open(urls[image], "_blank");
     }, 1000);
   }
-
-
 
 function changePwd(){
   setTimeout(()=>{

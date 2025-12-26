@@ -16,13 +16,15 @@
     </div>
 </div>
 
-    <div class="account-detail">
-        <span onClick="setting()">Setting</span>
-        <span onclick="changePwd()">ChangePassword</span>
-        <span onclick="profile()">Profile</span>
-        
+     </div>
+     <div class="settings-container">
+      <button id="settingsBtn" class="settings-btn">⚙️</button>
+      <button id ="ChangePassword" onclick="changePwd()">ChangePassword</button>
+      <button id="profile" onclick="profile()">Profile</button>  
+      <div id="settingsMenu" class="settings-menu">
+        <a href="#" onclick="logout()">Logout</a>
+      </div>
     </div>
-    
 
     <!-- Images under headline -->
     <div class="gallery">
@@ -55,6 +57,10 @@
             <h2 id="imgTitle"></h2>
             <p id="imgDesc"></p>
         </div>
+    </div>
+    <div class="footer">
+        <a></a>
+        <p>© 2025 WILD. All rights reserved.</p>
     </div>
 
     <script src="home.js"></script>
