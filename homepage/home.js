@@ -21,7 +21,7 @@ function logout() {
   if (confirm("Are you sure you want to logout?")) {
     localStorage.clear();
     sessionStorage.clear();
-    window.location.href = "login.html";
+    window.close();
   }
 }
 
