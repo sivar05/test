@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:;">
-    <script>
-        // IMMEDIATE REDIRECT - Users won't even see this page
-        window.location.replace('signin/signin.html');
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https:; script-src 'self' 'unsafe-inline';">
 </head>
 <body>
-    <!-- Optional: Show loading message for slow connections -->
-    Redirecting to sign in...
+  <script>
+    window.location.replace("signin/signin.html");
+  </script>
 </body>
 </html>
