@@ -43,6 +43,25 @@ function goTo(path) {
     window.location.href = base + path;
 }
 
+    function openLink(image) {
+     setTimeout(() => {
+      const urls = {
+      lion: "https://www.google.com/search?q=wild+animal+about+lion",
+      tiger: "https://www.google.com/search?q=wild+animal+about+tiger",
+      elephant: "https://www.google.com/search?q=wild+animal+about+elephant",
+      cheetah: "https://www.google.com/search?q=wild+animal+about+cheetah",
+      giraffe: "https://www.google.com/search?q=wild+animal+about+giraffe",
+      zebra: "https://www.google.com/search?q=wild+animal+about+zebra",
+      bear: "https://www.google.com/search?q=wild+animal+about+bear",
+      wolf: "https://www.google.com/search?q=wild+animal+about+wolf",
+      personal: "https://www.google.com/search?q=personal"
+      };
+      window.open(urls[image], "_blank");
+    }, 1000);
+  }
+
+
+
 function changePwd(){
   setTimeout(()=>{
     alert("Going to Change password Page");
