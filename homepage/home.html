@@ -11,21 +11,39 @@
 
     <h1 style="text-align:center;"><u><i>WELCOME TO WILD</i></u></h1>
     <div class="marquee-container">
-    <div class="marquee-text">
-        <span><img src="../image/emoji/img1.png" class="emoji"> -- welcome to our world -- <img src="../image/emoji/img2.png" class="emoji"></span>
+       <div class="marquee-text">
+        <span> 🦁-- welcome to our world --🐻 </span>
+       </div>
     </div>
-</div>
 
      </div>
-     <div class="settings-container">
-      <button id="settingsBtn" class="settings-btn">⚙️</button>
-      <button id ="ChangePassword" onclick="changePwd()">ChangePassword</button>
-      <button id="profile" onclick="profile()">Profile</button>  
-      <div id="settingsMenu" class="settings-menu">
-        <a href="#" onclick="logout()">Logout</a>
-      </div>
-    </div>
+  <!-- Menu button -->
+<!-- Top bar -->
+<div class="topbar">
+  <button id="menuBtn" class="menu-btn">☰</button>
+  <h2>My Account</h2>
+</div>
 
+<!-- Sidebar -->
+<aside id="sidebar" class="sidebar">
+  <div class="profile-section">
+    <img src="../image/personal/siva.jpg" class="profile-pic">
+    <h3>Siva Kumar</h3>
+  </div>
+
+  <ul>
+    <li>🏠 Home</li>
+    <li onclick="profile()">👤 Personal info</li>
+    <li onclick="changePwd()">🔑 Change Password</li>
+    <li>👨‍👩‍👧 People & sharing</li>
+    <li onclick="setting()">⚙️ Settings</li>
+    <li>❓ Help & support</li>
+    <li onclick="about()">📄 About WILD</li>
+    <li class="logout" onclick="logout()">🚪 Logout</li>
+  </ul>
+</aside>
+<!-- End of Sidebar -->
+  </div>
     <!-- Images under headline -->
     <div class="gallery">
 
@@ -48,7 +66,7 @@
     -->
 
     <!-- FULLSCREEN VIEWER -->
-    <div id="fullscreen">
+        <div id="fullscreen">
         <span id="closeFull" onclick="closeFull()">✖</span>
         <img id="fullImg">
 
@@ -56,10 +74,10 @@
         <div id="imgInfo">
             <h2 id="imgTitle"></h2>
             <p id="imgDesc"></p>
+         </div>
         </div>
-    </div>
     <div class="footer">
-        <a></a>
+         <a></a>
         <p>© 2025 WILD. All rights reserved.</p>
     </div>
 

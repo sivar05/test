@@ -1,30 +1,44 @@
-const settingsBtn = document.getElementById("settingsBtn");
-const settingsMenu = document.getElementById("settingsMenu");
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
 
-settingsBtn.addEventListener("click", (e) => {
+menuBtn.addEventListener("click", (e) => {
   e.stopPropagation();
-  settingsMenu.style.display =
-    settingsMenu.style.display === "block" ? "none" : "block";
+  sidebar.classList.toggle("active");
 });
 
-// Close menu when clicking outside
+// close menu on outside click
 document.addEventListener("click", () => {
-  settingsMenu.style.display = "none";
+  sidebar.classList.remove("active");
 });
+
+// keep menu open when clicking inside
+sidebar.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+// logout confirmation
 function logout() {
-  const confirmLogout = confirm("Are you sure you want to exit?");
-
-  if (confirmLogout) {
-    
-
-    // clear login data if any
+  if (confirm("Are you sure you want to logout?")) {
     localStorage.clear();
     sessionStorage.clear();
-    window.close(); // close the window
+    window.location.href = "login.html";
   }
 }
 
 
+function changePwd(){
+  setTimeout(()=>{
+    alert("Going to Change password Page");
+    goTo("changepassword/changepassword.html");
+  },1000);
+   
+}
+
+function about(){
+  setTimeout(()=>{
+    window.open("https://en.wikipedia.org/wiki/Wildlife_of_India", "_blank");
+  },1000);
+}
 
 // Show image in fullscreen overlay with title/description
 function showFull(src, title = "", desc = "") {
@@ -87,11 +101,3 @@ function goTo(path) {
       window.open(urls[image], "_blank");
     }, 1000);
   }
-
-function changePwd(){
-  setTimeout(()=>{
-    alert("Going to Change password Page");
-    goTo("changepassword/changepassword.html");
-  },1000);
-   
-}
