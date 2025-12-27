@@ -1,3 +1,18 @@
+// Set user name in profile section
+document.addEventListener("DOMContentLoaded", () => {
+  const userName = localStorage.getItem("userName");
+  const heading = document.querySelector(".profile-section h3");
+   if (userName) {
+    const formattedName =
+      userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase();
+
+    heading.textContent = `Hi ${formattedName}`;
+  } else {
+    heading.textContent = "Hi User";
+  }
+});
+
+// Sidebar menu toggle
 const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 
@@ -18,26 +33,15 @@ sidebar.addEventListener("click", (e) => {
 
 // logout confirmation
 function logout() {
-  localStorage.removeItem("userName");
   if (confirm("Are you sure you want to logout?")) {
     localStorage.clear();
     sessionStorage.clear();
-    window.close();
+
+    window.open("", "_self");
+    window.close(); // works only for JS-opened windows
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const userName = localStorage.getItem("userName");
-  const heading = document.querySelector(".profile-section h3");
-   if (userName) {
-    const formattedName =
-      userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase();
-
-    heading.textContent = `Hi ${formattedName}`;
-  } else {
-    heading.textContent = "Hi User";
-  }
-});
 
 function changePwd(){
   setTimeout(()=>{

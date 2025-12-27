@@ -21,9 +21,10 @@
 <!-- Top bar -->
 <div class="topbar">
   <button id="menuBtn" class="menu-btn">☰</button>
-  <h2>My Account</h2>
 </div>
-
+<div class="rightspan">
+  <span onclick="logout()">Logout</span>
+</div>
 <!-- Sidebar -->
 <aside id="sidebar" class="sidebar">
   <div class="profile-section">
@@ -39,7 +40,7 @@
     <li onclick="setting()">⚙️ Settings</li>
     <li>❓ Help & support</li>
     <li onclick="about()">📄 About WILD</li>
-    <li class="logout" onclick="logout()">🚪 Logout</li>
+    <li onclick="contact()">📞 Contact us</li>
   </ul>
 </aside>
 <!-- End of Sidebar -->
