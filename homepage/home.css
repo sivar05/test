@@ -10,12 +10,26 @@ body {
   background: white;
 }
 
-/* ================= TOP BAR ================= */
 
+
+/* ================= HEADER ================= */
+.header {
+  position: fixed;      /* Keeps header on top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;   /* Add some horizontal padding */
+  font-size: 14px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd; /* Line under the header */
+  z-index: 1000;        /* Make sure it stays above other content */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Optional: subtle shadow */
+}
+
+/* ================= TOP BAR ================= */
 .topbar{
   height: 30px;
   background: #fff;
-  border-bottom: 1px solid #ddd;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -25,7 +39,6 @@ body {
 .rightbar {
   height: 30px;
   background: #fff;
-  border-bottom: 1px solid #ddd;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -70,7 +83,7 @@ body {
   cursor: pointer;
   font-size: 15px;
   transition: background 0.2s ease;
-}
+} 
 
 .sidebar li:hover {
   background: #525d83;
@@ -107,18 +120,18 @@ body {
 /* ================= GALLERY ================= */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  padding: 12px;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px; 
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 160px;
 }
 
 .gallery img {
   width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
+  height: 100px; /* or use height: 100% if you want square cells */
+  object-fit: contain;
+  border-radius: 5px; 
   cursor: pointer;
   transition: transform 0.2s ease;
 }
@@ -126,6 +139,7 @@ body {
 .gallery img:hover {
   transform: scale(1.03);
 }
+
 
 #closeFull {
   position: absolute;
@@ -169,16 +183,10 @@ body {
 /* Tablet */
 @media (max-width: 900px) {
   .gallery {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* ================= FOOTER ================= */
 .footer {
