@@ -18,7 +18,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 20px;   /* Add some horizontal padding */
+  padding: 5px 5px;   /* Add some horizontal padding */
   font-size: 14px;
   background-color: #fff;
   border-bottom: 1px solid #ddd; /* Line under the header */
@@ -32,11 +32,17 @@ body {
   background: #ffffff;
   display: flex;
   align-items: center;
-  padding: 0 10px;
   justify-content: space-between;
   cursor: pointer;
-  border-radius: 8px;
+}
+.menubar{
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
   color: #525d83;
+  margin: 5px;
 }
 
 /* ================= SIDEBAR ================= */
