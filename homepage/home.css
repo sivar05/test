@@ -44,29 +44,32 @@ body {
   gap: 15px;
   padding: 0 15px;;
 }
-/* Menu button */
+
+/* ================= SIDEBAR ================= */
 .menu-btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1100;
   font-size: 24px;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-/* ================= SIDEBAR ================= */
 .sidebar {
   position: fixed;
-  top: 60px;
-  left: -260px;
+  top: 60px; /* below menu button */
+  left: 0;
   width: 260px;
-  height: calc(100% - 60px);
-  border-radius: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  transition: left 0.3s ease;
-  background-color: #f1f5fb;
+  height: calc(100dvh - 60px); /* 👈 rotation safe */
+  background: #fff;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
   z-index: 1000;
-  border-right: 1px solid #dbe3f0; /* keep right border only */
 }
+
 
 .sidebar.menu-active {
   background-color: #e8f0fe; /* light blue like Google */
@@ -90,11 +93,16 @@ body {
 }
 
 .sidebar.active {
+  transform: translateX(0);
   left: 0;
 }
 .sidebar li.active {
   background-color: #d2e3fc;
   font-weight: 600;
+}
+
+.sidebar-container {
+  margin-top: 60px; /* space below topbar */
 }
 
 /* Profile section */

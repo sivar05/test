@@ -28,19 +28,27 @@ document.addEventListener("DOMContentLoaded", () => {
 const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 
+/* Toggle sidebar */
 menuBtn.addEventListener("click", (e) => {
   e.stopPropagation();
   sidebar.classList.toggle("active");
 });
 
-// close menu on outside click
+/* Prevent closing when clicking inside sidebar */
+sidebar.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+/* Close when clicking outside */
 document.addEventListener("click", () => {
   sidebar.classList.remove("active");
 });
 
-// keep menu open when clicking inside
-sidebar.addEventListener("click", (e) => {
-  e.stopPropagation();
+/* 🔄 FIX FOR MOBILE ROTATION */
+window.addEventListener("orientationchange", () => {
+  setTimeout(() => {
+    sidebar.style.height = `calc(${window.innerHeight}px - 60px)`;
+  }, 300);
 });
 
 // logout confirmation
