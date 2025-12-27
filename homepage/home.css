@@ -36,14 +36,6 @@ body {
   padding: 0 15px;;
   justify-content: space-between;
 }
-.rightbar {
-  height: 30px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 0 15px;;
-}
 
 /* ================= SIDEBAR ================= */
 .menu-btn {
