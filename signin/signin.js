@@ -105,23 +105,26 @@ function login() {
             ? "https://signup-api.up.railway.app"
             : "http://localhost:3000";
 
-    fetch(`${API_BASE}/api/auth/signin`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-    })
-        .then(res => res.ok ? res.json() : res.text().then(t => { throw new Error(t); }))
-        .then(() => {
-            popup("Login Successful!", () => {
-                document.getElementById("email").value = "";
-                document.getElementById("password").value = "";
-                goTo("homepage/home.html");
-            });
+            fetch(`${API_BASE}/api/auth/signin`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
         })
-        .catch(err => {
-            if (msg) msg.innerText = err.message || "Login failed";
-        });
-}
+        .then(res => res.ok ? res.json() : res.text().then(t => { throw new Error(t); }))
+        .then(data => {
+        if (data.success) {
+            localStorage.setItem("userName", data.username); 
+            popup("Login Successful!", () => {
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+            goTo("homepage/home.html");
+       });
+      }
+     })
+    .catch(err => {
+      if (msg) msg.innerText = err.message || "Login failed";
+ });
+ }
 
 /* =========================
    REDIRECTS

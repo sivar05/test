@@ -18,6 +18,7 @@ sidebar.addEventListener("click", (e) => {
 
 // logout confirmation
 function logout() {
+  localStorage.removeItem("userName");
   if (confirm("Are you sure you want to logout?")) {
     localStorage.clear();
     sessionStorage.clear();
@@ -25,6 +26,18 @@ function logout() {
   }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const userName = localStorage.getItem("userName");
+  const heading = document.querySelector(".profile-section h3");
+   if (userName) {
+    const formattedName =
+      userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase();
+
+    heading.textContent = `Hi ${formattedName}`;
+  } else {
+    heading.textContent = "Hi User";
+  }
+});
 
 function changePwd(){
   setTimeout(()=>{

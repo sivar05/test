@@ -69,7 +69,8 @@ exports.signin = async (req, res) => {
     res.json({
       success: true,
       message: "Login successful",
-      user: userWithoutPassword
+      user: userWithoutPassword,
+      username: user.username
     });
 
   } catch (err) {
