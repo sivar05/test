@@ -29,12 +29,14 @@ body {
 /* ================= TOP BAR ================= */
 .topbar{
   height: 30px;
-  background: #fff;
+  background: #ffffff;
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 0 15px;;
+  padding: 0 10px;
   justify-content: space-between;
+  cursor: pointer;
+  border-radius: 8px;
+  color: #525d83;
 }
 
 /* ================= SIDEBAR ================= */
