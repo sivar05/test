@@ -11,22 +11,18 @@ body {
 }
 
 /* ================= TOP BAR ================= */
-.topbar {
+
+.topbar{
   height: 30px;
   background: #fff;
   border-bottom: 1px solid #ddd;
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 0 15px;
+  padding: 0 15px;;
+  justify-content: space-between;
 }
-.rightbar {
-  position: fixed;
-  right: auto;
-  right: 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
+
 /* Menu button */
 .menu-btn {
   font-size: 24px;
