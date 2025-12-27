@@ -140,6 +140,22 @@ body {
   transform: scale(1.03);
 }
 
+#fullscreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#fullscreen img {
+    max-width: 90%;
+    max-height: 80%;
+    margin-bottom: 15px;
+}
 
 #closeFull {
   position: absolute;
@@ -149,6 +165,11 @@ body {
   color: #fff;
   cursor: pointer;
   z-index: 10000;
+}
+
+#imgInfo {
+    color: #fff;
+    text-align: center;
 }
 
 /* Common wrapper */
