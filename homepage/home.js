@@ -36,10 +36,8 @@ function logout() {
   if (confirm("Are you sure you want to logout?")) {
     localStorage.clear();
     sessionStorage.clear();
-
-    window.open("", "_self");
-    window.close(); // works only for JS-opened windows
-  }
+    goTo("signin/signin.html");
+   }
 }
 
 
