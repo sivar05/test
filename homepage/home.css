@@ -14,47 +14,44 @@ body {
 
 /* ================= HEADER ================= */
 .header {
-  position: fixed;      /* Keeps header on top */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 5px 5px;   /* Add some horizontal padding */
-  font-size: 14px;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd; /* Line under the header */
-  z-index: 1000;        /* Make sure it stays above other content */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Optional: subtle shadow */
+  background: #fff;
+  z-index: 1000;
+}
+
+/* Marquee */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
 }
 
 /* ================= TOP BAR ================= */
-.menubar{
+.topbar {
+  height: 40px;
   display: flex;
   align-items: center;
-  padding: 0 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin: 5px;
   justify-content: space-between;
+  padding: 0 15px;
+  border-bottom: 1px solid #dbe3f0;
 }
-.topbar {
+
+/* MENU BUTTON (LEFT) */
+.menu_btn {
   font-size: 24px;
   background: none;
   border: none;
-  background-attachment: fixed;
   cursor: pointer;
 }
 
-/* ================= SIDEBAR ================= */
-.menu-btn {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1100;
-  font-size: 24px;
-  background: none;
-  border: none;
+/* LOGOUT (RIGHT) */
+.logout {
+  font-size: 16px;
   cursor: pointer;
 }
+
 
 .sidebar {
   position: fixed;
