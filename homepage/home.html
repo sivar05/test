@@ -1,89 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Live Server Test</title>
-    <link rel="stylesheet" href="home.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WILD</title>
+  <link rel="stylesheet" href="home.css">
 </head>
 
 <body>
-<div class="header">
 
+<!-- HEADER -->
+<div class="header">
   <h1 style="text-align:center;"><u><i>WELCOME TO WILD</i></u></h1>
 
-    <div class="marquee-container">
+  <div class="marquee-container">
     <div class="marquee-text">
-      <span> 🦁-- WELCOME TO OUR WILD --🐻 </span>
-    </div>
-    </div> <!-- ✅ marquee closed -->
-</div>
-  <!-- TOP BAR -->
- <div class="topbar">
-  <button class="menu_btn" id="menuBtn">☰</button>
-  <span  onclick="logout()">🚪 Logout</span>
-   <!-- SIDEBAR -->
-  
-  <aside id="sidebar" class="sidebar">
-    <div class="profile-section">
-      <img src="../image/personal/user.png" class="profile-pic">
-      <h3>Hi User</h3>
-    </div>
-  <ul>
-    <li>🏠 Home</li>
-    <li onclick="profile()">👤 Personal info</li>
-    <li onclick="changePwd()">🔑 Change Password</li>
-    <li>👨‍👩‍👧 People & sharing</li>
-    <li onclick="setting()">⚙️ Settings</li>
-    <li>❓ Help & support</li>
-    <li onclick="about()">📄 About WILD</li>
-    <li onclick="contact()">📞 Contact us</li>
-  </ul>
-  </aside>
-<!-- End of Sidebar -->
-</div>
-
- 
- 
-    <!-- Images under headline -->
-  <div class="container">
-    <div class="gallery">
-
-        <img src="../image/wild/img1.jpg" class="zoom-img" onclick="openLink('lion')">
-        <img src="../image/wild/img2.jpg" class="zoom-img" onclick="openLink('tiger')">
-        <img src="../image/wild/img3.jpg" class="zoom-img" onclick="openLink('elephant')">
-        <img src="../image/wild/img4.jpg" class="zoom-img" onclick="openLink('giraffe')">
-        <img src="../image/wild/img5.jpg" class="zoom-img" onclick="openLink('cheetah')">
-        <img src="../image/wild/img6.jpg" class="zoom-img" onclick="openLink('zebra')">
-        <img src="../image/wild/img7.jpg" class="zoom-img" onclick="openLink('bear')">
-        <img src="../image/wild/img8.jpg" class="zoom-img" onclick="openLink('wolf')">
-        <img class="zoom-img" src="../image/natural/img1.jpg" alt="Personal Siva" onclick="openFull(this.src)">
+      <span>🦁 -- WELCOME TO OUR WILD -- 🐻</span>
     </div>
   </div>
+</div>
 
-    <!-- REMOVE THIS (you had 2 imgInfo blocks)
-    <div id="imgInfo">
-        <h2 id="imgTitle"></h2>
-        <p id="imgDesc"></p>
-    </div>
-    -->
+<!-- TOP BAR -->
+<div class="topbar">
+  <button class="menu_btn" id="menuBtn">☰</button>
+  <span onclick="logout()">🚪 Logout</span>
+</div>
 
-    <!-- FULLSCREEN VIEWER -->
-        <div id="fullscreen">
-        <span id="closeFull" onclick="closeFull()">✖</span>
-        <img id="fullImg">
+<!-- SIDEBAR -->
+<aside id="sidebar" class="sidebar">
+  <div class="profile-section">
+    <img src="../image/personal/user.png" class="profile-pic">
+    <h3>Hi User</h3>
+  </div>
+  <ul id="menuList"></ul>
+</aside>
 
-        <!-- Correct single imgInfo box -->
-        <div id="imgInfo">
-            <h2 id="imgTitle"></h2>
-            <p id="imgDesc"></p>
-         </div>
-        </div>
-    <div class="footer">
-         <a></a>
-        <p>© 2025 WILD. All rights reserved.</p>
-    </div>
 
-    <script src="home.js"></script>
+<!-- GALLERY -->
+<div class="container">
+  <div class="gallery" id="wildGallery"></div>
+
+  <!-- UPLOAD FORM -->
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Animal name" required />
+    <input type="text" name="action" placeholder="action (lion, tiger...)" required />
+    <input type="file" name="image" accept="image/*" required />
+    <button type="submit">Upload</button>
+  </form>
+</div>
+
+<!-- FULLSCREEN VIEW -->
+<div id="fullscreen">
+  <span id="closeFull" onclick="closeFull()">✖</span>
+  <img id="fullImg">
+  <div id="imgInfo">
+    <h2 id="imgTitle"></h2>
+    <p id="imgDesc"></p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>© 2025 WILD. All rights reserved.</p>
+</div>
+
+<script src="home.js"></script>
 </body>
 </html>
