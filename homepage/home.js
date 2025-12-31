@@ -1,13 +1,7 @@
 console.log("home.js loaded");
-
 /* ---------- NAVIGATION ---------- */
 function goTo(path) {
-  let base = "";
-  if (location.hostname === "sivar05.github.io") {
-    base = "/test/";
-  } else {
-    base = "../";
-  }
+  let base = location.hostname === "sivar05.github.io" ? "/test/" : "../";
   window.location.href = base + path;
 }
 
@@ -54,31 +48,42 @@ async function loadMenu() {
       li.textContent = `${item.icon} ${item.name}`;
 
       if (item.action) {
-        li.onclick = () => window[item.action.replace("()", "")]?.();
+        const fn = item.action.replace("()", "");
+
+        li.addEventListener("click", () => {
+          if (typeof window[fn] === "function") window[fn]();
+          sidebar.classList.remove("active");
+        });
       }
 
       menuList.appendChild(li);
     });
   } catch (err) {
-    console.error("Menu error:", err);
+    console.error("Menu load error:", err);
   }
 }
 document.addEventListener("DOMContentLoaded", loadMenu);
 
-/* ---------- LOAD IMAGES ---------- */
+/* ---------- GALLERY LOAD ---------- */
 async function loadWildImages() {
   try {
     const res = await fetch("http://localhost:3000/api/wild_images");
     const images = await res.json();
 
     const gallery = document.getElementById("wildGallery");
+    if (!gallery) return;
+
     gallery.innerHTML = "";
 
     images.forEach(item => {
+      console.log("CLICK ACTION:", item.action); // 👈 ADD THIS
       const img = document.createElement("img");
-      img.src = item.image;     // MUST be full URL from backend
+      img.src = item.image;
       img.className = "zoom-img";
-      img.onclick = () => openLink(item.action);
+      img.onclick = () => {
+        const animal = item.name || item.action;
+        openLink(animal);
+      };
       gallery.appendChild(img);
     });
   } catch (err) {
@@ -87,34 +92,83 @@ async function loadWildImages() {
 }
 document.addEventListener("DOMContentLoaded", loadWildImages);
 
-/* ---------- UPLOAD IMAGE ---------- */
-document.addEventListener("DOMContentLoaded", () => {
+/* ---------- UPLOAD FORM TOGGLE ---------- */
+function imageupload() {
   const form = document.getElementById("uploadForm");
+  if (form) form.style.display = form.style.display === "none" ? "block" : "none";
+}
 
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
+/* ---------- MULTI IMAGE UPLOAD (ADD ONE BY ONE) ---------- */
+const selectedImages = [];
 
-    const formData = new FormData(form);
+function addImage() {
+  document.getElementById("imageInput").click();
+}
 
-    const res = await fetch("http://localhost:3000/api/wild_images", {
-      method: "POST",
-      body: formData
-    });
+document.getElementById("imageInput")?.addEventListener("change", e => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    if (res.ok) {
-      alert("Image uploaded successfully");
-      form.reset();
-      loadWildImages();
-    } else {
-      alert("Upload failed");
-    }
-  });
+  selectedImages.push(file);
+
+  const img = document.createElement("img");
+  img.src = URL.createObjectURL(file);
+  img.style.width = "80px";
+  img.style.margin = "6px";
+  img.style.borderRadius = "6px";
+
+  document.getElementById("previewList").appendChild(img);
+  e.target.value = "";
 });
+
+/* ---------- UPLOAD SUBMIT ---------- */
+document.getElementById("uploadForm")?.addEventListener("submit", async e => {
+  e.preventDefault();
+
+  if (selectedImages.length === 0) {
+    alert("Add at least one image");
+    return;
+  }
+
+  const nameValue = e.target.name.value.trim();
+  const actionValue = e.target.action.value.trim() || nameValue.toLowerCase();
+
+
+  const formData = new FormData(); // ✅ defined correctly
+
+  formData.append("name", nameValue);
+  formData.append("action", actionValue);
+
+  selectedImages.forEach(file => {
+    formData.append("images", file);
+  });
+
+  const res = await fetch("http://localhost:3000/api/wild_images", {
+    method: "POST",
+    body: formData
+  });
+
+  if (res.ok) {
+    alert("Images uploaded successfully");
+    selectedImages.length = 0;
+    document.getElementById("previewList").innerHTML = "";
+    e.target.reset();
+    loadWildImages();
+    e.target.style.display = "none";
+  } else {
+    alert("Upload failed");
+  }
+});
+
 
 /* ---------- IMAGE ACTION ---------- */
 function openLink(type) {
-  window.location.href = `details.html?animal=${type}`;
+  alert("CLICKED TYPE = " + type);
+  const query = encodeURIComponent(type);
+  window.open(`https://www.google.com/search?q=${query}`, "_blank");
 }
+
+
 
 /* ---------- FULLSCREEN ---------- */
 function openFull(src, title = "", desc = "") {
@@ -140,7 +194,7 @@ function logout() {
   }
 }
 
-/* ---------- EXTRA MENU ACTIONS ---------- */
+/* ---------- EXTRA MENU ---------- */
 function changePwd() {
   goTo("changepassword/changepassword.html");
 }

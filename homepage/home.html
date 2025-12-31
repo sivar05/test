@@ -23,7 +23,7 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <button class="menu_btn" id="menuBtn">☰</button>
-  <span onclick="logout()">🚪 Logout</span>
+  <span style="cursor:pointer"onclick="logout()">🚪 Logout</span>
 </div>
 
 <!-- SIDEBAR -->
@@ -42,11 +42,19 @@
 
   <!-- UPLOAD FORM -->
   <form id="uploadForm" enctype="multipart/form-data">
-    <input type="text" name="name" placeholder="Animal name" required />
-    <input type="text" name="action" placeholder="action (lion, tiger...)" required />
-    <input type="file" name="image" accept="image/*" required />
-    <button type="submit">Upload</button>
+  <input type="text" name="name" placeholder="Animal name" required />
+  <input type="text" name="action" placeholder="Action" required/>
+    <!-- hidden file input (NO name attribute!) -->
+  <input type="file" id="imageInput" accept="image/*" hidden />
+
+  <button type="button" onclick="addImage()">➕ Add Image</button>
+
+  <!-- preview area -->
+  <div id="previewList"></div>
+
+  <button type="submit">Upload</button>
   </form>
+
 </div>
 
 <!-- FULLSCREEN VIEW -->

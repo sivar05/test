@@ -47,11 +47,14 @@ app.use("/api/password", require("./routes/password_routes"));
 app.use("/api/forgotemail", require("./routes/forgotemail_routes"));
 app.use("/api/forgotpassword", require("./routes/forgotpassword_routes"));
 
+
 // Optional: keep controller endpoints only if not in forgotpassword_routes
 app.post("/api/forgotpassword", require("./controllers/forgotpassword_controller").sendResetLink);
 app.use("/", require("./routes/homemenu"));
 app.use(require("./routes/wildimage_routes"));
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/api/home",require("./routes/homemenu"));
 
 
 

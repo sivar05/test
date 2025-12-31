@@ -26,29 +26,37 @@ const upload = multer({
 });
 
 /* ---------- POST IMAGE ---------- */
-router.post("/api/wild_images", upload.single("image"), async (req, res) => {
-  try {
-    console.log("BODY:", req.body);
-    console.log("FILE:", req.file);
+/* ---------- POST MULTIPLE IMAGES ---------- */
+router.post(
+  "/api/wild_images",
+  upload.array("images", 20), // 🔴 MUST match <input name="images">
+  async (req, res) => {
+    try {
+      console.log("BODY:", req.body);
+      console.log("FILES:", req.files);
 
-    if (!req.file) {
-      return res.status(400).json({ error: "No image uploaded" });
+      if (!req.files || req.files.length === 0) {
+        return res.status(400).json({ error: "No images uploaded" });
+      }
+
+      const imageUrls = req.files.map(file =>
+        `http://localhost:3000/uploads/${file.filename}`
+      );
+
+      res.json({
+        success: true,
+        images: imageUrls,
+        name: req.body.name,
+        action: req.body.action
+      });
+
+    } catch (err) {
+      console.error("UPLOAD ERROR:", err);
+      res.status(500).json({ error: "Upload failed" });
     }
-
-    const imageUrl = `http://localhost:3000/uploads/${req.file.filename}`;
-
-    res.json({
-      success: true,
-      image: imageUrl,
-      name: req.body.name,
-      action: req.body.action
-    });
-
-  } catch (err) {
-    console.error("UPLOAD ERROR:", err);
-    res.status(500).json({ error: "Upload failed" });
   }
-});
+);
+
 
 /* ---------- GET IMAGES ---------- */
 router.get("/api/wild_images", (req, res) => {
